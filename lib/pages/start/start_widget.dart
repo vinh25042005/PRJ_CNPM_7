@@ -96,6 +96,10 @@ class _StartWidgetState extends State<StartWidget> {
                     height: MediaQuery.sizeOf(context).height * 0.132,
                     decoration: BoxDecoration(),
                   ),
+                  Container(
+                    height: MediaQuery.sizeOf(context).height * 0.09,
+                    decoration: BoxDecoration(),
+                  ),
                   Align(
                     alignment: AlignmentDirectional(1.0, 0.0),
                     child: ClipRRect(
@@ -107,10 +111,6 @@ class _StartWidgetState extends State<StartWidget> {
                         alignment: Alignment(1.0, 0.0),
                       ),
                     ),
-                  ),
-                  Container(
-                    height: MediaQuery.sizeOf(context).height * 0.09,
-                    decoration: BoxDecoration(),
                   ),
                   Align(
                     alignment: AlignmentDirectional(0.0, 0.0),
