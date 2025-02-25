@@ -85,6 +85,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? HomePageWidget() : SignUpWidget(),
         ),
         FFRoute(
+          name: DailyTaskWidget.routeName,
+          path: DailyTaskWidget.routePath,
+          builder: (context, params) => DailyTaskWidget(),
+        ),
+        FFRoute(
+          name: LogInWidget.routeName,
+          path: LogInWidget.routePath,
+          builder: (context, params) => LogInWidget(),
+        ),
+        FFRoute(
           name: HomePageWidget.routeName,
           path: HomePageWidget.routePath,
           builder: (context, params) => HomePageWidget(),
@@ -98,16 +108,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: SignUpWidget.routeName,
           path: SignUpWidget.routePath,
           builder: (context, params) => SignUpWidget(),
-        ),
-        FFRoute(
-          name: LogInWidget.routeName,
-          path: LogInWidget.routePath,
-          builder: (context, params) => LogInWidget(),
-        ),
-        FFRoute(
-          name: DailyTaskWidget.routeName,
-          path: DailyTaskWidget.routePath,
-          builder: (context, params) => DailyTaskWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
