@@ -75,19 +75,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : SignUpWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? StudentHomePageWidget()
+          : MainSignUpWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : SignUpWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? StudentHomePageWidget()
+              : MainSignUpWidget(),
         ),
         FFRoute(
-          name: DailyTaskWidget.routeName,
-          path: DailyTaskWidget.routePath,
-          builder: (context, params) => DailyTaskWidget(),
+          name: QuestionWidget.routeName,
+          path: QuestionWidget.routePath,
+          builder: (context, params) => QuestionWidget(),
         ),
         FFRoute(
           name: LogInWidget.routeName,
@@ -95,9 +97,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => LogInWidget(),
         ),
         FFRoute(
-          name: HomePageWidget.routeName,
-          path: HomePageWidget.routePath,
-          builder: (context, params) => HomePageWidget(),
+          name: StudentHomePageWidget.routeName,
+          path: StudentHomePageWidget.routePath,
+          builder: (context, params) => StudentHomePageWidget(),
         ),
         FFRoute(
           name: StartWidget.routeName,
@@ -105,9 +107,64 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => StartWidget(),
         ),
         FFRoute(
-          name: SignUpWidget.routeName,
-          path: SignUpWidget.routePath,
-          builder: (context, params) => SignUpWidget(),
+          name: MainSignUpWidget.routeName,
+          path: MainSignUpWidget.routePath,
+          builder: (context, params) => MainSignUpWidget(),
+        ),
+        FFRoute(
+          name: StudentRankingWidget.routeName,
+          path: StudentRankingWidget.routePath,
+          builder: (context, params) => StudentRankingWidget(),
+        ),
+        FFRoute(
+          name: TeacherHomePageWidget.routeName,
+          path: TeacherHomePageWidget.routePath,
+          builder: (context, params) => TeacherHomePageWidget(),
+        ),
+        FFRoute(
+          name: TeacherCreatingQuestionsWidget.routeName,
+          path: TeacherCreatingQuestionsWidget.routePath,
+          builder: (context, params) => TeacherCreatingQuestionsWidget(),
+        ),
+        FFRoute(
+          name: ProfileWidget.routeName,
+          path: ProfileWidget.routePath,
+          builder: (context, params) => ProfileWidget(),
+        ),
+        FFRoute(
+          name: TeacherSignUpWidget.routeName,
+          path: TeacherSignUpWidget.routePath,
+          builder: (context, params) => TeacherSignUpWidget(),
+        ),
+        FFRoute(
+          name: StudentSignUpWidget.routeName,
+          path: StudentSignUpWidget.routePath,
+          builder: (context, params) => StudentSignUpWidget(),
+        ),
+        FFRoute(
+          name: AssignmentPageWidget.routeName,
+          path: AssignmentPageWidget.routePath,
+          builder: (context, params) => AssignmentPageWidget(),
+        ),
+        FFRoute(
+          name: SettingsPageWidget.routeName,
+          path: SettingsPageWidget.routePath,
+          builder: (context, params) => SettingsPageWidget(),
+        ),
+        FFRoute(
+          name: AIRecommendationPageWidget.routeName,
+          path: AIRecommendationPageWidget.routePath,
+          builder: (context, params) => AIRecommendationPageWidget(),
+        ),
+        FFRoute(
+          name: CheckSchedulePageWidget.routeName,
+          path: CheckSchedulePageWidget.routePath,
+          builder: (context, params) => CheckSchedulePageWidget(),
+        ),
+        FFRoute(
+          name: ChangeSchedulePageWidget.routeName,
+          path: ChangeSchedulePageWidget.routePath,
+          builder: (context, params) => ChangeSchedulePageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -276,7 +333,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/signUp';
+            return '/mainSignUp';
           }
           return null;
         },

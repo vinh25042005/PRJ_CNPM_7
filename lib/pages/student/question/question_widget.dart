@@ -4,28 +4,28 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:styled_divider/styled_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'daily_task_model.dart';
-export 'daily_task_model.dart';
+import 'question_model.dart';
+export 'question_model.dart';
 
-class DailyTaskWidget extends StatefulWidget {
-  const DailyTaskWidget({super.key});
+class QuestionWidget extends StatefulWidget {
+  const QuestionWidget({super.key});
 
-  static String routeName = 'DailyTask';
-  static String routePath = '/dailyTask';
+  static String routeName = 'Question';
+  static String routePath = '/question';
 
   @override
-  State<DailyTaskWidget> createState() => _DailyTaskWidgetState();
+  State<QuestionWidget> createState() => _QuestionWidgetState();
 }
 
-class _DailyTaskWidgetState extends State<DailyTaskWidget> {
-  late DailyTaskModel _model;
+class _QuestionWidgetState extends State<QuestionWidget> {
+  late QuestionModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DailyTaskModel());
+    _model = createModel(context, () => QuestionModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }

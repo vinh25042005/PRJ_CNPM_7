@@ -9,22 +9,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'home_page_model.dart';
-export 'home_page_model.dart';
+import 'student_home_page_model.dart';
+export 'student_home_page_model.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({super.key});
+class StudentHomePageWidget extends StatefulWidget {
+  const StudentHomePageWidget({super.key});
 
-  static String routeName = 'HomePage';
-  static String routePath = '/homePage';
+  static String routeName = 'StudentHomePage';
+  static String routePath = '/studentHomePage';
 
   @override
-  State<HomePageWidget> createState() => _HomePageWidgetState();
+  State<StudentHomePageWidget> createState() => _StudentHomePageWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget>
+class _StudentHomePageWidgetState extends State<StudentHomePageWidget>
     with TickerProviderStateMixin {
-  late HomePageModel _model;
+  late StudentHomePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -33,7 +33,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HomePageModel());
+    _model = createModel(context, () => StudentHomePageModel());
 
     animationsMap.addAll({
       'columnOnPageLoadAnimation': AnimationInfo(
@@ -129,7 +129,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   GoRouter.of(context).clearRedirectLocation();
 
                                   context.goNamedAuth(
-                                      SignUpWidget.routeName, context.mounted);
+                                      MainSignUpWidget.routeName,
+                                      context.mounted);
                                 },
                                 text: 'Button',
                                 options: FFButtonOptions(
@@ -185,7 +186,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed(
-                                      DailyTaskWidget.routeName,
+                                      QuestionWidget.routeName,
                                       extra: <String, dynamic>{
                                         kTransitionInfoKey: TransitionInfo(
                                           hasTransition: true,

@@ -137,7 +137,7 @@ class _StartWidgetState extends State<StartWidget> {
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       context.goNamed(
-                        SignUpWidget.routeName,
+                        MainSignUpWidget.routeName,
                         extra: <String, dynamic>{
                           kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
