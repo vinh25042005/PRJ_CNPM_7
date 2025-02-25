@@ -405,7 +405,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               child: Align(
                                 alignment: AlignmentDirectional(1.0, 0.0),
                                 child: Text(
-                                  '',
+                                  'abcbc',
                                   textAlign: TextAlign.justify,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -450,7 +450,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               ),
                             ),
                             Container(
-                              width: 96.11,
+                              width: 96.1,
                               height: 100.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
@@ -458,7 +458,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               ),
                             ),
                             Text(
-                              'Student',
+                              'nanfasfmsamfmasfma',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
