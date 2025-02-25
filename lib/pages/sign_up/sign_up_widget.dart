@@ -405,7 +405,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               child: Align(
                                 alignment: AlignmentDirectional(1.0, 0.0),
                                 child: Text(
-                                  'Teacher',
+                                  '',
                                   textAlign: TextAlign.justify,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
