@@ -33,6 +33,8 @@ class _InformationWidgetState extends State<InformationWidget> {
       await Future.delayed(const Duration(milliseconds: 10000));
       Navigator.pop(context);
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

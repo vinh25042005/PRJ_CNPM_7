@@ -25,6 +25,8 @@ class _RightAnswerWidgetState extends State<RightAnswerWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => RightAnswerModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

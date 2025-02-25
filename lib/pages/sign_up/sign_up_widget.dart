@@ -36,6 +36,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode3 ??= FocusNode();
     _model.textFieldFocusNode3!.addListener(() => safeSetState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

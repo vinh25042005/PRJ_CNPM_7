@@ -26,6 +26,8 @@ class _DailyTaskWidgetState extends State<DailyTaskWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DailyTaskModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
