@@ -22,6 +22,14 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   bool? checkboxValue1;
   // State field(s) for Checkbox widget.
   bool? checkboxValue2;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode4;
+  TextEditingController? textController3;
+  String? Function(BuildContext, String?)? textController3Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode5;
+  TextEditingController? textController4;
+  String? Function(BuildContext, String?)? textController4Validator;
 
   @override
   void initState(BuildContext context) {}
@@ -36,5 +44,11 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
 
     textFieldFocusNode3?.dispose();
     textController2?.dispose();
+
+    textFieldFocusNode4?.dispose();
+    textController3?.dispose();
+
+    textFieldFocusNode5?.dispose();
+    textController4?.dispose();
   }
 }
