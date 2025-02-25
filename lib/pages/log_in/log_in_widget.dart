@@ -294,7 +294,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                         highlightColor: Colors.transparent,
                         onTap: () async {
                           context.goNamed(
-                            HomePageWidget.routeName,
+                            StudentHomePageWidget.routeName,
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
@@ -374,7 +374,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                         highlightColor: Colors.transparent,
                         onTap: () async {
                           context.pushNamed(
-                            SignUpWidget.routeName,
+                            MainSignUpWidget.routeName,
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
