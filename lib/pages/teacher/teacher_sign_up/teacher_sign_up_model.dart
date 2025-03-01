@@ -1,4 +1,5 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
 import 'teacher_sign_up_widget.dart' show TeacherSignUpWidget;
 import 'package:flutter/material.dart';
@@ -14,12 +15,15 @@ class TeacherSignUpModel extends FlutterFlowModel<TeacherSignUpWidget> {
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue1;
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue2;
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue3;
+  // State field(s) for TextField widget.
+  final textFieldKey3 = GlobalKey();
+  FocusNode? textFieldFocusNode3;
+  TextEditingController? textController3;
+  String? textFieldSelectedOption3;
+  String? Function(BuildContext, String?)? textController3Validator;
+  // State field(s) for DropDown widget.
+  String? dropDownValue;
+  FormFieldController<String>? dropDownValueController;
 
   @override
   void initState(BuildContext context) {}
@@ -31,5 +35,7 @@ class TeacherSignUpModel extends FlutterFlowModel<TeacherSignUpWidget> {
 
     textFieldFocusNode2?.dispose();
     textController2?.dispose();
+
+    textFieldFocusNode3?.dispose();
   }
 }

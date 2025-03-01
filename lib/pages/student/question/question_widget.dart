@@ -311,7 +311,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    'Lucy has 8 apples, and her friend gives her 5 more apples. Then, she eats 3 apples. How many apples does Lucy have now?',
+                                                    'Câu hỏi',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
