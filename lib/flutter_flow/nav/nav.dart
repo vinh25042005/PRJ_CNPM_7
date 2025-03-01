@@ -117,14 +117,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => StudentRankingWidget(),
         ),
         FFRoute(
-          name: TeacherHomePageWidget.routeName,
-          path: TeacherHomePageWidget.routePath,
-          builder: (context, params) => TeacherHomePageWidget(),
-        ),
-        FFRoute(
-          name: TeacherCreatingQuestionsWidget.routeName,
-          path: TeacherCreatingQuestionsWidget.routePath,
-          builder: (context, params) => TeacherCreatingQuestionsWidget(),
+          name: TeacherCreatingQuesHomeWidget.routeName,
+          path: TeacherCreatingQuesHomeWidget.routePath,
+          builder: (context, params) => TeacherCreatingQuesHomeWidget(),
         ),
         FFRoute(
           name: ProfileWidget.routeName,
@@ -152,11 +147,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => SettingsPageWidget(),
         ),
         FFRoute(
-          name: AIRecommendationPageWidget.routeName,
-          path: AIRecommendationPageWidget.routePath,
-          builder: (context, params) => AIRecommendationPageWidget(),
-        ),
-        FFRoute(
           name: CheckSchedulePageWidget.routeName,
           path: CheckSchedulePageWidget.routePath,
           builder: (context, params) => CheckSchedulePageWidget(),
@@ -165,6 +155,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ChangeSchedulePageWidget.routeName,
           path: ChangeSchedulePageWidget.routePath,
           builder: (context, params) => ChangeSchedulePageWidget(),
+        ),
+        FFRoute(
+          name: TeacherHomePageWidget.routeName,
+          path: TeacherHomePageWidget.routePath,
+          builder: (context, params) => TeacherHomePageWidget(),
+        ),
+        FFRoute(
+          name: TeacherCreatingQuesWidget.routeName,
+          path: TeacherCreatingQuesWidget.routePath,
+          builder: (context, params) => TeacherCreatingQuesWidget(),
+        ),
+        FFRoute(
+          name: AIRecommendationPageWidget.routeName,
+          path: AIRecommendationPageWidget.routePath,
+          builder: (context, params) => AIRecommendationPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -283,6 +288,7 @@ class FFParameters {
     String paramName,
     ParamType type, {
     bool isList = false,
+    List<String>? collectionNamePath,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -300,6 +306,7 @@ class FFParameters {
       param,
       type,
       isList,
+      collectionNamePath: collectionNamePath,
     );
   }
 }

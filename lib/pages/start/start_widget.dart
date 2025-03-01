@@ -102,30 +102,6 @@ class _StartWidgetState extends State<StartWidget> {
                     height: MediaQuery.sizeOf(context).height * 0.09,
                     decoration: BoxDecoration(),
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(1.0, 0.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset(
-                        'assets/images/logo1.png',
-                        height: MediaQuery.sizeOf(context).height * 0.178,
-                        fit: BoxFit.fill,
-                        alignment: Alignment(1.0, 0.0),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset(
-                        'assets/images/logo2.png',
-                        height: MediaQuery.sizeOf(context).height * 0.16,
-                        fit: BoxFit.fill,
-                        alignment: Alignment(1.0, 0.0),
-                      ),
-                    ),
-                  ),
                   Container(
                     height: MediaQuery.sizeOf(context).height * 0.1,
                     decoration: BoxDecoration(),
