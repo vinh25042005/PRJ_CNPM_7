@@ -71,7 +71,7 @@ class _TeacherHomePageWidgetState extends State<TeacherHomePageWidget>
             Stack(
               children: [
                 Align(
-                  alignment: AlignmentDirectional(-1.01, -1.01),
+                  alignment: AlignmentDirectional(-1.53, -0.99),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.network(
@@ -631,18 +631,6 @@ class _TeacherHomePageWidgetState extends State<TeacherHomePageWidget>
                   ),
                 ),
               ],
-            ),
-            Align(
-              alignment: AlignmentDirectional(-0.83, -0.91),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image.network(
-                  'https://picsum.photos/seed/969/600',
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
             ),
           ],
         ),
