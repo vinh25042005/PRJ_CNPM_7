@@ -1,9 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'question_widget.dart' show QuestionWidget;
+import 'questions_widget.dart' show QuestionsWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
-class QuestionModel extends FlutterFlowModel<QuestionWidget> {
+class QuestionsModel extends FlutterFlowModel<QuestionsWidget> {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for SwipeableStack widget.

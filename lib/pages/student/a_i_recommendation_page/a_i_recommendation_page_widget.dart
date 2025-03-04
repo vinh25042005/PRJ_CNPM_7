@@ -233,7 +233,7 @@ class _AIRecommendationPageWidgetState
                         snapshot.data!;
 
                     return Container(
-                      width: 392.91,
+                      width: 392.9,
                       height: 159.1,
                       child: FlutterFlowLineChart(
                         data: [

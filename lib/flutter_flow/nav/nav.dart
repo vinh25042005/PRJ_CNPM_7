@@ -87,9 +87,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : MainSignUpWidget(),
         ),
         FFRoute(
-          name: QuestionWidget.routeName,
-          path: QuestionWidget.routePath,
-          builder: (context, params) => QuestionWidget(),
+          name: QuestionsWidget.routeName,
+          path: QuestionsWidget.routePath,
+          builder: (context, params) => QuestionsWidget(),
         ),
         FFRoute(
           name: LogInWidget.routeName,
@@ -140,11 +140,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: AssignmentPageWidget.routeName,
           path: AssignmentPageWidget.routePath,
           builder: (context, params) => AssignmentPageWidget(),
-        ),
-        FFRoute(
-          name: SettingsPageWidget.routeName,
-          path: SettingsPageWidget.routePath,
-          builder: (context, params) => SettingsPageWidget(),
         ),
         FFRoute(
           name: CheckSchedulePageWidget.routeName,

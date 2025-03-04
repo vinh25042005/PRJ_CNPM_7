@@ -4,28 +4,28 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:styled_divider/styled_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'question_model.dart';
-export 'question_model.dart';
+import 'questions_model.dart';
+export 'questions_model.dart';
 
-class QuestionWidget extends StatefulWidget {
-  const QuestionWidget({super.key});
+class QuestionsWidget extends StatefulWidget {
+  const QuestionsWidget({super.key});
 
-  static String routeName = 'Question';
-  static String routePath = '/question';
+  static String routeName = 'Questions';
+  static String routePath = '/questions';
 
   @override
-  State<QuestionWidget> createState() => _QuestionWidgetState();
+  State<QuestionsWidget> createState() => _QuestionsWidgetState();
 }
 
-class _QuestionWidgetState extends State<QuestionWidget> {
-  late QuestionModel _model;
+class _QuestionsWidgetState extends State<QuestionsWidget> {
+  late QuestionsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => QuestionModel());
+    _model = createModel(context, () => QuestionsModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
