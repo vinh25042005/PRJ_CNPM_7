@@ -76,15 +76,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? StudentHomePageWidget()
-          : MainSignUpWidget(),
+          ? LogInWidget()
+          : StartWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? StudentHomePageWidget()
-              : MainSignUpWidget(),
+              ? LogInWidget()
+              : StartWidget(),
         ),
         FFRoute(
           name: QuestionsWidget.routeName,
@@ -335,7 +335,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/mainSignUp';
+            return '/start';
           }
           return null;
         },

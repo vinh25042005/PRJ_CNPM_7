@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'main_sign_up_model.dart';
 export 'main_sign_up_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 class MainSignUpWidget extends StatefulWidget {
   const MainSignUpWidget({super.key});
@@ -43,6 +45,33 @@ class _MainSignUpWidgetState extends State<MainSignUpWidget> {
     _model.dispose();
 
     super.dispose();
+  }
+
+  Future<void> signUpWithEmailPassword() async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+        email: _model.textController1!.text, 
+        password: _model.textController2!.text, 
+      );
+
+      User? user = userCredential.user;
+
+      if (user != null && !user.emailVerified) {
+    
+        await user.sendEmailVerification();
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Verification email sent!')),
+        );
+
+      }
+    } catch (e) {
+    
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: ${e.toString()}')),
+      );
+    }
   }
 
   @override
@@ -504,9 +533,59 @@ class _MainSignUpWidgetState extends State<MainSignUpWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          if (_model.checkboxValue1!) {
+                      
+                          if (_model.textController1!.text.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text("Username cannot be empty")),
+                            );
+                            return; 
+                          }
+                          if (_model.textController2!.text.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text("Password cannot be empty")),
+                            );
+                            return;
+                          }
+                          if (_model.textController3!.text.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text("Re-Password cannot be empty")),
+                            );
+                            return;
+                          }
+                          if (_model.textController2!.text !=
+                              _model.textController3!.text) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Passwords do not match")),
+                            );
+                            return;
+                          }
+
+                          if (!_model.checkboxValue1! &&
+                              !_model.checkboxValue2!) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(
+                                      "Please select a role (Teacher or Student)")),
+                            );
+                            return;
+                          }
+                          if (_model.checkboxValue1! &&
+                              _model.checkboxValue2!) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content:
+                                      Text("You can only select one role")),
+                            );
+                            return;
+                          }
+                          
+                          await signUpWithEmailPassword();
+                          if (_model.checkboxValue1!) {                    
                             context.pushNamed(TeacherSignUpWidget.routeName);
-                          } else {
+                          } else if (_model.checkboxValue2!) {                         
                             context.pushNamed(StudentSignUpWidget.routeName);
                           }
                         },

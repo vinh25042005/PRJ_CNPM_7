@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
@@ -42,6 +45,54 @@ class _LogInWidgetState extends State<LogInWidget> {
     super.dispose();
   }
 
+Future<void> logIn() async {
+  try {
+    // Lấy thông tin đăng nhập từ form
+    String email = _model.textController1!.text;
+    String password = _model.textController2!.text;
+
+    // Đăng nhập người dùng với email và mật khẩu
+    UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+
+    // Kiểm tra xem người dùng có tồn tại hay không
+    User? user = userCredential.user;
+    if (user == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Login failed! User not found")),
+      );
+      return;
+    }
+
+    // Kiểm tra xem người dùng có email đã xác minh chưa
+    if (!user.emailVerified) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Please verify your email before logging in")),
+      );
+      return;
+    }
+    DocumentSnapshot doc = await FirebaseFirestore.instance.collection('teachers').doc(user.uid).get();
+
+    if (doc.exists) {
+      context.pushNamed(TeacherHomePageWidget.routeName);
+            print("User is a Teacher");
+            print("ID: " + user.uid);
+
+    } else {
+        context.pushNamed(StudentHomePageWidget.routeName);
+              print("User is a Student");
+              print("ID: " + user.uid);
+
+    }
+
+  } catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Error: ${e.toString()}')),
+    );
+  }
+}
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -293,16 +344,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.goNamed(
-                            StudentHomePageWidget.routeName,
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.rightToLeft,
-                                duration: Duration(milliseconds: 400),
-                              ),
-                            },
-                          );
+                          await logIn();
                         },
                         child: Container(
                           width: double.infinity,
