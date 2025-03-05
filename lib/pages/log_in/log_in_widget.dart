@@ -125,7 +125,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 isDense: false,
-                                hintText: 'Username',
+                                hintText: 'Email',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
