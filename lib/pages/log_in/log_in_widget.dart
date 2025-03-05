@@ -80,6 +80,63 @@ class _LogInWidgetState extends State<LogInWidget> {
                         height: MediaQuery.sizeOf(context).height * 0.137,
                         decoration: BoxDecoration(),
                       ),
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.goNamed(
+                            StudentHomePageWidget.routeName,
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.rightToLeft,
+                                duration: Duration(milliseconds: 400),
+                              ),
+                            },
+                          );
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: MediaQuery.sizeOf(context).height * 0.076,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).primary,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 0.0,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                offset: Offset(
+                                  4.0,
+                                  4.0,
+                                ),
+                                spreadRadius: 0.0,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              width: 1.0,
+                            ),
+                          ),
+                          child: Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: Text(
+                              'Log in',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Sukhumvit Set',
+                                    fontSize: 28.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey('Sukhumvit Set'),
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ),
                       Align(
                         alignment: AlignmentDirectional(0.0, 0.0),
                         child: ClipRRect(
@@ -286,63 +343,6 @@ class _LogInWidgetState extends State<LogInWidget> {
                       Container(
                         height: MediaQuery.sizeOf(context).height * 0.057,
                         decoration: BoxDecoration(),
-                      ),
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.goNamed(
-                            StudentHomePageWidget.routeName,
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.rightToLeft,
-                                duration: Duration(milliseconds: 400),
-                              ),
-                            },
-                          );
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          height: MediaQuery.sizeOf(context).height * 0.076,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).primary,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 0.0,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                offset: Offset(
-                                  4.0,
-                                  4.0,
-                                ),
-                                spreadRadius: 0.0,
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              width: 1.0,
-                            ),
-                          ),
-                          child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Text(
-                              'Log in',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Sukhumvit Set',
-                                    fontSize: 28.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey('Sukhumvit Set'),
-                                  ),
-                            ),
-                          ),
-                        ),
                       ),
                       Container(
                         height: MediaQuery.sizeOf(context).height * 0.15,
