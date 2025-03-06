@@ -1,9 +1,7 @@
-import '/components/information_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'start_model.dart';
 export 'start_model.dart';
@@ -27,32 +25,6 @@ class _StartWidgetState extends State<StartWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => StartModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await showModalBottomSheet(
-        isScrollControlled: true,
-        backgroundColor: Colors.transparent,
-        enableDrag: false,
-        useSafeArea: true,
-        context: context,
-        builder: (context) {
-          return GestureDetector(
-            onTap: () {
-              FocusScope.of(context).unfocus();
-              FocusManager.instance.primaryFocus?.unfocus();
-            },
-            child: Padding(
-              padding: MediaQuery.viewInsetsOf(context),
-              child: Container(
-                height: double.infinity,
-                child: InformationWidget(),
-              ),
-            ),
-          );
-        },
-      ).then((value) => safeSetState(() {}));
-    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -113,7 +85,7 @@ class _StartWidgetState extends State<StartWidget> {
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       context.goNamed(
-                        MainSignUpWidget.routeName,
+                        LogInWidget.routeName,
                         extra: <String, dynamic>{
                           kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,

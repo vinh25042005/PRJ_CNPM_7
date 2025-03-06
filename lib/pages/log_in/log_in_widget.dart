@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -35,6 +36,13 @@ class _LogInWidgetState extends State<LogInWidget> {
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
     _model.textFieldFocusNode2!.addListener(() => safeSetState(() {}));
+     getSavedEmail().then((email) {
+    if (email != null) {
+      setState(() {
+        _model.textController1!.text = email;
+      });
+    }
+  });
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -44,6 +52,18 @@ class _LogInWidgetState extends State<LogInWidget> {
 
     super.dispose();
   }
+
+  // Hàm lưu email khi người dùng đăng nhập
+Future<void> saveEmail(String email) async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setString('saved_email', email);
+}
+
+// Hàm lấy email đã lưu
+Future<String?> getSavedEmail() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getString('saved_email');
+}
 
 Future<void> logIn() async {
   try {
@@ -73,6 +93,9 @@ Future<void> logIn() async {
       );
       return;
     }
+    
+    await saveEmail(email);
+
     DocumentSnapshot doc = await FirebaseFirestore.instance.collection('teachers').doc(user.uid).get();
 
     if (doc.exists) {
