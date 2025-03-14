@@ -4,3 +4,5 @@ android/app/.cxx/
 .flutter-plugins-dependencies
 .flutter-plugins
 pubspec.lock
+.idea/
+.vscode/
