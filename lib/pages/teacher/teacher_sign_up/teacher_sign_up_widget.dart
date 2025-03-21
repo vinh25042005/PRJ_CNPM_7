@@ -678,7 +678,8 @@ Future<void> signUpTeacher() async {
 
                                         // Điều hướng đến trang Teacher Dashboard sau khi đăng ký thành công
                                         context.pushNamed(
-                                            TeacherHomePageWidget.routeName);
+                                            LogInWidget.routeName
+                                            );
                                       },
                                       child: Container(
                                         width: double.infinity,
