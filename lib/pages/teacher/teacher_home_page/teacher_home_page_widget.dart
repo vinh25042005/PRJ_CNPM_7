@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'teacher_home_page_model.dart';
 export 'teacher_home_page_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cnpm/pages/teacher/teacher_creating_ques_home/teacher_creating_ques_home_widget.dart';
 
 class TeacherHomePageWidget extends StatefulWidget {
   const TeacherHomePageWidget({super.key});
@@ -398,34 +399,41 @@ class _TeacherHomePageWidgetState extends State<TeacherHomePageWidget>
                           ),
                         ),
                         ),
-                        Align(
-                          alignment: AlignmentDirectional(-0.8, 0.54),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.network(
-                              'https://picsum.photos/seed/969/600',
-                              width: 35.0,
-                              height: 35.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(-0.37, -0.24),
-                          child: Text(
-                            'tạo bài tập',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
-                                ),
-                          ),
-                        ),
+                        InkWell(
+  onTap: () async {
+    context.pushNamed(TeacherCreatingQuesHomeWidget.routeName);
+    print('Đã nhấn vào tạo bài tập');
+  },
+  child: Stack(
+    children: [
+      Align(
+        alignment: AlignmentDirectional(-0.8, 0.54),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8.0),
+          child: Image.network(
+            'https://picsum.photos/seed/969/600',
+            width: 35.0,
+            height: 35.0,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+      Align(
+        alignment: AlignmentDirectional(-0.37, -0.24),
+        child: Text(
+          'tạo bài tập',
+          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                letterSpacing: 0.0,
+                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                  FlutterFlowTheme.of(context).bodyMediumFamily,
+                ),
+              ),
+        ),
+      ),
+    ],
+  ),
+),
                         Align(
                           alignment: AlignmentDirectional(0.16, -0.89),
                           child: ClipRRect(
