@@ -7,6 +7,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'teacher_home_page_model.dart';
 export 'teacher_home_page_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class TeacherHomePageWidget extends StatefulWidget {
   const TeacherHomePageWidget({super.key});
@@ -16,6 +17,16 @@ class TeacherHomePageWidget extends StatefulWidget {
 
   @override
   State<TeacherHomePageWidget> createState() => _TeacherHomePageWidgetState();
+}
+
+  void getCurrentUserId() {
+  User? currentUser = FirebaseAuth.instance.currentUser;
+  if (currentUser != null) {
+    String userId = currentUser.uid;
+    print("Current User ID: $userId");
+  } else {
+    print("No user is currently logged in.");
+  }
 }
 
 class _TeacherHomePageWidgetState extends State<TeacherHomePageWidget>
@@ -365,7 +376,12 @@ class _TeacherHomePageWidgetState extends State<TeacherHomePageWidget>
                             ),
                           ),
                         ),
-                        Align(
+                        InkWell(
+                          onTap : () async
+                          {
+                            getCurrentUserId();
+                          },
+                        child : Align(
                           alignment: AlignmentDirectional(-0.86, -0.24),
                           child: Text(
                             'Lịch học',
@@ -380,6 +396,7 @@ class _TeacherHomePageWidgetState extends State<TeacherHomePageWidget>
                                           .bodyMediumFamily),
                                 ),
                           ),
+                        ),
                         ),
                         Align(
                           alignment: AlignmentDirectional(-0.8, 0.54),
