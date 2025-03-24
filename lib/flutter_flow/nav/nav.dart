@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -75,26 +76,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? LogInWidget()
-          : StartWidget(),
+      errorBuilder: (context, state) =>
+          appStateNotifier.loggedIn ? StudentHomePageWidget() : RegistWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? LogInWidget()
-              : StartWidget(),
-        ),
-        FFRoute(
-          name: QuestionsWidget.routeName,
-          path: QuestionsWidget.routePath,
-          builder: (context, params) => QuestionsWidget(),
-        ),
-        FFRoute(
-          name: LogInWidget.routeName,
-          path: LogInWidget.routePath,
-          builder: (context, params) => LogInWidget(),
+              ? StudentHomePageWidget()
+              : RegistWidget(),
         ),
         FFRoute(
           name: StudentHomePageWidget.routeName,
@@ -102,29 +92,42 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => StudentHomePageWidget(),
         ),
         FFRoute(
-          name: StartWidget.routeName,
-          path: StartWidget.routePath,
-          builder: (context, params) => StartWidget(),
-        ),
-        FFRoute(
-          name: MainSignUpWidget.routeName,
-          path: MainSignUpWidget.routePath,
-          builder: (context, params) => MainSignUpWidget(),
-        ),
-        FFRoute(
-          name: StudentRankingWidget.routeName,
-          path: StudentRankingWidget.routePath,
-          builder: (context, params) => StudentRankingWidget(),
-        ),
-        FFRoute(
-          name: TeacherCreatingQuesHomeWidget.routeName,
-          path: TeacherCreatingQuesHomeWidget.routePath,
-          builder: (context, params) => TeacherCreatingQuesHomeWidget(),
-        ),
-        FFRoute(
           name: ProfileWidget.routeName,
           path: ProfileWidget.routePath,
           builder: (context, params) => ProfileWidget(),
+        ),
+        FFRoute(
+          name: TasksWidget.routeName,
+          path: TasksWidget.routePath,
+          builder: (context, params) => TasksWidget(),
+        ),
+        FFRoute(
+          name: NotificationWidget.routeName,
+          path: NotificationWidget.routePath,
+          builder: (context, params) => NotificationWidget(),
+        ),
+        FFRoute(
+          name: RegistWidget.routeName,
+          path: RegistWidget.routePath,
+          builder: (context, params) => RegistWidget(),
+        ),
+        FFRoute(
+          name: SettingsWidget.routeName,
+          path: SettingsWidget.routePath,
+          builder: (context, params) => SettingsWidget(),
+        ),
+        FFRoute(
+          name: CreatingQuesWidget.routeName,
+          path: CreatingQuesWidget.routePath,
+          asyncParams: {
+            'docRef': getDoc(['quizzes'], QuizzesRecord.fromSnapshot),
+          },
+          builder: (context, params) => CreatingQuesWidget(
+            docRef: params.getParam(
+              'docRef',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
           name: TeacherSignUpWidget.routeName,
@@ -132,29 +135,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => TeacherSignUpWidget(),
         ),
         FFRoute(
-          name: StudentSignUpWidget.routeName,
-          path: StudentSignUpWidget.routePath,
-          builder: (context, params) => StudentSignUpWidget(),
-        ),
-        FFRoute(
-          name: AssignmentPageWidget.routeName,
-          path: AssignmentPageWidget.routePath,
-          builder: (context, params) => AssignmentPageWidget(),
-        ),
-        FFRoute(
-          name: CheckSchedulePageWidget.routeName,
-          path: CheckSchedulePageWidget.routePath,
-          builder: (context, params) => CheckSchedulePageWidget(),
-        ),
-        FFRoute(
-          name: ChangeSchedulePageWidget.routeName,
-          path: ChangeSchedulePageWidget.routePath,
-          builder: (context, params) => ChangeSchedulePageWidget(),
-        ),
-        FFRoute(
-          name: TeacherHomePageWidget.routeName,
-          path: TeacherHomePageWidget.routePath,
-          builder: (context, params) => TeacherHomePageWidget(),
+          name: CreatingQuesHomeCopyWidget.routeName,
+          path: CreatingQuesHomeCopyWidget.routePath,
+          builder: (context, params) => CreatingQuesHomeCopyWidget(
+            docID: params.getParam(
+              'docID',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['quizzes'],
+            ),
+          ),
         ),
         FFRoute(
           name: TeacherCreatingQuesWidget.routeName,
@@ -162,9 +152,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => TeacherCreatingQuesWidget(),
         ),
         FFRoute(
-          name: AIRecommendationPageWidget.routeName,
-          path: AIRecommendationPageWidget.routePath,
-          builder: (context, params) => AIRecommendationPageWidget(),
+          name: TeacherCreatingQuesCopyWidget.routeName,
+          path: TeacherCreatingQuesCopyWidget.routePath,
+          builder: (context, params) => TeacherCreatingQuesCopyWidget(),
+        ),
+        FFRoute(
+          name: StudentSignUpWidget.routeName,
+          path: StudentSignUpWidget.routePath,
+          builder: (context, params) => StudentSignUpWidget(),
+        ),
+        FFRoute(
+          name: TeacherHomePageCopyWidget.routeName,
+          path: TeacherHomePageCopyWidget.routePath,
+          builder: (context, params) => TeacherHomePageCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -284,6 +284,7 @@ class FFParameters {
     ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -302,6 +303,7 @@ class FFParameters {
       type,
       isList,
       collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
     );
   }
 }
@@ -335,7 +337,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/start';
+            return '/regist';
           }
           return null;
         },
@@ -349,14 +351,14 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Container(
-                  color: FlutterFlowTheme.of(context).primary,
-                  child: Center(
-                    child: Image.asset(
-                      'assets/images/image_9081.png',
-                      width: double.infinity,
-                      height: double.infinity,
-                      fit: BoxFit.none,
+              ? Center(
+                  child: SizedBox(
+                    width: 50.0,
+                    height: 50.0,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        FlutterFlowTheme.of(context).primary,
+                      ),
                     ),
                   ),
                 )

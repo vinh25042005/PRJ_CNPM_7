@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'schema/util/firestore_util.dart';
 
+import 'schema/quizzes_record.dart';
 import 'schema/teachers_record.dart';
 import 'schema/students_record.dart';
-import 'schema/assignments_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -13,9 +13,46 @@ export 'schema/index.dart';
 export 'schema/util/firestore_util.dart';
 export 'schema/util/schema_util.dart';
 
+export 'schema/quizzes_record.dart';
 export 'schema/teachers_record.dart';
 export 'schema/students_record.dart';
-export 'schema/assignments_record.dart';
+
+/// Functions to query QuizzesRecords (as a Stream and as a Future).
+Future<int> queryQuizzesRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      QuizzesRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<QuizzesRecord>> queryQuizzesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      QuizzesRecord.collection,
+      QuizzesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<QuizzesRecord>> queryQuizzesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      QuizzesRecord.collection,
+      QuizzesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
 
 /// Functions to query TeachersRecords (as a Stream and as a Future).
 Future<int> queryTeachersRecordCount({
@@ -86,43 +123,6 @@ Future<List<StudentsRecord>> queryStudentsRecordOnce({
     queryCollectionOnce(
       StudentsRecord.collection,
       StudentsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-/// Functions to query AssignmentsRecords (as a Stream and as a Future).
-Future<int> queryAssignmentsRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      AssignmentsRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<AssignmentsRecord>> queryAssignmentsRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      AssignmentsRecord.collection,
-      AssignmentsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<AssignmentsRecord>> queryAssignmentsRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      AssignmentsRecord.collection,
-      AssignmentsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

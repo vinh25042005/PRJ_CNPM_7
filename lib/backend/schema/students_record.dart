@@ -25,15 +25,21 @@ class StudentsRecord extends FirestoreRecord {
   String get name => _name ?? '';
   bool hasName() => _name != null;
 
-  // "schedule" field.
-  String? _schedule;
-  String get schedule => _schedule ?? '';
-  bool hasSchedule() => _schedule != null;
+  // "role" field.
+  String? _role;
+  String get role => _role ?? '';
+  bool hasRole() => _role != null;
+
+  // "studentID" field.
+  String? _studentID;
+  String get studentID => _studentID ?? '';
+  bool hasStudentID() => _studentID != null;
 
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _name = snapshotData['name'] as String?;
-    _schedule = snapshotData['schedule'] as String?;
+    _role = snapshotData['role'] as String?;
+    _studentID = snapshotData['studentID'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -73,13 +79,15 @@ class StudentsRecord extends FirestoreRecord {
 Map<String, dynamic> createStudentsRecordData({
   String? email,
   String? name,
-  String? schedule,
+  String? role,
+  String? studentID,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'email': email,
       'name': name,
-      'schedule': schedule,
+      'role': role,
+      'studentID': studentID,
     }.withoutNulls,
   );
 
@@ -93,12 +101,13 @@ class StudentsRecordDocumentEquality implements Equality<StudentsRecord> {
   bool equals(StudentsRecord? e1, StudentsRecord? e2) {
     return e1?.email == e2?.email &&
         e1?.name == e2?.name &&
-        e1?.schedule == e2?.schedule;
+        e1?.role == e2?.role &&
+        e1?.studentID == e2?.studentID;
   }
 
   @override
   int hash(StudentsRecord? e) =>
-      const ListEquality().hash([e?.email, e?.name, e?.schedule]);
+      const ListEquality().hash([e?.email, e?.name, e?.role, e?.studentID]);
 
   @override
   bool isValidKey(Object? o) => o is StudentsRecord;

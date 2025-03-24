@@ -3,18 +3,31 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-enum DeviceSize {
-  mobile,
-  tablet,
-  desktop,
-}
+import 'package:shared_preferences/shared_preferences.dart';
+
+const kThemeModeKey = '__theme_mode__';
+SharedPreferences? _prefs;
 
 abstract class FlutterFlowTheme {
-  static DeviceSize deviceSize = DeviceSize.mobile;
+  static Future initialize() async =>
+      _prefs = await SharedPreferences.getInstance();
+  static ThemeMode get themeMode {
+    final darkMode = _prefs?.getBool(kThemeModeKey);
+    return darkMode == null
+        ? ThemeMode.system
+        : darkMode
+            ? ThemeMode.dark
+            : ThemeMode.light;
+  }
+
+  static void saveThemeMode(ThemeMode mode) => mode == ThemeMode.system
+      ? _prefs?.remove(kThemeModeKey)
+      : _prefs?.setBool(kThemeModeKey, mode == ThemeMode.dark);
 
   static FlutterFlowTheme of(BuildContext context) {
-    deviceSize = getDeviceSize(context);
-    return LightModeTheme();
+    return Theme.of(context).brightness == Brightness.dark
+        ? DarkModeTheme()
+        : LightModeTheme();
   }
 
   @Deprecated('Use primary instead')
@@ -40,19 +53,6 @@ abstract class FlutterFlowTheme {
   late Color warning;
   late Color error;
   late Color info;
-
-  late Color accent5;
-  late Color accent6;
-  late Color accent1B;
-  late Color accent2B;
-  late Color accent3B;
-  late Color accent4B;
-  late Color accent5B;
-  late Color accent6B;
-  late Color buttonShadow;
-  late Color customColor1;
-  late Color gradient1;
-  late Color gradient2;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -114,22 +114,7 @@ abstract class FlutterFlowTheme {
   String get bodySmallFamily => typography.bodySmallFamily;
   TextStyle get bodySmall => typography.bodySmall;
 
-  Typography get typography => {
-        DeviceSize.mobile: MobileTypography(this),
-        DeviceSize.tablet: TabletTypography(this),
-        DeviceSize.desktop: DesktopTypography(this),
-      }[deviceSize]!;
-}
-
-DeviceSize getDeviceSize(BuildContext context) {
-  final width = MediaQuery.sizeOf(context).width;
-  if (width < 479) {
-    return DeviceSize.mobile;
-  } else if (width < 991) {
-    return DeviceSize.tablet;
-  } else {
-    return DeviceSize.desktop;
-  }
+  Typography get typography => ThemeTypography(this);
 }
 
 class LightModeTheme extends FlutterFlowTheme {
@@ -140,35 +125,22 @@ class LightModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFFFFD000);
-  late Color secondary = const Color(0xFF3C5BFA);
+  late Color primary = const Color(0xFF6F61EF);
+  late Color secondary = const Color(0xFF39D2C0);
   late Color tertiary = const Color(0xFFEE8B60);
-  late Color alternate = const Color(0xFF7CFCF8);
-  late Color primaryText = const Color(0xFF000000);
-  late Color secondaryText = const Color(0xFFB1B1B1);
-  late Color primaryBackground = const Color(0xFFFFFFFF);
-  late Color secondaryBackground = const Color(0xFFFAEFDF);
-  late Color accent1 = const Color(0xFFEAB7F6);
-  late Color accent2 = const Color(0xFFB7EBF6);
-  late Color accent3 = const Color(0xFFB7F6CC);
-  late Color accent4 = const Color(0xFFF6ED8E);
-  late Color success = const Color(0xFF6AC259);
-  late Color warning = const Color(0xFF77630D);
+  late Color alternate = const Color(0xFFE5E7EB);
+  late Color primaryText = const Color(0xFF15161E);
+  late Color secondaryText = const Color(0xFF606A85);
+  late Color primaryBackground = const Color(0xFFF1F4F8);
+  late Color secondaryBackground = const Color(0xFFFFFFFF);
+  late Color accent1 = const Color(0x4D9489F5);
+  late Color accent2 = const Color(0x4C39D2C0);
+  late Color accent3 = const Color(0x4CEE8B60);
+  late Color accent4 = const Color(0x9AFFFFFF);
+  late Color success = const Color(0xFF048178);
+  late Color warning = const Color(0xFFFCDC0C);
   late Color error = const Color(0xFFFF5963);
   late Color info = const Color(0xFFFFFFFF);
-
-  late Color accent5 = Color(0xFFFFD4AF);
-  late Color accent6 = Color(0xFFFFC0CF);
-  late Color accent1B = Color(0xFFB555CB);
-  late Color accent2B = Color(0xFF64BDCF);
-  late Color accent3B = Color(0xFF58B878);
-  late Color accent4B = Color(0xFFCFC33B);
-  late Color accent5B = Color(0xFFC9874F);
-  late Color accent6B = Color(0xFFCA5C77);
-  late Color buttonShadow = Color(0xFF163959);
-  late Color customColor1 = Color(0xFF3E1674);
-  late Color gradient1 = Color(0xFFBA5DA2);
-  late Color gradient2 = Color(0xFF714AB4);
 }
 
 abstract class Typography {
@@ -204,340 +176,141 @@ abstract class Typography {
   TextStyle get bodySmall;
 }
 
-class MobileTypography extends Typography {
-  MobileTypography(this.theme);
+class ThemeTypography extends Typography {
+  ThemeTypography(this.theme);
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => 'Sukhumvit Set';
-  TextStyle get displayLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
+  String get displayLargeFamily => 'Outfit';
+  TextStyle get displayLarge => GoogleFonts.getFont(
+        'Outfit',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 64.0,
+        fontWeight: FontWeight.normal,
+        fontSize: 57.0,
       );
-  String get displayMediumFamily => 'Sukhumvit Set';
-  TextStyle get displayMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
+  String get displayMediumFamily => 'Outfit';
+  TextStyle get displayMedium => GoogleFonts.getFont(
+        'Outfit',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 44.0,
+        fontWeight: FontWeight.normal,
+        fontSize: 45.0,
       );
-  String get displaySmallFamily => 'Sukhumvit Set';
-  TextStyle get displaySmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
+  String get displaySmallFamily => 'Outfit';
+  TextStyle get displaySmall => GoogleFonts.getFont(
+        'Outfit',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 36.0,
       );
-  String get headlineLargeFamily => 'Sukhumvit Set';
-  TextStyle get headlineLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
+  String get headlineLargeFamily => 'Outfit';
+  TextStyle get headlineLarge => GoogleFonts.getFont(
+        'Outfit',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Sukhumvit Set';
-  TextStyle get headlineMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
+  String get headlineMediumFamily => 'Outfit';
+  TextStyle get headlineMedium => GoogleFonts.getFont(
+        'Outfit',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 28.0,
-      );
-  String get headlineSmallFamily => 'Sukhumvit Set';
-  TextStyle get headlineSmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w500,
         fontSize: 24.0,
       );
-  String get titleLargeFamily => 'Sukhumvit Set';
-  TextStyle get titleLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
+  String get headlineSmallFamily => 'Outfit';
+  TextStyle get headlineSmall => GoogleFonts.getFont(
+        'Outfit',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 20.0,
+        fontWeight: FontWeight.bold,
+        fontSize: 22.0,
       );
-  String get titleMediumFamily => 'Sukhumvit Set';
-  TextStyle get titleMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
+  String get titleLargeFamily => 'Outfit';
+  TextStyle get titleLarge => GoogleFonts.getFont(
+        'Outfit',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w500,
+        fontSize: 22.0,
+      );
+  String get titleMediumFamily => 'Plus Jakarta Sans';
+  TextStyle get titleMedium => GoogleFonts.getFont(
+        'Plus Jakarta Sans',
+        color: theme.info,
+        fontWeight: FontWeight.w500,
         fontSize: 18.0,
       );
-  String get titleSmallFamily => 'Sukhumvit Set';
-  TextStyle get titleSmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+  String get titleSmallFamily => 'Plus Jakarta Sans';
+  TextStyle get titleSmall => GoogleFonts.getFont(
+        'Plus Jakarta Sans',
+        color: theme.info,
+        fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
-  String get labelLargeFamily => 'Sukhumvit Set';
-  TextStyle get labelLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
+  String get labelLargeFamily => 'Outfit';
+  TextStyle get labelLarge => GoogleFonts.getFont(
+        'Outfit',
         color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
-  String get labelMediumFamily => 'Sukhumvit Set';
-  TextStyle get labelMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
+  String get labelMediumFamily => 'Outfit';
+  TextStyle get labelMedium => GoogleFonts.getFont(
+        'Outfit',
         color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelSmallFamily => 'Sukhumvit Set';
-  TextStyle get labelSmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
+  String get labelSmallFamily => 'Outfit';
+  TextStyle get labelSmall => GoogleFonts.getFont(
+        'Outfit',
         color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
-  String get bodyLargeFamily => 'Sukhumvit Set';
-  TextStyle get bodyLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
+  String get bodyLargeFamily => 'Plus Jakarta Sans';
+  TextStyle get bodyLarge => GoogleFonts.getFont(
+        'Plus Jakarta Sans',
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'Sukhumvit Set';
-  TextStyle get bodyMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
+  String get bodyMediumFamily => 'Plus Jakarta Sans';
+  TextStyle get bodyMedium => GoogleFonts.getFont(
+        'Plus Jakarta Sans',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'Sukhumvit Set';
-  TextStyle get bodySmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
+  String get bodySmallFamily => 'Plus Jakarta Sans';
+  TextStyle get bodySmall => GoogleFonts.getFont(
+        'Plus Jakarta Sans',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
       );
 }
 
-class TabletTypography extends Typography {
-  TabletTypography(this.theme);
+class DarkModeTheme extends FlutterFlowTheme {
+  @Deprecated('Use primary instead')
+  Color get primaryColor => primary;
+  @Deprecated('Use secondary instead')
+  Color get secondaryColor => secondary;
+  @Deprecated('Use tertiary instead')
+  Color get tertiaryColor => tertiary;
 
-  final FlutterFlowTheme theme;
-
-  String get displayLargeFamily => 'Sukhumvit Set';
-  TextStyle get displayLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 64.0,
-      );
-  String get displayMediumFamily => 'Sukhumvit Set';
-  TextStyle get displayMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 44.0,
-      );
-  String get displaySmallFamily => 'Sukhumvit Set';
-  TextStyle get displaySmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 36.0,
-      );
-  String get headlineLargeFamily => 'Sukhumvit Set';
-  TextStyle get headlineLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 32.0,
-      );
-  String get headlineMediumFamily => 'Sukhumvit Set';
-  TextStyle get headlineMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 28.0,
-      );
-  String get headlineSmallFamily => 'Sukhumvit Set';
-  TextStyle get headlineSmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 24.0,
-      );
-  String get titleLargeFamily => 'Sukhumvit Set';
-  TextStyle get titleLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 20.0,
-      );
-  String get titleMediumFamily => 'Sukhumvit Set';
-  TextStyle get titleMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 18.0,
-      );
-  String get titleSmallFamily => 'Sukhumvit Set';
-  TextStyle get titleSmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 16.0,
-      );
-  String get labelLargeFamily => 'Sukhumvit Set';
-  TextStyle get labelLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 16.0,
-      );
-  String get labelMediumFamily => 'Sukhumvit Set';
-  TextStyle get labelMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 14.0,
-      );
-  String get labelSmallFamily => 'Sukhumvit Set';
-  TextStyle get labelSmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 12.0,
-      );
-  String get bodyLargeFamily => 'Sukhumvit Set';
-  TextStyle get bodyLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 16.0,
-      );
-  String get bodyMediumFamily => 'Sukhumvit Set';
-  TextStyle get bodyMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 14.0,
-      );
-  String get bodySmallFamily => 'Sukhumvit Set';
-  TextStyle get bodySmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 12.0,
-      );
-}
-
-class DesktopTypography extends Typography {
-  DesktopTypography(this.theme);
-
-  final FlutterFlowTheme theme;
-
-  String get displayLargeFamily => 'Sukhumvit Set';
-  TextStyle get displayLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 64.0,
-      );
-  String get displayMediumFamily => 'Sukhumvit Set';
-  TextStyle get displayMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 44.0,
-      );
-  String get displaySmallFamily => 'Sukhumvit Set';
-  TextStyle get displaySmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 36.0,
-      );
-  String get headlineLargeFamily => 'Sukhumvit Set';
-  TextStyle get headlineLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 32.0,
-      );
-  String get headlineMediumFamily => 'Sukhumvit Set';
-  TextStyle get headlineMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 28.0,
-      );
-  String get headlineSmallFamily => 'Sukhumvit Set';
-  TextStyle get headlineSmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 24.0,
-      );
-  String get titleLargeFamily => 'Sukhumvit Set';
-  TextStyle get titleLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 20.0,
-      );
-  String get titleMediumFamily => 'Sukhumvit Set';
-  TextStyle get titleMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 18.0,
-      );
-  String get titleSmallFamily => 'Sukhumvit Set';
-  TextStyle get titleSmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 16.0,
-      );
-  String get labelLargeFamily => 'Sukhumvit Set';
-  TextStyle get labelLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 16.0,
-      );
-  String get labelMediumFamily => 'Sukhumvit Set';
-  TextStyle get labelMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 14.0,
-      );
-  String get labelSmallFamily => 'Sukhumvit Set';
-  TextStyle get labelSmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 12.0,
-      );
-  String get bodyLargeFamily => 'Sukhumvit Set';
-  TextStyle get bodyLarge => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 16.0,
-      );
-  String get bodyMediumFamily => 'Sukhumvit Set';
-  TextStyle get bodyMedium => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 14.0,
-      );
-  String get bodySmallFamily => 'Sukhumvit Set';
-  TextStyle get bodySmall => TextStyle(
-        fontFamily: 'Sukhumvit Set',
-        color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 12.0,
-      );
+  late Color primary = const Color(0xFF6F61EF);
+  late Color secondary = const Color(0xFF39D2C0);
+  late Color tertiary = const Color(0xFFEE8B60);
+  late Color alternate = const Color(0xFF313442);
+  late Color primaryText = const Color(0xFFFFFFFF);
+  late Color secondaryText = const Color(0xFFA9ADC6);
+  late Color primaryBackground = const Color(0xFF15161E);
+  late Color secondaryBackground = const Color(0xFF1B1D27);
+  late Color accent1 = const Color(0x4D9489F5);
+  late Color accent2 = const Color(0x4C39D2C0);
+  late Color accent3 = const Color(0x4CEE8B60);
+  late Color accent4 = const Color(0x981D2428);
+  late Color success = const Color(0xFF048178);
+  late Color warning = const Color(0xFFFCDC0C);
+  late Color error = const Color(0xFFFF5963);
+  late Color info = const Color(0xFFFFFFFF);
 }
 
 extension TextStyleHelper on TextStyle {

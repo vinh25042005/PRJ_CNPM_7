@@ -1,4 +1,4 @@
-# cnpm
+# StudyApp
 
 A new Flutter project.
 
