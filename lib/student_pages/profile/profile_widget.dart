@@ -2,7 +2,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/student_pages/shared_pages/side_bar/side_bar_widget.dart';
+import '/shared_pages/side_bar/side_bar_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'profile_model.dart';
@@ -253,7 +253,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .titleMedium
                                               .override(
-                                                fontFamily: 'Inter Tight',
+                                                fontFamily: 'Plus Jakarta Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
@@ -287,8 +287,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .headlineMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Inter Tight',
+                                                          fontFamily: 'Outfit',
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -382,7 +381,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                         .labelMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Inter',
+                                                                              'Outfit',
                                                                           letterSpacing:
                                                                               0.0,
                                                                         ),
@@ -393,7 +392,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                         .labelMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Inter',
+                                                                              'Outfit',
                                                                           letterSpacing:
                                                                               0.0,
                                                                         ),
@@ -460,7 +459,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Plus Jakarta Sans',
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -522,7 +521,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .labelMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Outfit',
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -532,7 +531,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .labelMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Outfit',
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -600,7 +599,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Plus Jakarta Sans',
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -674,7 +673,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .labelMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Outfit',
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -684,7 +683,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .labelMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Outfit',
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -752,7 +751,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Plus Jakarta Sans',
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -813,7 +812,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .labelMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Outfit',
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -823,7 +822,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .labelMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Outfit',
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -891,7 +890,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Plus Jakarta Sans',
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -999,7 +998,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Outfit',
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -1011,7 +1010,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .titleMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter Tight',
+                                                                          'Plus Jakarta Sans',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .secondaryText,
@@ -1148,7 +1147,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Outfit',
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -1234,7 +1233,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Plus Jakarta Sans',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -1296,7 +1295,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Outfit',
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -1383,7 +1382,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Plus Jakarta Sans',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -1459,7 +1458,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Outfit',
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -1471,7 +1470,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .titleMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter Tight',
+                                                                          'Plus Jakarta Sans',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .secondaryText,
@@ -1607,7 +1606,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Outfit',
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -1694,7 +1693,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Plus Jakarta Sans',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -1764,7 +1763,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .titleMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter Tight',
+                                                                            'Plus Jakarta Sans',
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -1807,7 +1806,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                       .titleMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter Tight',
+                                                                            'Plus Jakarta Sans',
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),

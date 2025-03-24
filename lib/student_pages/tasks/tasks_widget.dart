@@ -4,7 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/student_pages/shared_pages/side_bar/side_bar_widget.dart';
+import '/shared_pages/side_bar/side_bar_widget.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -150,7 +150,7 @@ class _TasksWidgetState extends State<TasksWidget>
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
                                                     .override(
-                                                      fontFamily: 'Inter',
+                                                      fontFamily: 'Outfit',
                                                       letterSpacing: 0.0,
                                                     ),
                                             hintText: '0 Task',
@@ -210,7 +210,7 @@ class _TasksWidgetState extends State<TasksWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Plus Jakarta Sans',
                                                 letterSpacing: 0.0,
                                               ),
                                           textAlign: TextAlign.center,
@@ -342,7 +342,7 @@ class _TasksWidgetState extends State<TasksWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Outfit',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -354,7 +354,7 @@ class _TasksWidgetState extends State<TasksWidget>
                                                               .labelLarge
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Outfit',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -429,7 +429,8 @@ class _TasksWidgetState extends State<TasksWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
                                                           letterSpacing: 0.0,
                                                         ),
                                                     cursorColor:
@@ -553,7 +554,8 @@ class _TasksWidgetState extends State<TasksWidget>
                                                 FlutterFlowTheme.of(context)
                                                     .titleMedium
                                                     .override(
-                                                      fontFamily: 'Inter Tight',
+                                                      fontFamily:
+                                                          'Plus Jakarta Sans',
                                                       letterSpacing: 0.0,
                                                     ),
                                             indicatorColor:
@@ -1577,7 +1579,7 @@ class _TasksWidgetState extends State<TasksWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Inter',
+                                                                                fontFamily: 'Plus Jakarta Sans',
                                                                                 letterSpacing: 0.0,
                                                                               ),
                                                                         ),
@@ -2721,7 +2723,7 @@ class _TasksWidgetState extends State<TasksWidget>
                                                                           Text(
                                                                             'Mar 16, 2024 - 12:00 AM',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Inter',
+                                                                                  fontFamily: 'Plus Jakarta Sans',
                                                                                   letterSpacing: 0.0,
                                                                                 ),
                                                                           ),
@@ -3866,7 +3868,7 @@ class _TasksWidgetState extends State<TasksWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Inter',
+                                                                                fontFamily: 'Plus Jakarta Sans',
                                                                                 letterSpacing: 0.0,
                                                                               ),
                                                                         ),

@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '/backend/schema/structs/index.dart';
+import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -115,6 +114,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: SettingsWidget.routeName,
           path: SettingsWidget.routePath,
           builder: (context, params) => SettingsWidget(),
+        ),
+        FFRoute(
+          name: CreatingQuesHomeWidget.routeName,
+          path: CreatingQuesHomeWidget.routePath,
+          asyncParams: {
+            'docRef': getDoc(['quizzes'], QuizzesRecord.fromSnapshot),
+          },
+          builder: (context, params) => CreatingQuesHomeWidget(
+            docRef: params.getParam(
+              'docRef',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: TeacherSignUpWidget.routeName,
+          path: TeacherSignUpWidget.routePath,
+          builder: (context, params) => TeacherSignUpWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -233,6 +250,7 @@ class FFParameters {
     String paramName,
     ParamType type, {
     bool isList = false,
+    List<String>? collectionNamePath,
     StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
@@ -251,6 +269,7 @@ class FFParameters {
       param,
       type,
       isList,
+      collectionNamePath: collectionNamePath,
       structBuilder: structBuilder,
     );
   }

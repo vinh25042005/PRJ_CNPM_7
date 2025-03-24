@@ -1,7 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/student_pages/shared_pages/side_bar/side_bar_widget.dart';
+import '/shared_pages/side_bar/side_bar_widget.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'notification_model.dart';
@@ -154,7 +154,7 @@ class _NotificationWidgetState extends State<NotificationWidget>
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Outfit',
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Search',
@@ -219,7 +219,7 @@ class _NotificationWidgetState extends State<NotificationWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Plus Jakarta Sans',
                                             letterSpacing: 0.0,
                                           ),
                                       cursorColor: FlutterFlowTheme.of(context)
@@ -256,7 +256,7 @@ class _NotificationWidgetState extends State<NotificationWidget>
                                       FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            fontFamily: 'Plus Jakarta Sans',
                                             letterSpacing: 0.0,
                                           ),
                                   indicatorColor:
@@ -342,7 +342,7 @@ class _NotificationWidgetState extends State<NotificationWidget>
                                                                   .titleLarge
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter Tight',
+                                                                        'Outfit',
                                                                     letterSpacing:
                                                                         0.0,
                                                                   ),
@@ -399,7 +399,7 @@ class _NotificationWidgetState extends State<NotificationWidget>
                                                           .titleMedium
                                                           .override(
                                                             fontFamily:
-                                                                'Inter Tight',
+                                                                'Plus Jakarta Sans',
                                                             letterSpacing: 0.0,
                                                           ),
                                                     ),
@@ -484,7 +484,7 @@ class _NotificationWidgetState extends State<NotificationWidget>
                                                                 .titleLarge
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter Tight',
+                                                                      'Outfit',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -541,7 +541,7 @@ class _NotificationWidgetState extends State<NotificationWidget>
                                                         .titleMedium
                                                         .override(
                                                           fontFamily:
-                                                              'Inter Tight',
+                                                              'Plus Jakarta Sans',
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -623,7 +623,7 @@ class _NotificationWidgetState extends State<NotificationWidget>
                                                                 .titleLarge
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter Tight',
+                                                                      'Outfit',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -680,7 +680,7 @@ class _NotificationWidgetState extends State<NotificationWidget>
                                                         .titleMedium
                                                         .override(
                                                           fontFamily:
-                                                              'Inter Tight',
+                                                              'Plus Jakarta Sans',
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),

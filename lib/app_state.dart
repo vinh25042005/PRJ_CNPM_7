@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -20,9 +21,6 @@ class FFAppState extends ChangeNotifier {
     prefs = await SharedPreferences.getInstance();
     _safeInit(() {
       _DarkMode = prefs.getBool('ff_DarkMode') ?? _DarkMode;
-    });
-    _safeInit(() {
-      _UserName = prefs.getString('ff_UserName') ?? _UserName;
     });
     _safeInit(() {
       _searchQuery = prefs.getString('ff_searchQuery') ?? _searchQuery;
@@ -54,13 +52,6 @@ class FFAppState extends ChangeNotifier {
   set DarkMode(bool value) {
     _DarkMode = value;
     prefs.setBool('ff_DarkMode', value);
-  }
-
-  String _UserName = '';
-  String get UserName => _UserName;
-  set UserName(String value) {
-    _UserName = value;
-    prefs.setString('ff_UserName', value);
   }
 
   PieValueStruct _pieValue = PieValueStruct.fromSerializableMap(

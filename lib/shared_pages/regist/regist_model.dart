@@ -37,6 +37,10 @@ class RegistModel extends FlutterFlowModel<RegistWidget> {
   late bool passwordConfirmVisibility;
   String? Function(BuildContext, String?)?
       passwordConfirmTextControllerValidator;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue1;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue2;
 
   @override
   void initState(BuildContext context) {

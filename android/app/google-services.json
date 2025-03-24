@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "533195333642",
-    "project_id": "myapp-e0ce3",
-    "storage_bucket": "myapp-e0ce3.firebasestorage.app"
+    "project_number": "1033480191898",
+    "project_id": "cnpm-ngnovs",
+    "storage_bucket": "cnpm-ngnovs.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:533195333642:android:40eb173edf8b539f6e3ff3",
+        "mobilesdk_app_id": "1:1033480191898:android:d076a1079837162c678423",
         "android_client_info": {
-          "package_name": "com.mycompany.myapp"
+          "package_name": "com.mycompany.cnpm"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD1tddWsmuV6BU3emy47MHB1ejLrNyIwHc"
+          "current_key": "AIzaSyDEepnjA8Bqtp5IwFO8BbGF8mmE-T0rdGY"
         }
       ],
       "services": {
@@ -26,7 +26,7 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:533195333642:android:5eb954f7b5be59306e3ff3",
+        "mobilesdk_app_id": "1:1033480191898:android:66249cdd84c61288678423",
         "android_client_info": {
           "package_name": "com.mycompany.studyapp"
         }
@@ -34,7 +34,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD1tddWsmuV6BU3emy47MHB1ejLrNyIwHc"
+          "current_key": "AIzaSyDEepnjA8Bqtp5IwFO8BbGF8mmE-T0rdGY"
         }
       ],
       "services": {

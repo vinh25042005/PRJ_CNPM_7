@@ -1,5 +1,5 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import '/student_pages/shared_pages/side_bar/side_bar_widget.dart';
+import '/shared_pages/side_bar/side_bar_widget.dart';
 import 'profile_widget.dart' show ProfileWidget;
 import 'package:flutter/material.dart';
 

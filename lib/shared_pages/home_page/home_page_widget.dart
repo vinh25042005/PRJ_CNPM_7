@@ -6,7 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/student_pages/shared_pages/side_bar/side_bar_widget.dart';
+import '/shared_pages/side_bar/side_bar_widget.dart';
 import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -170,7 +170,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .titleLarge
                                               .override(
-                                                fontFamily: 'Inter Tight',
+                                                fontFamily: 'Outfit',
                                                 color: Color(0xDF425369),
                                                 letterSpacing: 0.0,
                                               ),
@@ -528,7 +528,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       .headlineSmall
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter Tight',
+                                                                            'Outfit',
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -572,7 +572,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       .titleLarge
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter Tight',
+                                                                            'Outfit',
                                                                         color: Color(
                                                                             0xFF31E810),
                                                                         letterSpacing:
@@ -586,7 +586,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       .titleMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter Tight',
+                                                                            'Plus Jakarta Sans',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryText,
                                                                         letterSpacing:
@@ -608,7 +608,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       .titleLarge
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter Tight',
+                                                                            'Outfit',
                                                                         color: Color(
                                                                             0xFFD7E826),
                                                                         letterSpacing:
@@ -622,7 +622,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       .titleMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter Tight',
+                                                                            'Plus Jakarta Sans',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryText,
                                                                         letterSpacing:
@@ -644,7 +644,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       .titleLarge
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter Tight',
+                                                                            'Outfit',
                                                                         color: Color(
                                                                             0xFFE2162C),
                                                                         letterSpacing:
@@ -658,7 +658,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       .titleMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter Tight',
+                                                                            'Plus Jakarta Sans',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryText,
                                                                         letterSpacing:
@@ -717,7 +717,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       .titleMedium
                                                       .override(
                                                         fontFamily:
-                                                            'Inter Tight',
+                                                            'Plus Jakarta Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -853,23 +853,21 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   isDense: true,
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            letterSpacing: 0.0,
-                                                          ),
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                                   hintText: 'Search...',
-                                                  hintStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelLarge
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            letterSpacing: 0.0,
-                                                          ),
+                                                  hintStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                                   errorStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .labelLarge
@@ -939,7 +937,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
                                                           letterSpacing: 0.0,
                                                         ),
                                                 cursorColor:
@@ -1727,26 +1726,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 titleStyle: FlutterFlowTheme.of(context)
                                     .headlineMedium
                                     .override(
-                                      fontFamily: 'Inter Tight',
+                                      fontFamily: 'Outfit',
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w800,
                                     ),
                                 dayOfWeekStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
-                                      fontFamily: 'Inter Tight',
+                                      fontFamily: 'Plus Jakarta Sans',
                                       letterSpacing: 0.0,
                                     ),
                                 dateStyle: FlutterFlowTheme.of(context)
                                     .labelSmall
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Outfit',
                                       letterSpacing: 0.0,
                                     ),
                                 selectedDateStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Outfit',
                                       color: FlutterFlowTheme.of(context).error,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w800,
@@ -1754,7 +1753,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 inactiveDateStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Outfit',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -1847,7 +1846,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         .titleSmall
                                                         .override(
                                                           fontFamily:
-                                                              'Inter Tight',
+                                                              'Plus Jakarta Sans',
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -1857,7 +1856,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),

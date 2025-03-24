@@ -180,7 +180,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            fontFamily: 'Outfit',
                                             letterSpacing: 0.0,
                                           ),
                                     ),
@@ -218,14 +218,14 @@ class _RegistWidgetState extends State<RegistWidget>
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .displaySmall
                                         .override(
-                                          fontFamily: 'Inter Tight',
+                                          fontFamily: 'Outfit',
                                           letterSpacing: 0.0,
                                         ),
                                     unselectedLabelStyle:
                                         FlutterFlowTheme.of(context)
                                             .displaySmall
                                             .override(
-                                              fontFamily: 'Inter Tight',
+                                              fontFamily: 'Outfit',
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
                                             ),
@@ -274,7 +274,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                           context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Outfit',
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -303,7 +303,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Outfit',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -366,7 +366,8 @@ class _RegistWidgetState extends State<RegistWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
                                                           letterSpacing: 0.0,
                                                         ),
                                                     keyboardType: TextInputType
@@ -406,7 +407,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Outfit',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -492,7 +493,8 @@ class _RegistWidgetState extends State<RegistWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
                                                           letterSpacing: 0.0,
                                                         ),
                                                     cursorColor:
@@ -565,7 +567,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                               .titleSmall
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter Tight',
+                                                                    'Plus Jakarta Sans',
                                                                 color: Colors
                                                                     .white,
                                                                 letterSpacing:
@@ -623,7 +625,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Plus Jakarta Sans',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -666,7 +668,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                 .labelMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Outfit',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -766,7 +768,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Plus Jakarta Sans',
                                                                       letterSpacing:
                                                                           0.0,
                                                                       fontWeight:
@@ -854,7 +856,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Inter',
+                                                                                'Plus Jakarta Sans',
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
@@ -911,7 +913,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                           context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Outfit',
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -940,7 +942,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Outfit',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -1003,7 +1005,8 @@ class _RegistWidgetState extends State<RegistWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
                                                           letterSpacing: 0.0,
                                                         ),
                                                     keyboardType: TextInputType
@@ -1043,7 +1046,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Outfit',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -1129,7 +1132,8 @@ class _RegistWidgetState extends State<RegistWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
                                                           letterSpacing: 0.0,
                                                         ),
                                                     cursorColor:
@@ -1168,7 +1172,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Outfit',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -1254,7 +1258,8 @@ class _RegistWidgetState extends State<RegistWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
                                                           letterSpacing: 0.0,
                                                         ),
                                                     minLines: 1,
@@ -1267,6 +1272,145 @@ class _RegistWidgetState extends State<RegistWidget>
                                                         .asValidator(context),
                                                   ),
                                                 ),
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(100.0,
+                                                                0.0, 0.0, 0.0),
+                                                    child: Text(
+                                                      'Teacher',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Plus Jakarta Sans',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Theme(
+                                                    data: ThemeData(
+                                                      checkboxTheme:
+                                                          CheckboxThemeData(
+                                                        visualDensity:
+                                                            VisualDensity
+                                                                .compact,
+                                                        materialTapTargetSize:
+                                                            MaterialTapTargetSize
+                                                                .shrinkWrap,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      4.0),
+                                                        ),
+                                                      ),
+                                                      unselectedWidgetColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                    ),
+                                                    child: Checkbox(
+                                                      value: _model
+                                                              .checkboxValue1 ??=
+                                                          true,
+                                                      onChanged:
+                                                          (newValue) async {
+                                                        safeSetState(() => _model
+                                                                .checkboxValue1 =
+                                                            newValue!);
+                                                      },
+                                                      side: BorderSide(
+                                                        width: 2,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                      ),
+                                                      activeColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      checkColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(100.0,
+                                                                0.0, 0.0, 0.0),
+                                                    child: Text(
+                                                      'Student',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Plus Jakarta Sans',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Theme(
+                                                    data: ThemeData(
+                                                      checkboxTheme:
+                                                          CheckboxThemeData(
+                                                        visualDensity:
+                                                            VisualDensity
+                                                                .compact,
+                                                        materialTapTargetSize:
+                                                            MaterialTapTargetSize
+                                                                .shrinkWrap,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      4.0),
+                                                        ),
+                                                      ),
+                                                      unselectedWidgetColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                    ),
+                                                    child: Checkbox(
+                                                      value: _model
+                                                              .checkboxValue2 ??=
+                                                          true,
+                                                      onChanged:
+                                                          (newValue) async {
+                                                        safeSetState(() => _model
+                                                                .checkboxValue2 =
+                                                            newValue!);
+                                                      },
+                                                      side: BorderSide(
+                                                        width: 2,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                      ),
+                                                      activeColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      checkColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
@@ -1311,12 +1455,17 @@ class _RegistWidgetState extends State<RegistWidget>
                                                         return;
                                                       }
 
-                                                      context.goNamedAuth(
-                                                          ProfileWidget
-                                                              .routeName,
-                                                          context.mounted);
+                                                      await authManager
+                                                          .sendEmailVerification();
+                                                      if (_model
+                                                          .checkboxValue1!) {
+                                                        context.pushNamedAuth(
+                                                            TeacherSignUpWidget
+                                                                .routeName,
+                                                            context.mounted);
+                                                      }
                                                     },
-                                                    text: 'Create Account',
+                                                    text: 'Next',
                                                     options: FFButtonOptions(
                                                       width: 230.0,
                                                       height: 52.0,
@@ -1344,7 +1493,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                               .titleSmall
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter Tight',
+                                                                    'Plus Jakarta Sans',
                                                                 color: Colors
                                                                     .white,
                                                                 letterSpacing:
@@ -1388,7 +1537,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                 .labelMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Outfit',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -1488,7 +1637,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Plus Jakarta Sans',
                                                                       letterSpacing:
                                                                           0.0,
                                                                       fontWeight:
@@ -1576,7 +1725,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Inter',
+                                                                                'Plus Jakarta Sans',
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:

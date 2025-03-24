@@ -104,7 +104,7 @@ class _SideBarWidgetState extends State<SideBarWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  fontFamily: 'Plus Jakarta Sans',
                                   letterSpacing: 0.0,
                                 ),
                           ),
@@ -113,7 +113,7 @@ class _SideBarWidgetState extends State<SideBarWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Outfit',
                                   letterSpacing: 0.0,
                                 ),
                           ),

@@ -1,18 +1,21 @@
 // ignore_for_file: unnecessary_getters_setters
 
-import '/backend/schema/util/schema_util.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'index.dart';
+import '/backend/schema/util/firestore_util.dart';
+
 import '/flutter_flow/flutter_flow_util.dart';
 
-class PieValueStruct extends BaseStruct {
+class PieValueStruct extends FFFirebaseStruct {
   PieValueStruct({
     double? done,
     double? workingOn,
     double? pending,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _done = done,
         _workingOn = workingOn,
-        _pending = pending;
+        _pending = pending,
+        super(firestoreUtilData);
 
   // "Done" field.
   double? _done;
@@ -110,9 +113,78 @@ PieValueStruct createPieValueStruct({
   double? done,
   double? workingOn,
   double? pending,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     PieValueStruct(
       done: done,
       workingOn: workingOn,
       pending: pending,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+PieValueStruct? updatePieValueStruct(
+  PieValueStruct? pieValue, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    pieValue
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addPieValueStructData(
+  Map<String, dynamic> firestoreData,
+  PieValueStruct? pieValue,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (pieValue == null) {
+    return;
+  }
+  if (pieValue.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && pieValue.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final pieValueData = getPieValueFirestoreData(pieValue, forFieldValue);
+  final nestedData = pieValueData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = pieValue.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getPieValueFirestoreData(
+  PieValueStruct? pieValue, [
+  bool forFieldValue = false,
+]) {
+  if (pieValue == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(pieValue.toMap());
+
+  // Add any Firestore field values
+  pieValue.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getPieValueListFirestoreData(
+  List<PieValueStruct>? pieValues,
+) =>
+    pieValues?.map((e) => getPieValueFirestoreData(e, true)).toList() ?? [];
