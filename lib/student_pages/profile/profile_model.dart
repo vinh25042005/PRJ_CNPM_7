@@ -32,18 +32,6 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   FocusNode? textFieldFocusNode6;
   TextEditingController? textController6;
   String? Function(BuildContext, String?)? textController6Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode7;
-  TextEditingController? textController7;
-  String? Function(BuildContext, String?)? textController7Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode8;
-  TextEditingController? textController8;
-  String? Function(BuildContext, String?)? textController8Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode9;
-  TextEditingController? textController9;
-  String? Function(BuildContext, String?)? textController9Validator;
 
   @override
   void initState(BuildContext context) {
@@ -70,14 +58,5 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
 
     textFieldFocusNode6?.dispose();
     textController6?.dispose();
-
-    textFieldFocusNode7?.dispose();
-    textController7?.dispose();
-
-    textFieldFocusNode8?.dispose();
-    textController8?.dispose();
-
-    textFieldFocusNode9?.dispose();
-    textController9?.dispose();
   }
 }

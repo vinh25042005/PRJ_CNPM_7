@@ -1,9 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'creating_ques_home_widget.dart' show CreatingQuesHomeWidget;
+import 'creating_ques_widget.dart' show CreatingQuesWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
-class CreatingQuesHomeModel extends FlutterFlowModel<CreatingQuesHomeWidget> {
+class CreatingQuesModel extends FlutterFlowModel<CreatingQuesWidget> {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for SwipeableStack widget.

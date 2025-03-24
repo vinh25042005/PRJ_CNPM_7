@@ -77,18 +77,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? ProfileWidget() : HomePageWidget(),
+          appStateNotifier.loggedIn ? StudentHomePageWidget() : RegistWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? ProfileWidget() : HomePageWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? StudentHomePageWidget()
+              : RegistWidget(),
         ),
         FFRoute(
-          name: HomePageWidget.routeName,
-          path: HomePageWidget.routePath,
-          builder: (context, params) => HomePageWidget(),
+          name: StudentHomePageWidget.routeName,
+          path: StudentHomePageWidget.routePath,
+          builder: (context, params) => StudentHomePageWidget(),
         ),
         FFRoute(
           name: ProfileWidget.routeName,
@@ -116,12 +117,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => SettingsWidget(),
         ),
         FFRoute(
-          name: CreatingQuesHomeWidget.routeName,
-          path: CreatingQuesHomeWidget.routePath,
+          name: CreatingQuesWidget.routeName,
+          path: CreatingQuesWidget.routePath,
           asyncParams: {
             'docRef': getDoc(['quizzes'], QuizzesRecord.fromSnapshot),
           },
-          builder: (context, params) => CreatingQuesHomeWidget(
+          builder: (context, params) => CreatingQuesWidget(
             docRef: params.getParam(
               'docRef',
               ParamType.Document,
@@ -132,6 +133,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: TeacherSignUpWidget.routeName,
           path: TeacherSignUpWidget.routePath,
           builder: (context, params) => TeacherSignUpWidget(),
+        ),
+        FFRoute(
+          name: CreatingQuesHomeCopyWidget.routeName,
+          path: CreatingQuesHomeCopyWidget.routePath,
+          builder: (context, params) => CreatingQuesHomeCopyWidget(
+            docID: params.getParam(
+              'docID',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['quizzes'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: TeacherCreatingQuesWidget.routeName,
+          path: TeacherCreatingQuesWidget.routePath,
+          builder: (context, params) => TeacherCreatingQuesWidget(),
+        ),
+        FFRoute(
+          name: TeacherCreatingQuesCopyWidget.routeName,
+          path: TeacherCreatingQuesCopyWidget.routePath,
+          builder: (context, params) => TeacherCreatingQuesCopyWidget(),
+        ),
+        FFRoute(
+          name: StudentSignUpWidget.routeName,
+          path: StudentSignUpWidget.routePath,
+          builder: (context, params) => StudentSignUpWidget(),
+        ),
+        FFRoute(
+          name: TeacherHomePageCopyWidget.routeName,
+          path: TeacherHomePageCopyWidget.routePath,
+          builder: (context, params) => TeacherHomePageCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -304,7 +337,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/homePage';
+            return '/regist';
           }
           return null;
         },

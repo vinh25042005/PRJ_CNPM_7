@@ -212,7 +212,7 @@ class _SideBarWidgetState extends State<SideBarWidget> {
                       highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pushNamed(
-                          HomePageWidget.routeName,
+                          StudentHomePageWidget.routeName,
                           extra: <String, dynamic>{
                             kTransitionInfoKey: TransitionInfo(
                               hasTransition: true,

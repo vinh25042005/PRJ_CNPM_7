@@ -1,8 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -382,26 +384,150 @@ class _RegistWidgetState extends State<RegistWidget>
                                                   ),
                                                 ),
                                               ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 16.0),
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  child: TextFormField(
-                                                    controller: _model
-                                                        .passwordTextController,
-                                                    focusNode: _model
-                                                        .passwordFocusNode,
-                                                    autofocus: false,
-                                                    autofillHints: [
-                                                      AutofillHints.password
-                                                    ],
-                                                    obscureText: !_model
-                                                        .passwordVisibility,
-                                                    decoration: InputDecoration(
-                                                      labelText: 'Password',
-                                                      labelStyle:
+                                              Container(
+                                                width: double.infinity,
+                                                child: TextFormField(
+                                                  controller: _model
+                                                      .passwordTextController,
+                                                  focusNode:
+                                                      _model.passwordFocusNode,
+                                                  autofocus: false,
+                                                  autofillHints: [
+                                                    AutofillHints.password
+                                                  ],
+                                                  obscureText: !_model
+                                                      .passwordVisibility,
+                                                  decoration: InputDecoration(
+                                                    labelText: 'Password',
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              40.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              40.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              40.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              40.0),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                    contentPadding:
+                                                        EdgeInsets.all(24.0),
+                                                    suffixIcon: InkWell(
+                                                      onTap: () => safeSetState(
+                                                        () => _model
+                                                                .passwordVisibility =
+                                                            !_model
+                                                                .passwordVisibility,
+                                                      ),
+                                                      focusNode: FocusNode(
+                                                          skipTraversal: true),
+                                                      child: Icon(
+                                                        _model.passwordVisibility
+                                                            ? Icons
+                                                                .visibility_outlined
+                                                            : Icons
+                                                                .visibility_off_outlined,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 24.0,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  cursorColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  validator: _model
+                                                      .passwordTextControllerValidator
+                                                      .asValidator(context),
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, -1.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(124.0,
+                                                                0.0, 0.0, 0.0),
+                                                    child:
+                                                        FlutterFlowRadioButton(
+                                                      options: [
+                                                        'Teacher',
+                                                        'Student'
+                                                      ].toList(),
+                                                      onChanged: (val) =>
+                                                          safeSetState(() {}),
+                                                      controller: _model
+                                                              .roleValueController1 ??=
+                                                          FormFieldController<
+                                                              String>(null),
+                                                      optionHeight: 32.0,
+                                                      textStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .labelMedium
@@ -411,105 +537,49 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(40.0),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                      selectedTextStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Plus Jakarta Sans',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      textPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  100.0,
+                                                                  0.0),
+                                                      buttonPosition:
+                                                          RadioButtonPosition
+                                                              .left,
+                                                      direction:
+                                                          Axis.horizontal,
+                                                      radioButtonColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .primary,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(40.0),
-                                                      ),
-                                                      errorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(40.0),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(40.0),
-                                                      ),
-                                                      filled: true,
-                                                      fillColor: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      contentPadding:
-                                                          EdgeInsets.all(24.0),
-                                                      suffixIcon: InkWell(
-                                                        onTap: () =>
-                                                            safeSetState(
-                                                          () => _model
-                                                                  .passwordVisibility =
-                                                              !_model
-                                                                  .passwordVisibility,
-                                                        ),
-                                                        focusNode: FocusNode(
-                                                            skipTraversal:
-                                                                true),
-                                                        child: Icon(
-                                                          _model.passwordVisibility
-                                                              ? Icons
-                                                                  .visibility_outlined
-                                                              : Icons
-                                                                  .visibility_off_outlined,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                      inactiveRadioButtonColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryText,
-                                                          size: 24.0,
-                                                        ),
-                                                      ),
+                                                      toggleable: false,
+                                                      horizontalAlignment:
+                                                          WrapAlignment.center,
+                                                      verticalAlignment:
+                                                          WrapCrossAlignment
+                                                              .start,
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                    cursorColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
-                                                    validator: _model
-                                                        .passwordTextControllerValidator
-                                                        .asValidator(context),
                                                   ),
                                                 ),
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
+                                                    0.0, -1.0),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -534,10 +604,20 @@ class _RegistWidgetState extends State<RegistWidget>
                                                         return;
                                                       }
 
-                                                      context.goNamedAuth(
-                                                          ProfileWidget
-                                                              .routeName,
-                                                          context.mounted);
+                                                      if (_model.roleValue1 !=
+                                                              null &&
+                                                          _model.roleValue1 !=
+                                                              '') {
+                                                        context.pushNamedAuth(
+                                                            TeacherHomePageCopyWidget
+                                                                .routeName,
+                                                            context.mounted);
+                                                      } else {
+                                                        context.pushNamedAuth(
+                                                            StudentHomePageWidget
+                                                                .routeName,
+                                                            context.mounted);
+                                                      }
                                                     },
                                                     text: 'Sign In',
                                                     options: FFButtonOptions(
@@ -730,7 +810,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                 }
 
                                                                 context.goNamedAuth(
-                                                                    ProfileWidget
+                                                                    StudentHomePageWidget
                                                                         .routeName,
                                                                     context
                                                                         .mounted);
@@ -818,7 +898,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                       }
 
                                                                       context.goNamedAuth(
-                                                                          ProfileWidget
+                                                                          StudentHomePageWidget
                                                                               .routeName,
                                                                           context
                                                                               .mounted);
@@ -1276,138 +1356,82 @@ class _RegistWidgetState extends State<RegistWidget>
                                               Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(100.0,
-                                                                0.0, 0.0, 0.0),
-                                                    child: Text(
-                                                      'Teacher',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                  Theme(
-                                                    data: ThemeData(
-                                                      checkboxTheme:
-                                                          CheckboxThemeData(
-                                                        visualDensity:
-                                                            VisualDensity
-                                                                .compact,
-                                                        materialTapTargetSize:
-                                                            MaterialTapTargetSize
-                                                                .shrinkWrap,
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      4.0),
+                                                  Expanded(
+                                                    child: Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    100.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child:
+                                                            FlutterFlowRadioButton(
+                                                          options: [
+                                                            'Teacher',
+                                                            'Student'
+                                                          ].toList(),
+                                                          onChanged: (val) =>
+                                                              safeSetState(
+                                                                  () {}),
+                                                          controller: _model
+                                                                  .roleValueController2 ??=
+                                                              FormFieldController<
+                                                                  String>(null),
+                                                          optionHeight: 32.0,
+                                                          textStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Outfit',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          selectedTextStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Plus Jakarta Sans',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          textPadding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      100.0,
+                                                                      0.0),
+                                                          buttonPosition:
+                                                              RadioButtonPosition
+                                                                  .left,
+                                                          direction:
+                                                              Axis.horizontal,
+                                                          radioButtonColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primary,
+                                                          inactiveRadioButtonColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .secondaryText,
+                                                          toggleable: false,
+                                                          horizontalAlignment:
+                                                              WrapAlignment
+                                                                  .center,
+                                                          verticalAlignment:
+                                                              WrapCrossAlignment
+                                                                  .start,
                                                         ),
                                                       ),
-                                                      unselectedWidgetColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
-                                                    ),
-                                                    child: Checkbox(
-                                                      value: _model
-                                                              .checkboxValue1 ??=
-                                                          true,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        safeSetState(() => _model
-                                                                .checkboxValue1 =
-                                                            newValue!);
-                                                      },
-                                                      side: BorderSide(
-                                                        width: 2,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .alternate,
-                                                      ),
-                                                      activeColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      checkColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .info,
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(100.0,
-                                                                0.0, 0.0, 0.0),
-                                                    child: Text(
-                                                      'Student',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                  Theme(
-                                                    data: ThemeData(
-                                                      checkboxTheme:
-                                                          CheckboxThemeData(
-                                                        visualDensity:
-                                                            VisualDensity
-                                                                .compact,
-                                                        materialTapTargetSize:
-                                                            MaterialTapTargetSize
-                                                                .shrinkWrap,
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      4.0),
-                                                        ),
-                                                      ),
-                                                      unselectedWidgetColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
-                                                    ),
-                                                    child: Checkbox(
-                                                      value: _model
-                                                              .checkboxValue2 ??=
-                                                          true,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        safeSetState(() => _model
-                                                                .checkboxValue2 =
-                                                            newValue!);
-                                                      },
-                                                      side: BorderSide(
-                                                        width: 2,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .alternate,
-                                                      ),
-                                                      activeColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      checkColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .info,
                                                     ),
                                                   ),
                                                 ],
@@ -1457,10 +1481,17 @@ class _RegistWidgetState extends State<RegistWidget>
 
                                                       await authManager
                                                           .sendEmailVerification();
-                                                      if (_model
-                                                          .checkboxValue1!) {
+                                                      if (_model.roleValue2 !=
+                                                              null &&
+                                                          _model.roleValue2 !=
+                                                              '') {
                                                         context.pushNamedAuth(
                                                             TeacherSignUpWidget
+                                                                .routeName,
+                                                            context.mounted);
+                                                      } else {
+                                                        context.pushNamedAuth(
+                                                            StudentSignUpWidget
                                                                 .routeName,
                                                             context.mounted);
                                                       }
@@ -1599,7 +1630,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                 }
 
                                                                 context.goNamedAuth(
-                                                                    ProfileWidget
+                                                                    StudentHomePageWidget
                                                                         .routeName,
                                                                     context
                                                                         .mounted);
@@ -1687,7 +1718,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                       }
 
                                                                       context.goNamedAuth(
-                                                                          ProfileWidget
+                                                                          StudentHomePageWidget
                                                                               .routeName,
                                                                           context
                                                                               .mounted);

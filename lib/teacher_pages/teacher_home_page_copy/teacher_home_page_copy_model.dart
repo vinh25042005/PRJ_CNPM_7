@@ -3,10 +3,11 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/shared_pages/side_bar/side_bar_widget.dart';
 import '/index.dart';
-import 'home_page_widget.dart' show HomePageWidget;
+import 'teacher_home_page_copy_widget.dart' show TeacherHomePageCopyWidget;
 import 'package:flutter/material.dart';
 
-class HomePageModel extends FlutterFlowModel<HomePageWidget> {
+class TeacherHomePageCopyModel
+    extends FlutterFlowModel<TeacherHomePageCopyWidget> {
   ///  State fields for stateful widgets in this page.
 
   // Model for SideBar component.

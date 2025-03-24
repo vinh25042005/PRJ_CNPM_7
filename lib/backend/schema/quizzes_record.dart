@@ -25,7 +25,12 @@ class QuizzesRecord extends FirestoreRecord {
   String get teacherID => _teacherID ?? '';
   bool hasTeacherID() => _teacherID != null;
 
-  // "Questions" field.
+  // "subject" field.
+  String? _subject;
+  String get subject => _subject ?? '';
+  bool hasSubject() => _subject != null;
+
+  // "questions" field.
   List<String>? _questions;
   List<String> get questions => _questions ?? const [];
   bool hasQuestions() => _questions != null;
@@ -33,7 +38,8 @@ class QuizzesRecord extends FirestoreRecord {
   void _initializeFields() {
     _title = snapshotData['Title'] as String?;
     _teacherID = snapshotData['teacherID'] as String?;
-    _questions = getDataList(snapshotData['Questions']);
+    _subject = snapshotData['subject'] as String?;
+    _questions = getDataList(snapshotData['questions']);
   }
 
   static CollectionReference get collection =>
@@ -73,11 +79,13 @@ class QuizzesRecord extends FirestoreRecord {
 Map<String, dynamic> createQuizzesRecordData({
   String? title,
   String? teacherID,
+  String? subject,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'Title': title,
       'teacherID': teacherID,
+      'subject': subject,
     }.withoutNulls,
   );
 
@@ -92,12 +100,13 @@ class QuizzesRecordDocumentEquality implements Equality<QuizzesRecord> {
     const listEquality = ListEquality();
     return e1?.title == e2?.title &&
         e1?.teacherID == e2?.teacherID &&
+        e1?.subject == e2?.subject &&
         listEquality.equals(e1?.questions, e2?.questions);
   }
 
   @override
-  int hash(QuizzesRecord? e) =>
-      const ListEquality().hash([e?.title, e?.teacherID, e?.questions]);
+  int hash(QuizzesRecord? e) => const ListEquality()
+      .hash([e?.title, e?.teacherID, e?.subject, e?.questions]);
 
   @override
   bool isValidKey(Object? o) => o is QuizzesRecord;

@@ -1,4 +1,5 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
 import 'regist_widget.dart' show RegistWidget;
 import 'package:flutter/material.dart';
@@ -20,6 +21,8 @@ class RegistModel extends FlutterFlowModel<RegistWidget> {
   TextEditingController? passwordTextController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
+  // State field(s) for role widget.
+  FormFieldController<String>? roleValueController1;
   // State field(s) for emailAddress_Create widget.
   FocusNode? emailAddressCreateFocusNode;
   TextEditingController? emailAddressCreateTextController;
@@ -37,10 +40,8 @@ class RegistModel extends FlutterFlowModel<RegistWidget> {
   late bool passwordConfirmVisibility;
   String? Function(BuildContext, String?)?
       passwordConfirmTextControllerValidator;
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue1;
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue2;
+  // State field(s) for role widget.
+  FormFieldController<String>? roleValueController2;
 
   @override
   void initState(BuildContext context) {
@@ -67,4 +68,8 @@ class RegistModel extends FlutterFlowModel<RegistWidget> {
     passwordConfirmFocusNode?.dispose();
     passwordConfirmTextController?.dispose();
   }
+
+  /// Additional helper methods.
+  String? get roleValue1 => roleValueController1?.value;
+  String? get roleValue2 => roleValueController2?.value;
 }

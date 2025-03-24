@@ -1,31 +1,29 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'teacher_sign_up_model.dart';
-export 'teacher_sign_up_model.dart';
+import 'student_sign_up_model.dart';
+export 'student_sign_up_model.dart';
 
-class TeacherSignUpWidget extends StatefulWidget {
-  const TeacherSignUpWidget({super.key});
+class StudentSignUpWidget extends StatefulWidget {
+  const StudentSignUpWidget({super.key});
 
-  static String routeName = 'TeacherSignUp';
-  static String routePath = '/teacherSignUp';
+  static String routeName = 'StudentSignUp';
+  static String routePath = '/studentSignUp';
 
   @override
-  State<TeacherSignUpWidget> createState() => _TeacherSignUpWidgetState();
+  State<StudentSignUpWidget> createState() => _StudentSignUpWidgetState();
 }
 
-class _TeacherSignUpWidgetState extends State<TeacherSignUpWidget>
+class _StudentSignUpWidgetState extends State<StudentSignUpWidget>
     with TickerProviderStateMixin {
-  late TeacherSignUpModel _model;
+  late StudentSignUpModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -34,15 +32,15 @@ class _TeacherSignUpWidgetState extends State<TeacherSignUpWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TeacherSignUpModel());
+    _model = createModel(context, () => StudentSignUpModel());
 
     _model.tabBarController = TabController(
       vsync: this,
       length: 1,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
-    _model.teacherIDTextController ??= TextEditingController();
-    _model.teacherIDFocusNode ??= FocusNode();
+    _model.studentIDTextController ??= TextEditingController();
+    _model.studentIDFocusNode ??= FocusNode();
 
     _model.nameTextController ??= TextEditingController();
     _model.nameFocusNode ??= FocusNode();
@@ -166,13 +164,13 @@ class _TeacherSignUpWidgetState extends State<TeacherSignUpWidget>
                                 child: Container(
                                   width: double.infinity,
                                   child: TextFormField(
-                                    controller: _model.teacherIDTextController,
-                                    focusNode: _model.teacherIDFocusNode,
+                                    controller: _model.studentIDTextController,
+                                    focusNode: _model.studentIDFocusNode,
                                     autofocus: true,
                                     autofillHints: [AutofillHints.email],
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText: 'Teacher ID',
+                                      labelText: 'Student ID',
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -230,7 +228,7 @@ class _TeacherSignUpWidgetState extends State<TeacherSignUpWidget>
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
-                                        .teacherIDTextControllerValidator
+                                        .studentIDTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -312,68 +310,19 @@ class _TeacherSignUpWidgetState extends State<TeacherSignUpWidget>
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 20.0),
-                                  child: FlutterFlowDropDown<String>(
-                                    controller:
-                                        _model.dropDownValueController ??=
-                                            FormFieldController<String>(null),
-                                    options: ['Toán', 'Lý', 'Hóa'],
-                                    onChanged: (val) => safeSetState(
-                                        () => _model.dropDownValue = val),
-                                    width: 876.27,
-                                    height: 40.0,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintText: 'Subject',
-                                    icon: Icon(
-                                      Icons.keyboard_arrow_down_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
-                                    ),
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    elevation: 2.0,
-                                    borderColor: Colors.transparent,
-                                    borderWidth: 0.0,
-                                    borderRadius: 8.0,
-                                    margin: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 12.0, 0.0),
-                                    hidesUnderline: true,
-                                    isOverButton: false,
-                                    isSearchable: false,
-                                    isMultiSelect: false,
-                                  ),
-                                ),
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 16.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      await TeachersRecord.collection
+                                      await StudentsRecord.collection
                                           .doc(currentUserUid)
-                                          .set({
-                                        ...createTeachersRecordData(
-                                          email: currentUserEmail,
-                                          name: _model.nameTextController.text,
-                                          role: 'Teacher',
-                                          subjects: _model.dropDownValue,
-                                          teacherId: _model
-                                              .teacherIDTextController.text,
-                                        ),
-                                        ...mapToFirestore(
-                                          {
-                                            'schedule': ['12:000'],
-                                          },
-                                        ),
-                                      });
+                                          .set(createStudentsRecordData(
+                                            email: currentUserEmail,
+                                            name:
+                                                _model.nameTextController.text,
+                                            role: 'Student',
+                                            studentID: _model
+                                                .studentIDTextController.text,
+                                          ));
 
                                       context.pushNamed(
                                           StudentHomePageWidget.routeName);

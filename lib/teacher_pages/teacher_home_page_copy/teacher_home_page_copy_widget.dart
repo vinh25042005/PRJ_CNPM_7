@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -12,28 +13,29 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'home_page_model.dart';
-export 'home_page_model.dart';
+import 'teacher_home_page_copy_model.dart';
+export 'teacher_home_page_copy_model.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({super.key});
+class TeacherHomePageCopyWidget extends StatefulWidget {
+  const TeacherHomePageCopyWidget({super.key});
 
-  static String routeName = 'HomePage';
-  static String routePath = '/homePage';
+  static String routeName = 'TeacherHomePageCopy';
+  static String routePath = '/teacherHomePageCopy';
 
   @override
-  State<HomePageWidget> createState() => _HomePageWidgetState();
+  State<TeacherHomePageCopyWidget> createState() =>
+      _TeacherHomePageCopyWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
-  late HomePageModel _model;
+class _TeacherHomePageCopyWidgetState extends State<TeacherHomePageCopyWidget> {
+  late TeacherHomePageCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HomePageModel());
+    _model = createModel(context, () => TeacherHomePageCopyModel());
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -1887,6 +1889,34 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ),
                                   ].divide(SizedBox(height: 15.0)),
                                 ),
+                              ),
+                            ),
+                            FFButtonWidget(
+                              onPressed: () async {
+                                GoRouter.of(context).prepareAuthEvent();
+                                await authManager.signOut();
+                                GoRouter.of(context).clearRedirectLocation();
+
+                                context.goNamedAuth(
+                                    RegistWidget.routeName, context.mounted);
+                              },
+                              text: 'Logout',
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      color: Colors.white,
+                                      letterSpacing: 0.0,
+                                    ),
+                                elevation: 0.0,
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                             ),
                           ],

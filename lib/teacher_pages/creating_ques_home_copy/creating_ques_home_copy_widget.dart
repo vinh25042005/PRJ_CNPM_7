@@ -3,48 +3,53 @@ import '/flutter_flow/flutter_flow_swipeable_stack.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'creating_ques_home_model.dart';
-export 'creating_ques_home_model.dart';
+import 'creating_ques_home_copy_model.dart';
+export 'creating_ques_home_copy_model.dart';
 
-class CreatingQuesHomeWidget extends StatefulWidget {
-  const CreatingQuesHomeWidget({
+class CreatingQuesHomeCopyWidget extends StatefulWidget {
+  const CreatingQuesHomeCopyWidget({
     super.key,
-    required this.docRef,
+    required this.docID,
   });
 
-  final QuizzesRecord? docRef;
+  final DocumentReference? docID;
 
-  static String routeName = 'CreatingQuesHome';
-  static String routePath = '/creatingQuesHome';
+  static String routeName = 'CreatingQuesHomeCopy';
+  static String routePath = '/creatingQuesHomeCopy';
 
   @override
-  State<CreatingQuesHomeWidget> createState() => _CreatingQuesHomeWidgetState();
+  State<CreatingQuesHomeCopyWidget> createState() =>
+      _CreatingQuesHomeCopyWidgetState();
 }
 
-class _CreatingQuesHomeWidgetState extends State<CreatingQuesHomeWidget> {
-  late CreatingQuesHomeModel _model;
+class _CreatingQuesHomeCopyWidgetState
+    extends State<CreatingQuesHomeCopyWidget> {
+  late CreatingQuesHomeCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CreatingQuesHomeModel());
+    _model = createModel(context, () => CreatingQuesHomeCopyModel());
 
-    _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.quesTextController ??= TextEditingController();
+    _model.quesFocusNode ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.ans1TextController ??= TextEditingController();
+    _model.ans1FocusNode ??= FocusNode();
 
-    _model.textController3 ??= TextEditingController();
-    _model.textFieldFocusNode3 ??= FocusNode();
+    _model.ans2TextController ??= TextEditingController();
+    _model.ans2FocusNode ??= FocusNode();
 
-    _model.textController4 ??= TextEditingController();
-    _model.textFieldFocusNode4 ??= FocusNode();
+    _model.ans3TextController ??= TextEditingController();
+    _model.ans3FocusNode ??= FocusNode();
 
-    _model.textController5 ??= TextEditingController();
-    _model.textFieldFocusNode5 ??= FocusNode();
+    _model.ans4TextController ??= TextEditingController();
+    _model.ans4FocusNode ??= FocusNode();
+
+    _model.correctAnsTextController ??= TextEditingController();
+    _model.correctAnsFocusNode ??= FocusNode();
   }
 
   @override
@@ -141,6 +146,99 @@ class _CreatingQuesHomeWidgetState extends State<CreatingQuesHomeWidget> {
                                                       ),
                                             ),
                                             Container(
+                                              width: 200.0,
+                                              child: TextFormField(
+                                                controller:
+                                                    _model.quesTextController,
+                                                focusNode: _model.quesFocusNode,
+                                                autofocus: false,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  isDense: true,
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  hintText: 'TextField',
+                                                  hintStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  filled: true,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                cursorColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                validator: _model
+                                                    .quesTextControllerValidator
+                                                    .asValidator(context),
+                                              ),
+                                            ),
+                                            Container(
                                               width: double.infinity,
                                               height: MediaQuery.sizeOf(context)
                                                       .height *
@@ -167,9 +265,9 @@ class _CreatingQuesHomeWidgetState extends State<CreatingQuesHomeWidget> {
                                                       width: 200.0,
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .textController1,
+                                                            .ans1TextController,
                                                         focusNode: _model
-                                                            .textFieldFocusNode1,
+                                                            .ans1FocusNode,
                                                         autofocus: false,
                                                         obscureText: false,
                                                         decoration:
@@ -271,7 +369,7 @@ class _CreatingQuesHomeWidgetState extends State<CreatingQuesHomeWidget> {
                                                                     context)
                                                                 .primaryText,
                                                         validator: _model
-                                                            .textController1Validator
+                                                            .ans1TextControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -318,9 +416,9 @@ class _CreatingQuesHomeWidgetState extends State<CreatingQuesHomeWidget> {
                                                       width: 200.0,
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .textController2,
+                                                            .ans2TextController,
                                                         focusNode: _model
-                                                            .textFieldFocusNode2,
+                                                            .ans2FocusNode,
                                                         autofocus: false,
                                                         obscureText: false,
                                                         decoration:
@@ -422,7 +520,7 @@ class _CreatingQuesHomeWidgetState extends State<CreatingQuesHomeWidget> {
                                                                     context)
                                                                 .primaryText,
                                                         validator: _model
-                                                            .textController2Validator
+                                                            .ans2TextControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -469,9 +567,9 @@ class _CreatingQuesHomeWidgetState extends State<CreatingQuesHomeWidget> {
                                                       width: 200.0,
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .textController3,
+                                                            .ans3TextController,
                                                         focusNode: _model
-                                                            .textFieldFocusNode3,
+                                                            .ans3FocusNode,
                                                         autofocus: false,
                                                         obscureText: false,
                                                         decoration:
@@ -573,7 +671,7 @@ class _CreatingQuesHomeWidgetState extends State<CreatingQuesHomeWidget> {
                                                                     context)
                                                                 .primaryText,
                                                         validator: _model
-                                                            .textController3Validator
+                                                            .ans3TextControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -630,9 +728,9 @@ class _CreatingQuesHomeWidgetState extends State<CreatingQuesHomeWidget> {
                                                           width: 200.0,
                                                           child: TextFormField(
                                                             controller: _model
-                                                                .textController4,
+                                                                .ans4TextController,
                                                             focusNode: _model
-                                                                .textFieldFocusNode4,
+                                                                .ans4FocusNode,
                                                             autofocus: false,
                                                             obscureText: false,
                                                             decoration:
@@ -733,7 +831,7 @@ class _CreatingQuesHomeWidgetState extends State<CreatingQuesHomeWidget> {
                                                                         context)
                                                                     .primaryText,
                                                             validator: _model
-                                                                .textController4Validator
+                                                                .ans4TextControllerValidator
                                                                 .asValidator(
                                                                     context),
                                                           ),
@@ -782,9 +880,9 @@ class _CreatingQuesHomeWidgetState extends State<CreatingQuesHomeWidget> {
                                                       width: 200.0,
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .textController5,
+                                                            .correctAnsTextController,
                                                         focusNode: _model
-                                                            .textFieldFocusNode5,
+                                                            .correctAnsFocusNode,
                                                         autofocus: false,
                                                         obscureText: false,
                                                         decoration:
@@ -886,7 +984,7 @@ class _CreatingQuesHomeWidgetState extends State<CreatingQuesHomeWidget> {
                                                                     context)
                                                                 .primaryText,
                                                         validator: _model
-                                                            .textController5Validator
+                                                            .correctAnsTextControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -912,27 +1010,53 @@ class _CreatingQuesHomeWidgetState extends State<CreatingQuesHomeWidget> {
                     ],
                   ),
                 ),
-                Container(
-                  width: 398.9,
-                  height: 54.6,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFEAB7F6),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(30.0),
-                      bottomRight: Radius.circular(30.0),
-                      topLeft: Radius.circular(30.0),
-                      topRight: Radius.circular(30.0),
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    await widget.docID!.update({
+                      ...mapToFirestore(
+                        {
+                          'questions': FieldValue.arrayUnion(
+                              [_model.quesTextController.text]),
+                        },
+                      ),
+                    });
+
+                    context.pushNamed(
+                      CreatingQuesHomeCopyWidget.routeName,
+                      queryParameters: {
+                        'docID': serializeParam(
+                          widget.docID,
+                          ParamType.DocumentReference,
+                        ),
+                      }.withoutNulls,
+                    );
+                  },
+                  child: Container(
+                    width: 398.9,
+                    height: 54.6,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFEAB7F6),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(30.0),
+                        bottomRight: Radius.circular(30.0),
+                        topLeft: Radius.circular(30.0),
+                        topRight: Radius.circular(30.0),
+                      ),
                     ),
-                  ),
-                  child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: Text(
-                      'Thêm câu hỏi tiếp theo',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Plus Jakarta Sans',
-                            fontSize: 30.0,
-                            letterSpacing: 0.0,
-                          ),
+                    child: Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Text(
+                        'Thêm câu hỏi tiếp theo',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Plus Jakarta Sans',
+                              fontSize: 30.0,
+                              letterSpacing: 0.0,
+                            ),
+                      ),
                     ),
                   ),
                 ),
