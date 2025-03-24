@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/backend/schema/structs/index.dart';
+
 import '/auth/base_auth_user_provider.dart';
 
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -76,108 +78,43 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? LogInWidget() : StartWidget(),
+          appStateNotifier.loggedIn ? ProfileWidget() : HomePageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? LogInWidget() : StartWidget(),
+              appStateNotifier.loggedIn ? ProfileWidget() : HomePageWidget(),
         ),
         FFRoute(
-          name: QuestionsWidget.routeName,
-          path: QuestionsWidget.routePath,
-          builder: (context, params) => QuestionsWidget(),
+          name: HomePageWidget.routeName,
+          path: HomePageWidget.routePath,
+          builder: (context, params) => HomePageWidget(),
         ),
         FFRoute(
-          name: LogInWidget.routeName,
-          path: LogInWidget.routePath,
-          builder: (context, params) => LogInWidget(),
+          name: ProfileWidget.routeName,
+          path: ProfileWidget.routePath,
+          builder: (context, params) => ProfileWidget(),
         ),
         FFRoute(
-          name: StudentHomePageWidget.routeName,
-          path: StudentHomePageWidget.routePath,
-          builder: (context, params) => StudentHomePageWidget(),
+          name: TasksWidget.routeName,
+          path: TasksWidget.routePath,
+          builder: (context, params) => TasksWidget(),
         ),
         FFRoute(
-          name: StartWidget.routeName,
-          path: StartWidget.routePath,
-          builder: (context, params) => StartWidget(),
+          name: NotificationWidget.routeName,
+          path: NotificationWidget.routePath,
+          builder: (context, params) => NotificationWidget(),
         ),
         FFRoute(
-          name: MainSignUpWidget.routeName,
-          path: MainSignUpWidget.routePath,
-          builder: (context, params) => MainSignUpWidget(),
+          name: RegistWidget.routeName,
+          path: RegistWidget.routePath,
+          builder: (context, params) => RegistWidget(),
         ),
         FFRoute(
-          name: StudentRankingWidget.routeName,
-          path: StudentRankingWidget.routePath,
-          builder: (context, params) => StudentRankingWidget(),
-        ),
-        FFRoute(
-          name: TeacherCreatingQuesHomeWidget.routeName,
-          path: TeacherCreatingQuesHomeWidget.routePath,
-          builder: (context, params) => TeacherCreatingQuesHomeWidget(),
-        ),
-        FFRoute(
-          name: ProfileMainWidget.routeName,
-          path: ProfileMainWidget.routePath,
-          builder: (context, params) => ProfileMainWidget(),
-        ),
-        FFRoute(
-          name: TeacherSignUpWidget.routeName,
-          path: TeacherSignUpWidget.routePath,
-          builder: (context, params) => TeacherSignUpWidget(),
-        ),
-        FFRoute(
-          name: StudentSignUpWidget.routeName,
-          path: StudentSignUpWidget.routePath,
-          builder: (context, params) => StudentSignUpWidget(),
-        ),
-        FFRoute(
-          name: AssignmentPageWidget.routeName,
-          path: AssignmentPageWidget.routePath,
-          builder: (context, params) => AssignmentPageWidget(),
-        ),
-        FFRoute(
-          name: CheckSchedulePageWidget.routeName,
-          path: CheckSchedulePageWidget.routePath,
-          builder: (context, params) => CheckSchedulePageWidget(),
-        ),
-        FFRoute(
-          name: ChangeSchedulePageWidget.routeName,
-          path: ChangeSchedulePageWidget.routePath,
-          builder: (context, params) => ChangeSchedulePageWidget(),
-        ),
-        FFRoute(
-          name: TeacherHomePageWidget.routeName,
-          path: TeacherHomePageWidget.routePath,
-          builder: (context, params) => TeacherHomePageWidget(),
-        ),
-        FFRoute(
-          name: TeacherCreatingQuesWidget.routeName,
-          path: TeacherCreatingQuesWidget.routePath,
-          builder: (context, params) => TeacherCreatingQuesWidget(),
-        ),
-        FFRoute(
-          name: AIRecommendationPageWidget.routeName,
-          path: AIRecommendationPageWidget.routePath,
-          builder: (context, params) => AIRecommendationPageWidget(),
-        ),
-        FFRoute(
-          name: TeacherCreatingQuesHomeCopyWidget.routeName,
-          path: TeacherCreatingQuesHomeCopyWidget.routePath,
-          builder: (context, params) => TeacherCreatingQuesHomeCopyWidget(),
-        ),
-        FFRoute(
-          name: ProfileChangePasswordWidget.routeName,
-          path: ProfileChangePasswordWidget.routePath,
-          builder: (context, params) => ProfileChangePasswordWidget(),
-        ),
-        FFRoute(
-          name: ProfileEditWidget.routeName,
-          path: ProfileEditWidget.routePath,
-          builder: (context, params) => ProfileEditWidget(),
+          name: SettingsWidget.routeName,
+          path: SettingsWidget.routePath,
+          builder: (context, params) => SettingsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -296,7 +233,7 @@ class FFParameters {
     String paramName,
     ParamType type, {
     bool isList = false,
-    List<String>? collectionNamePath,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -314,7 +251,7 @@ class FFParameters {
       param,
       type,
       isList,
-      collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
     );
   }
 }
@@ -348,7 +285,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/start';
+            return '/homePage';
           }
           return null;
         },
@@ -362,14 +299,14 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Container(
-                  color: FlutterFlowTheme.of(context).primary,
-                  child: Center(
-                    child: Image.asset(
-                      'assets/images/image_9081.png',
-                      width: double.infinity,
-                      height: double.infinity,
-                      fit: BoxFit.none,
+              ? Center(
+                  child: SizedBox(
+                    width: 50.0,
+                    height: 50.0,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        FlutterFlowTheme.of(context).primary,
+                      ),
                     ),
                   ),
                 )

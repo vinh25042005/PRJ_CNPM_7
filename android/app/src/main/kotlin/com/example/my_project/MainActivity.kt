@@ -1,4 +1,4 @@
-package com.mycompany.cnpm
+package com.mycompany.studyapp
 
 import io.flutter.embedding.android.FlutterActivity
 

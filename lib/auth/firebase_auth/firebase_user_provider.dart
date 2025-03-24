@@ -5,8 +5,8 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class CnpmFirebaseUser extends BaseAuthUser {
-  CnpmFirebaseUser(this.user);
+class StudyAppFirebaseUser extends BaseAuthUser {
+  StudyAppFirebaseUser(this.user);
   User? user;
   bool get loggedIn => user != null;
 
@@ -58,17 +58,18 @@ class CnpmFirebaseUser extends BaseAuthUser {
 
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
-  static BaseAuthUser fromFirebaseUser(User? user) => CnpmFirebaseUser(user);
+  static BaseAuthUser fromFirebaseUser(User? user) =>
+      StudyAppFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> cnpmFirebaseUserStream() => FirebaseAuth.instance
+Stream<BaseAuthUser> studyAppFirebaseUserStream() => FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = CnpmFirebaseUser(user);
+        currentUser = StudyAppFirebaseUser(user);
         return currentUser!;
       },
     );
