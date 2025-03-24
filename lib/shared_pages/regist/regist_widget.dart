@@ -523,7 +523,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                       onChanged: (val) =>
                                                           safeSetState(() {}),
                                                       controller: _model
-                                                              .roleValueController1 ??=
+                                                              .roleValueController ??=
                                                           FormFieldController<
                                                               String>(null),
                                                       optionHeight: 32.0,
@@ -604,9 +604,9 @@ class _RegistWidgetState extends State<RegistWidget>
                                                         return;
                                                       }
 
-                                                      if (_model.roleValue1 !=
+                                                      if (_model.roleValue !=
                                                               null &&
-                                                          _model.roleValue1 !=
+                                                          _model.roleValue !=
                                                               '') {
                                                         context.pushNamedAuth(
                                                             TeacherHomePageCopyWidget
@@ -1379,7 +1379,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                               safeSetState(
                                                                   () {}),
                                                           controller: _model
-                                                                  .roleValueController2 ??=
+                                                                  .selectRoleValueController ??=
                                                               FormFieldController<
                                                                   String>(null),
                                                           optionHeight: 32.0,
@@ -1481,9 +1481,9 @@ class _RegistWidgetState extends State<RegistWidget>
 
                                                       await authManager
                                                           .sendEmailVerification();
-                                                      if (_model.roleValue2 !=
+                                                      if (_model.selectRoleValue !=
                                                               null &&
-                                                          _model.roleValue2 !=
+                                                          _model.selectRoleValue !=
                                                               '') {
                                                         context.pushNamedAuth(
                                                             TeacherSignUpWidget

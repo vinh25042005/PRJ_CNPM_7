@@ -22,7 +22,7 @@ class RegistModel extends FlutterFlowModel<RegistWidget> {
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
   // State field(s) for role widget.
-  FormFieldController<String>? roleValueController1;
+  FormFieldController<String>? roleValueController;
   // State field(s) for emailAddress_Create widget.
   FocusNode? emailAddressCreateFocusNode;
   TextEditingController? emailAddressCreateTextController;
@@ -40,8 +40,8 @@ class RegistModel extends FlutterFlowModel<RegistWidget> {
   late bool passwordConfirmVisibility;
   String? Function(BuildContext, String?)?
       passwordConfirmTextControllerValidator;
-  // State field(s) for role widget.
-  FormFieldController<String>? roleValueController2;
+  // State field(s) for selectRole widget.
+  FormFieldController<String>? selectRoleValueController;
 
   @override
   void initState(BuildContext context) {
@@ -70,6 +70,6 @@ class RegistModel extends FlutterFlowModel<RegistWidget> {
   }
 
   /// Additional helper methods.
-  String? get roleValue1 => roleValueController1?.value;
-  String? get roleValue2 => roleValueController2?.value;
+  String? get roleValue => roleValueController?.value;
+  String? get selectRoleValue => selectRoleValueController?.value;
 }
