@@ -593,8 +593,7 @@ class _StudentHomePageWidgetState extends State<StudentHomePageWidget>
                   await authManager.signOut();
                   GoRouter.of(context).clearRedirectLocation();
 
-                  context.goNamedAuth(
-                      MainSignUpWidget.routeName, context.mounted);
+                  context.goNamedAuth(StartWidget.routeName, context.mounted);
                 },
               ),
             ),

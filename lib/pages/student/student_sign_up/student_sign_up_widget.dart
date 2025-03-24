@@ -1,6 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -45,40 +42,6 @@ class _StudentSignUpWidgetState extends State<StudentSignUpWidget> {
 
     super.dispose();
   }
-
-  Future<void> signUpStudent() async {
-  try {
-    
-    String name = _model.textController1!.text; 
-    String studentId = _model.textController2!.text; 
-    String email = FirebaseAuth.instance.currentUser?.email ?? ''; 
-    String role = "Student";
-    Map<String, dynamic> studentData = {
-      'name': name,
-      'studentID': studentId,
-      'email' : email,
-      'role' : role ,
-    };
- // Sử dụng user.uid làm Document ID
-      CollectionReference students = FirebaseFirestore.instance.collection('students');
-      await students.doc(FirebaseAuth.instance.currentUser?.uid).set(studentData);
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Student data added successfully!")),
-      );
-
-  
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Student data added successfully!")),
-    );
-
-  } catch (e) {
-    // Hiển thị lỗi nếu có
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error: ${e.toString()}')),
-    );
-  }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -413,26 +376,7 @@ class _StudentSignUpWidgetState extends State<StudentSignUpWidget> {
                                               0.057,
                                       decoration: BoxDecoration(),
                                     ),
-                                    InkWell(
-                                      onTap: () async {
-                                         // Kiểm tra nếu các trường có dữ liệu
-                                      if (_model.textController1.text.isEmpty ||
-                                          _model.textController2.text.isEmpty) {
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                          SnackBar(
-                                            content: Text('Vui lòng điền đầy đủ thông tin!'),
-                                            backgroundColor: Colors.red,
-                                          ),
-                                        );
-                                        return;
-                                      }
-                                    
-                                      await signUpStudent();
-                                      context.pushNamed(
-                                       LogInWidget.routeName
-                                      );
-                                    },
-                                    child : Container(
+                                    Container(
                                       width: double.infinity,
                                       height:
                                           MediaQuery.sizeOf(context).height *
@@ -480,7 +424,6 @@ class _StudentSignUpWidgetState extends State<StudentSignUpWidget> {
                                         ),
                                       ),
                                     ),
-                                ),
                                     Container(
                                       height:
                                           MediaQuery.sizeOf(context).height *

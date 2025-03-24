@@ -1,33 +1,34 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_swipeable_stack.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/index.dart';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'teacher_creating_ques_home_model.dart';
-export 'teacher_creating_ques_home_model.dart';
+import 'teacher_creating_ques_home_copy_model.dart';
+export 'teacher_creating_ques_home_copy_model.dart';
 
-class TeacherCreatingQuesHomeWidget extends StatefulWidget {
-  const TeacherCreatingQuesHomeWidget({super.key});
+class TeacherCreatingQuesHomeCopyWidget extends StatefulWidget {
+  const TeacherCreatingQuesHomeCopyWidget({super.key});
 
-  static String routeName = 'TeacherCreatingQuesHome';
-  static String routePath = '/teacherCreatingQuesHome';
+  static String routeName = 'TeacherCreatingQuesHomeCopy';
+  static String routePath = '/teacherCreatingQuesHomeCopy';
 
   @override
-  State<TeacherCreatingQuesHomeWidget> createState() =>
-      _TeacherCreatingQuesHomeWidgetState();
+  State<TeacherCreatingQuesHomeCopyWidget> createState() =>
+      _TeacherCreatingQuesHomeCopyWidgetState();
 }
 
-class _TeacherCreatingQuesHomeWidgetState
-    extends State<TeacherCreatingQuesHomeWidget> {
-  late TeacherCreatingQuesHomeModel _model;
+class _TeacherCreatingQuesHomeCopyWidgetState
+    extends State<TeacherCreatingQuesHomeCopyWidget> {
+  late TeacherCreatingQuesHomeCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TeacherCreatingQuesHomeModel());
+    _model = createModel(context, () => TeacherCreatingQuesHomeCopyModel());
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -861,9 +862,19 @@ class _TeacherCreatingQuesHomeWidgetState
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          context.pushNamed(
-                                              TeacherCreatingQuesWidget
-                                                  .routeName);
+                                          await TestRecord.collection
+                                              .doc()
+                                              .set(createTestRecordData(
+                                                name: random_data.randomString(
+                                                  0,
+                                                  0,
+                                                  true,
+                                                  false,
+                                                  false,
+                                                ),
+                                                description:
+                                                    _model.textController.text,
+                                              ));
                                         },
                                         child: Container(
                                           width: 157.2,

@@ -2,12 +2,12 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'teacher_home_page_model.dart';
 export 'teacher_home_page_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class TeacherHomePageWidget extends StatefulWidget {
   const TeacherHomePageWidget({super.key});
@@ -17,16 +17,6 @@ class TeacherHomePageWidget extends StatefulWidget {
 
   @override
   State<TeacherHomePageWidget> createState() => _TeacherHomePageWidgetState();
-}
-
-  void getCurrentUserId() {
-  User? currentUser = FirebaseAuth.instance.currentUser;
-  if (currentUser != null) {
-    String userId = currentUser.uid;
-    print("Current User ID: $userId");
-  } else {
-    print("No user is currently logged in.");
-  }
 }
 
 class _TeacherHomePageWidgetState extends State<TeacherHomePageWidget>
@@ -376,12 +366,7 @@ class _TeacherHomePageWidgetState extends State<TeacherHomePageWidget>
                             ),
                           ),
                         ),
-                        InkWell(
-                          onTap : () async
-                          {
-                            getCurrentUserId();
-                          },
-                        child : Align(
+                        Align(
                           alignment: AlignmentDirectional(-0.86, -0.24),
                           child: Text(
                             'Lịch học',
@@ -397,9 +382,8 @@ class _TeacherHomePageWidgetState extends State<TeacherHomePageWidget>
                                 ),
                           ),
                         ),
-                        ),
                         Align(
-                          alignment: AlignmentDirectional(-0.8, 0.54),
+                          alignment: AlignmentDirectional(-0.83, 0.51),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
                             child: Image.network(
@@ -496,13 +480,26 @@ class _TeacherHomePageWidgetState extends State<TeacherHomePageWidget>
                         ),
                         Align(
                           alignment: AlignmentDirectional(-0.36, -0.91),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.network(
-                              'https://picsum.photos/seed/969/600',
-                              width: 35.0,
-                              height: 35.0,
-                              fit: BoxFit.cover,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              if (Navigator.of(context).canPop()) {
+                                context.pop();
+                              }
+                              context.pushNamed(
+                                  TeacherCreatingQuesHomeWidget.routeName);
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.network(
+                                'https://picsum.photos/seed/969/600',
+                                width: 35.0,
+                                height: 35.0,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),

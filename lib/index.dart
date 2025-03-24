@@ -9,7 +9,7 @@ export '/pages/student_ranking/student_ranking_widget.dart'
     show StudentRankingWidget;
 export '/pages/teacher/teacher_creating_ques_home/teacher_creating_ques_home_widget.dart'
     show TeacherCreatingQuesHomeWidget;
-export '/pages/profile/profile_widget.dart' show ProfileWidget;
+export '/pages/profile_main/profile_main_widget.dart' show ProfileMainWidget;
 export '/pages/teacher/teacher_sign_up/teacher_sign_up_widget.dart'
     show TeacherSignUpWidget;
 export '/pages/student/student_sign_up/student_sign_up_widget.dart'
@@ -26,3 +26,8 @@ export '/pages/teacher/teacher_creating_ques/teacher_creating_ques_widget.dart'
     show TeacherCreatingQuesWidget;
 export '/pages/student/a_i_recommendation_page/a_i_recommendation_page_widget.dart'
     show AIRecommendationPageWidget;
+export '/pages/teacher/teacher_creating_ques_home_copy/teacher_creating_ques_home_copy_widget.dart'
+    show TeacherCreatingQuesHomeCopyWidget;
+export '/pages/profile_change_password/profile_change_password_widget.dart'
+    show ProfileChangePasswordWidget;
+export '/pages/profile_edit/profile_edit_widget.dart' show ProfileEditWidget;

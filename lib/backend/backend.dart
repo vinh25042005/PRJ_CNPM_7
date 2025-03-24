@@ -5,6 +5,7 @@ import 'schema/util/firestore_util.dart';
 import 'schema/teachers_record.dart';
 import 'schema/students_record.dart';
 import 'schema/assignments_record.dart';
+import 'schema/test_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -16,6 +17,7 @@ export 'schema/util/schema_util.dart';
 export 'schema/teachers_record.dart';
 export 'schema/students_record.dart';
 export 'schema/assignments_record.dart';
+export 'schema/test_record.dart';
 
 /// Functions to query TeachersRecords (as a Stream and as a Future).
 Future<int> queryTeachersRecordCount({
@@ -123,6 +125,43 @@ Future<List<AssignmentsRecord>> queryAssignmentsRecordOnce({
     queryCollectionOnce(
       AssignmentsRecord.collection,
       AssignmentsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query TestRecords (as a Stream and as a Future).
+Future<int> queryTestRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      TestRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<TestRecord>> queryTestRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      TestRecord.collection,
+      TestRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<TestRecord>> queryTestRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      TestRecord.collection,
+      TestRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

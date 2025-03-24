@@ -9,9 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'teacher_sign_up_model.dart';
 export 'teacher_sign_up_model.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
 
 class TeacherSignUpWidget extends StatefulWidget {
   const TeacherSignUpWidget({super.key});
@@ -52,42 +49,6 @@ class _TeacherSignUpWidgetState extends State<TeacherSignUpWidget> {
     super.dispose();
   }
 
-Future<void> signUpTeacher() async {
-  try {
-    
-    String name = _model.textController1!.text; 
-    String teacherId = _model.textController2!.text; 
-    String subject = _model.dropDownValue ?? ''; 
-    String email = FirebaseAuth.instance.currentUser?.email ?? ''; 
-    String role = "Teacher";
-    Map<String, dynamic> teacherData = {
-      'name': name,
-      'teacherId': teacherId,
-      'email': email,
-      'subjects': subject,
-      'schedule': ['12:00', '12:00'],  
-      'role' : role ,
-    };
- // Sử dụng user.uid làm Document ID
-      CollectionReference teachers = FirebaseFirestore.instance.collection('teachers');
-      await teachers.doc(FirebaseAuth.instance.currentUser?.uid).set(teacherData);
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Teacher data added successfully!")),
-      );
-
-  
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Teacher data added successfully!")),
-    );
-
-  } catch (e) {
-    // Hiển thị lỗi nếu có
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error: ${e.toString()}')),
-    );
-  }
-}
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -649,82 +610,57 @@ Future<void> signUpTeacher() async {
                                       isSearchable: false,
                                       isMultiSelect: false,
                                     ),
-                                    InkWell(
-                                      onTap: () async {
-                                        // Kiểm tra các trường nhập liệu
-                                        if (_model
-                                            .textController1!.text.isEmpty) {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                                content: Text(
-                                                    "Name cannot be empty")),
-                                          );
-                                          return; // Dừng lại nếu có lỗi
-                                        }
-                                        if (_model
-                                            .textController2!.text.isEmpty) {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                                content: Text(
-                                                    "Teacher ID cannot be empty")),
-                                          );
-                                          return;
-                                        }
-
-                                        // Tạo tài khoản giáo viên và lưu vào Firestore
-                                        await signUpTeacher();
-
-                                        // Điều hướng đến trang Teacher Dashboard sau khi đăng ký thành công
-                                        context.pushNamed(
-                                            LogInWidget.routeName
-                                            );
-                                      },
-                                      child: Container(
-                                        width: double.infinity,
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.076,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 0.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              offset: Offset(4.0, 4.0),
-                                              spreadRadius: 0.0,
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          border: Border.all(
+                                    Container(
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              0.057,
+                                      decoration: BoxDecoration(),
+                                    ),
+                                    Container(
+                                      width: double.infinity,
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              0.076,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 0.0,
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
-                                            width: 1.0,
-                                          ),
+                                            offset: Offset(
+                                              4.0,
+                                              4.0,
+                                            ),
+                                            spreadRadius: 0.0,
+                                          )
+                                        ],
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          width: 1.0,
                                         ),
-                                        child: Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Text(
-                                            'Sign up',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Sukhumvit Set',
-                                                  fontSize: 28.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts:
-                                                      GoogleFonts.asMap()
-                                                          .containsKey(
-                                                              'Sukhumvit Set'),
-                                                ),
-                                          ),
+                                      ),
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          'Sign up',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Sukhumvit Set',
+                                                fontSize: 28.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                                useGoogleFonts:
+                                                    GoogleFonts.asMap()
+                                                        .containsKey(
+                                                            'Sukhumvit Set'),
+                                              ),
                                         ),
                                       ),
                                     ),

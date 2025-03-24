@@ -75,16 +75,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? LogInWidget()
-          : StartWidget(),
+      errorBuilder: (context, state) =>
+          appStateNotifier.loggedIn ? LogInWidget() : StartWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => appStateNotifier.loggedIn
-              ? LogInWidget()
-              : StartWidget(),
+          builder: (context, _) =>
+              appStateNotifier.loggedIn ? LogInWidget() : StartWidget(),
         ),
         FFRoute(
           name: QuestionsWidget.routeName,
@@ -122,9 +120,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => TeacherCreatingQuesHomeWidget(),
         ),
         FFRoute(
-          name: ProfileWidget.routeName,
-          path: ProfileWidget.routePath,
-          builder: (context, params) => ProfileWidget(),
+          name: ProfileMainWidget.routeName,
+          path: ProfileMainWidget.routePath,
+          builder: (context, params) => ProfileMainWidget(),
         ),
         FFRoute(
           name: TeacherSignUpWidget.routeName,
@@ -165,6 +163,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: AIRecommendationPageWidget.routeName,
           path: AIRecommendationPageWidget.routePath,
           builder: (context, params) => AIRecommendationPageWidget(),
+        ),
+        FFRoute(
+          name: TeacherCreatingQuesHomeCopyWidget.routeName,
+          path: TeacherCreatingQuesHomeCopyWidget.routePath,
+          builder: (context, params) => TeacherCreatingQuesHomeCopyWidget(),
+        ),
+        FFRoute(
+          name: ProfileChangePasswordWidget.routeName,
+          path: ProfileChangePasswordWidget.routePath,
+          builder: (context, params) => ProfileChangePasswordWidget(),
+        ),
+        FFRoute(
+          name: ProfileEditWidget.routeName,
+          path: ProfileEditWidget.routePath,
+          builder: (context, params) => ProfileEditWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
