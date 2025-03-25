@@ -323,9 +323,42 @@ class _StudentSignUpWidgetState extends State<StudentSignUpWidget>
                                             studentID: _model
                                                 .studentIDTextController.text,
                                           ));
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      await authManager.signOut();
+                                      GoRouter.of(context)
+                                          .clearRedirectLocation();
 
-                                      context.pushNamed(
-                                          StudentHomePageWidget.routeName);
+                                      context.pushNamedAuth(
+                                        RegistWidget.routeName,
+                                        context.mounted,
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 1),
+                                          ),
+                                        },
+                                      );
+
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Please verify your email before logging in',
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
+                                        ),
+                                      );
                                     },
                                     text: 'Create Account',
                                     options: FFButtonOptions(
@@ -407,8 +440,7 @@ class _StudentSignUpWidgetState extends State<StudentSignUpWidget>
                                                 }
 
                                                 context.goNamedAuth(
-                                                    StudentHomePageWidget
-                                                        .routeName,
+                                                    RegistWidget.routeName,
                                                     context.mounted);
                                               },
                                               text: 'Continue with Google',
@@ -473,7 +505,7 @@ class _StudentSignUpWidgetState extends State<StudentSignUpWidget>
                                                       }
 
                                                       context.goNamedAuth(
-                                                          StudentHomePageWidget
+                                                          RegistWidget
                                                               .routeName,
                                                           context.mounted);
                                                     },

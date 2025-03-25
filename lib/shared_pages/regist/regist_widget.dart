@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -55,6 +56,12 @@ class _RegistWidgetState extends State<RegistWidget>
 
     _model.passwordConfirmTextController ??= TextEditingController();
     _model.passwordConfirmFocusNode ??= FocusNode();
+
+    _model.textController2 ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
+
+    _model.textController3 ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
 
     animationsMap.addAll({
       'columnOnPageLoadAnimation1': AnimationInfo(
@@ -504,79 +511,6 @@ class _RegistWidgetState extends State<RegistWidget>
                                                       .asValidator(context),
                                                 ),
                                               ),
-                                              Expanded(
-                                                child: Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, -1.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(124.0,
-                                                                0.0, 0.0, 0.0),
-                                                    child:
-                                                        FlutterFlowRadioButton(
-                                                      options: [
-                                                        'Teacher',
-                                                        'Student'
-                                                      ].toList(),
-                                                      onChanged: (val) =>
-                                                          safeSetState(() {}),
-                                                      controller: _model
-                                                              .roleValueController ??=
-                                                          FormFieldController<
-                                                              String>(null),
-                                                      optionHeight: 32.0,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      selectedTextStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Plus Jakarta Sans',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      textPadding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  100.0,
-                                                                  0.0),
-                                                      buttonPosition:
-                                                          RadioButtonPosition
-                                                              .left,
-                                                      direction:
-                                                          Axis.horizontal,
-                                                      radioButtonColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      inactiveRadioButtonColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      toggleable: false,
-                                                      horizontalAlignment:
-                                                          WrapAlignment.center,
-                                                      verticalAlignment:
-                                                          WrapCrossAlignment
-                                                              .start,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
                                               Align(
                                                 alignment: AlignmentDirectional(
                                                     0.0, -1.0),
@@ -604,20 +538,63 @@ class _RegistWidgetState extends State<RegistWidget>
                                                         return;
                                                       }
 
-                                                      if (_model.roleValue !=
-                                                              null &&
-                                                          _model.roleValue !=
-                                                              '') {
+                                                      _model.isVerified =
+                                                          await actions
+                                                              .checkEmailVerified();
+                                                      _model.roleDetect =
+                                                          await actions
+                                                              .roleDetect();
+                                                      if ((_model.roleDetect ==
+                                                              'teacher') &&
+                                                          _model.isVerified!) {
                                                         context.pushNamedAuth(
                                                             TeacherHomePageCopyWidget
                                                                 .routeName,
                                                             context.mounted);
-                                                      } else {
+                                                      } else if ((_model
+                                                                  .roleDetect ==
+                                                              'student') &&
+                                                          _model.isVerified!) {
                                                         context.pushNamedAuth(
                                                             StudentHomePageWidget
                                                                 .routeName,
                                                             context.mounted);
+                                                      } else {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Please verify your email before logging in',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    4000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                          ),
+                                                        );
+                                                        GoRouter.of(context)
+                                                            .prepareAuthEvent();
+                                                        await authManager
+                                                            .signOut();
+                                                        GoRouter.of(context)
+                                                            .clearRedirectLocation();
+
+                                                        context.pushNamedAuth(
+                                                            RegistWidget
+                                                                .routeName,
+                                                            context.mounted);
                                                       }
+
+                                                      safeSetState(() {});
                                                     },
                                                     text: 'Sign In',
                                                     options: FFButtonOptions(
@@ -674,9 +651,50 @@ class _RegistWidgetState extends State<RegistWidget>
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 16.0),
                                                   child: FFButtonWidget(
-                                                    onPressed: () {
-                                                      print(
-                                                          'Button pressed ...');
+                                                    onPressed: () async {
+                                                      if (_model
+                                                          .emailAddressTextController
+                                                          .text
+                                                          .isEmpty) {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Email required!',
+                                                            ),
+                                                          ),
+                                                        );
+                                                        return;
+                                                      }
+                                                      await authManager
+                                                          .resetPassword(
+                                                        email: _model
+                                                            .emailAddressTextController
+                                                            .text,
+                                                        context: context,
+                                                      );
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        SnackBar(
+                                                          content: Text(
+                                                            'A password reset email has been sent. Please check your email',
+                                                            style: TextStyle(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
+                                                            ),
+                                                          ),
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  4000),
+                                                          backgroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .secondary,
+                                                        ),
+                                                      );
                                                     },
                                                     text: 'Forgot Password',
                                                     options: FFButtonOptions(
@@ -810,7 +828,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                 }
 
                                                                 context.goNamedAuth(
-                                                                    StudentHomePageWidget
+                                                                    RegistWidget
                                                                         .routeName,
                                                                     context
                                                                         .mounted);
@@ -898,7 +916,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                       }
 
                                                                       context.goNamedAuth(
-                                                                          StudentHomePageWidget
+                                                                          RegistWidget
                                                                               .routeName,
                                                                           context
                                                                               .mounted);
@@ -1481,19 +1499,42 @@ class _RegistWidgetState extends State<RegistWidget>
 
                                                       await authManager
                                                           .sendEmailVerification();
-                                                      if (_model.selectRoleValue !=
-                                                              null &&
-                                                          _model.selectRoleValue !=
-                                                              '') {
+                                                      if (_model
+                                                              .selectRoleValue ==
+                                                          'Teacher') {
                                                         context.pushNamedAuth(
                                                             TeacherSignUpWidget
                                                                 .routeName,
                                                             context.mounted);
-                                                      } else {
+                                                      } else if (_model
+                                                              .selectRoleValue ==
+                                                          'Student') {
                                                         context.pushNamedAuth(
                                                             StudentSignUpWidget
                                                                 .routeName,
                                                             context.mounted);
+                                                      } else {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'You must select role',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    4000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
+                                                          ),
+                                                        );
                                                       }
                                                     },
                                                     text: 'Next',
@@ -1630,7 +1671,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                 }
 
                                                                 context.goNamedAuth(
-                                                                    StudentHomePageWidget
+                                                                    RegistWidget
                                                                         .routeName,
                                                                     context
                                                                         .mounted);
@@ -1718,7 +1759,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                                       }
 
                                                                       context.goNamedAuth(
-                                                                          StudentHomePageWidget
+                                                                          RegistWidget
                                                                               .routeName,
                                                                           context
                                                                               .mounted);
