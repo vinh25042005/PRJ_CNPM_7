@@ -147,7 +147,7 @@ class _StudentHomePageWidgetState extends State<StudentHomePageWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 20.0, 0.0, 10.0),
                                         child: Text(
-                                          'Welcome back, Son!',
+                                          'Welcome back, Student',
                                           style: FlutterFlowTheme.of(context)
                                               .headlineSmall
                                               .override(

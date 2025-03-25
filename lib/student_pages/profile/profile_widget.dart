@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -232,7 +233,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Ngo Ba Son',
+                                          currentUserDisplayName,
                                           style: FlutterFlowTheme.of(context)
                                               .headlineSmall
                                               .override(
@@ -241,7 +242,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                               ),
                                         ),
                                         Text(
-                                          'ngobason137@gmail.com',
+                                          currentUserEmail,
                                           style: FlutterFlowTheme.of(context)
                                               .titleMedium
                                               .override(

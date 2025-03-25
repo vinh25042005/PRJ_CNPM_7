@@ -148,7 +148,7 @@ class _TeacherHomePageCopyWidgetState extends State<TeacherHomePageCopyWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 20.0, 0.0, 10.0),
                                         child: Text(
-                                          'Welcome back, Son!',
+                                          'Welcome back, Teacher',
                                           style: FlutterFlowTheme.of(context)
                                               .headlineSmall
                                               .override(

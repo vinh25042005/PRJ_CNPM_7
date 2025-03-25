@@ -21,8 +21,10 @@ class RegistModel extends FlutterFlowModel<RegistWidget> {
   TextEditingController? passwordTextController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
-  // State field(s) for role widget.
-  FormFieldController<String>? roleValueController1;
+  // Stores action output result for [Custom Action - checkEmailVerified] action in Button widget.
+  bool? isVerified;
+  // Stores action output result for [Custom Action - roleDetect] action in Button widget.
+  String? roleDetect;
   // State field(s) for emailAddress_Create widget.
   FocusNode? emailAddressCreateFocusNode;
   TextEditingController? emailAddressCreateTextController;
@@ -40,8 +42,16 @@ class RegistModel extends FlutterFlowModel<RegistWidget> {
   late bool passwordConfirmVisibility;
   String? Function(BuildContext, String?)?
       passwordConfirmTextControllerValidator;
-  // State field(s) for role widget.
-  FormFieldController<String>? roleValueController2;
+  // State field(s) for selectRole widget.
+  FormFieldController<String>? selectRoleValueController;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode1;
+  TextEditingController? textController2;
+  String? Function(BuildContext, String?)? textController2Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode2;
+  TextEditingController? textController3;
+  String? Function(BuildContext, String?)? textController3Validator;
 
   @override
   void initState(BuildContext context) {
@@ -67,9 +77,14 @@ class RegistModel extends FlutterFlowModel<RegistWidget> {
 
     passwordConfirmFocusNode?.dispose();
     passwordConfirmTextController?.dispose();
+
+    textFieldFocusNode1?.dispose();
+    textController2?.dispose();
+
+    textFieldFocusNode2?.dispose();
+    textController3?.dispose();
   }
 
   /// Additional helper methods.
-  String? get roleValue1 => roleValueController1?.value;
-  String? get roleValue2 => roleValueController2?.value;
+  String? get selectRoleValue => selectRoleValueController?.value;
 }

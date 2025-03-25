@@ -1,6 +1,7 @@
 // Export pages
 export '/student_pages/student_home_page/student_home_page_widget.dart'
     show StudentHomePageWidget;
+export '/student_pages/subject/subject_widget.dart' show SubjectWidget;
 export '/student_pages/profile/profile_widget.dart' show ProfileWidget;
 export '/student_pages/tasks/tasks_widget.dart' show TasksWidget;
 export '/shared_pages/notification/notification_widget.dart'
