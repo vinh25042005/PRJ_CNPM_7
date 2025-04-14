@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -71,19 +72,22 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
+    GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? RegistWidget() : RegistWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? entryPage ?? RegistWidget()
+          : RegistWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? RegistWidget() : RegistWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? entryPage ?? RegistWidget()
+              : RegistWidget(),
         ),
         FFRoute(
           name: StudentHomePageWidget.routeName,
@@ -91,9 +95,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => StudentHomePageWidget(),
         ),
         FFRoute(
-          name: SubjectWidget.routeName,
-          path: SubjectWidget.routePath,
-          builder: (context, params) => SubjectWidget(),
+          name: ClassesTeacherWidget.routeName,
+          path: ClassesTeacherWidget.routePath,
+          builder: (context, params) => ClassesTeacherWidget(),
         ),
         FFRoute(
           name: ProfileWidget.routeName,
@@ -101,9 +105,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ProfileWidget(),
         ),
         FFRoute(
-          name: TasksWidget.routeName,
-          path: TasksWidget.routePath,
-          builder: (context, params) => TasksWidget(),
+          name: TaskListPageWidget.routeName,
+          path: TaskListPageWidget.routePath,
+          builder: (context, params) => TaskListPageWidget(
+            receivedFromClass: params.getParam(
+              'receivedFromClass',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['classes'],
+            ),
+          ),
         ),
         FFRoute(
           name: NotificationWidget.routeName,
@@ -121,44 +132,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => SettingsWidget(),
         ),
         FFRoute(
-          name: CreatingQuesWidget.routeName,
-          path: CreatingQuesWidget.routePath,
-          asyncParams: {
-            'docRef': getDoc(['quizzes'], QuizzesRecord.fromSnapshot),
-          },
-          builder: (context, params) => CreatingQuesWidget(
-            docRef: params.getParam(
-              'docRef',
-              ParamType.Document,
-            ),
-          ),
-        ),
-        FFRoute(
           name: TeacherSignUpWidget.routeName,
           path: TeacherSignUpWidget.routePath,
           builder: (context, params) => TeacherSignUpWidget(),
-        ),
-        FFRoute(
-          name: CreatingQuesHomeCopyWidget.routeName,
-          path: CreatingQuesHomeCopyWidget.routePath,
-          builder: (context, params) => CreatingQuesHomeCopyWidget(
-            docID: params.getParam(
-              'docID',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['quizzes'],
-            ),
-          ),
-        ),
-        FFRoute(
-          name: TeacherCreatingQuesWidget.routeName,
-          path: TeacherCreatingQuesWidget.routePath,
-          builder: (context, params) => TeacherCreatingQuesWidget(),
-        ),
-        FFRoute(
-          name: TeacherCreatingQuesCopyWidget.routeName,
-          path: TeacherCreatingQuesCopyWidget.routePath,
-          builder: (context, params) => TeacherCreatingQuesCopyWidget(),
         ),
         FFRoute(
           name: StudentSignUpWidget.routeName,
@@ -166,9 +142,200 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => StudentSignUpWidget(),
         ),
         FFRoute(
-          name: TeacherHomePageCopyWidget.routeName,
-          path: TeacherHomePageCopyWidget.routePath,
-          builder: (context, params) => TeacherHomePageCopyWidget(),
+          name: TeacherHomePageWidget.routeName,
+          path: TeacherHomePageWidget.routePath,
+          builder: (context, params) => TeacherHomePageWidget(),
+        ),
+        FFRoute(
+          name: ManageShedulePageWidget.routeName,
+          path: ManageShedulePageWidget.routePath,
+          builder: (context, params) => ManageShedulePageWidget(),
+        ),
+        FFRoute(
+          name: AddClassWidget.routeName,
+          path: AddClassWidget.routePath,
+          builder: (context, params) => AddClassWidget(),
+        ),
+        FFRoute(
+          name: InfoTaskWidget.routeName,
+          path: InfoTaskWidget.routePath,
+          builder: (context, params) => InfoTaskWidget(
+            receiveFromTaskList: params.getParam(
+              'receiveFromTaskList',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['quizzes'],
+            ),
+            title: params.getParam(
+              'title',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: CreatingEssayQuesWidget.routeName,
+          path: CreatingEssayQuesWidget.routePath,
+          builder: (context, params) => CreatingEssayQuesWidget(
+            title: params.getParam(
+              'title',
+              ParamType.String,
+            ),
+            quizID: params.getParam(
+              'quizID',
+              ParamType.String,
+            ),
+            docRef: params.getParam(
+              'docRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['quizzes'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: EssayQuestionsWidget.routeName,
+          path: EssayQuestionsWidget.routePath,
+          builder: (context, params) => EssayQuestionsWidget(
+            ques: params.getParam(
+              'ques',
+              ParamType.String,
+            ),
+            docRef: params.getParam(
+              'docRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['Questions'],
+            ),
+            quizzRef: params.getParam(
+              'quizzRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['quizzes'],
+            ),
+            userAnswer: params.getParam(
+              'userAnswer',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: CreatingEssayQuesHomeWidget.routeName,
+          path: CreatingEssayQuesHomeWidget.routePath,
+          builder: (context, params) => CreatingEssayQuesHomeWidget(
+            title: params.getParam(
+              'title',
+              ParamType.String,
+            ),
+            quizID: params.getParam(
+              'quizID',
+              ParamType.String,
+            ),
+            docRef: params.getParam(
+              'docRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['quizzes'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: DoTaskWidget.routeName,
+          path: DoTaskWidget.routePath,
+          builder: (context, params) => DoTaskWidget(
+            receiveFromInfoTask: params.getParam(
+              'receiveFromInfoTask',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['Questions'],
+            ),
+            receiveFromInfoTask2: params.getParam(
+              'receiveFromInfoTask2',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['quizzes'],
+            ),
+            ques: params.getParam(
+              'ques',
+              ParamType.String,
+            ),
+            title: params.getParam(
+              'title',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ClassesStudentWidget.routeName,
+          path: ClassesStudentWidget.routePath,
+          builder: (context, params) => ClassesStudentWidget(),
+        ),
+        FFRoute(
+          name: ManageClassWidget.routeName,
+          path: ManageClassWidget.routePath,
+          builder: (context, params) => ManageClassWidget(
+            classID: params.getParam(
+              'classID',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['classes'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: AiWidget.routeName,
+          path: AiWidget.routePath,
+          builder: (context, params) => AiWidget(),
+        ),
+        FFRoute(
+          name: ChangePasswordWidget.routeName,
+          path: ChangePasswordWidget.routePath,
+          builder: (context, params) => ChangePasswordWidget(),
+        ),
+        FFRoute(
+          name: StudentSubmitDetailWidget.routeName,
+          path: StudentSubmitDetailWidget.routePath,
+          builder: (context, params) => StudentSubmitDetailWidget(
+            quizID: params.getParam(
+              'quizID',
+              ParamType.String,
+            ),
+            userID: params.getParam(
+              'userID',
+              ParamType.String,
+            ),
+            studenID: params.getParam(
+              'studenID',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: AICopyWidget.routeName,
+          path: AICopyWidget.routePath,
+          builder: (context, params) => AICopyWidget(),
+        ),
+        FFRoute(
+          name: ProfileTeacherWidget.routeName,
+          path: ProfileTeacherWidget.routePath,
+          builder: (context, params) => ProfileTeacherWidget(),
+        ),
+        FFRoute(
+          name: StudentSubmitDetailCopyWidget.routeName,
+          path: StudentSubmitDetailCopyWidget.routePath,
+          builder: (context, params) => StudentSubmitDetailCopyWidget(
+            quizID: params.getParam(
+              'quizID',
+              ParamType.String,
+            ),
+            userID: params.getParam(
+              'userID',
+              ParamType.String,
+            ),
+            studenID: params.getParam(
+              'studenID',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

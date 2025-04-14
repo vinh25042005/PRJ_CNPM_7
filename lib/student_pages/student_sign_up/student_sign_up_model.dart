@@ -11,10 +11,6 @@ class StudentSignUpModel extends FlutterFlowModel<StudentSignUpWidget> {
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
-  // State field(s) for studentID widget.
-  FocusNode? studentIDFocusNode;
-  TextEditingController? studentIDTextController;
-  String? Function(BuildContext, String?)? studentIDTextControllerValidator;
   // State field(s) for name widget.
   FocusNode? nameFocusNode;
   TextEditingController? nameTextController;
@@ -26,9 +22,6 @@ class StudentSignUpModel extends FlutterFlowModel<StudentSignUpWidget> {
   @override
   void dispose() {
     tabBarController?.dispose();
-    studentIDFocusNode?.dispose();
-    studentIDTextController?.dispose();
-
     nameFocusNode?.dispose();
     nameTextController?.dispose();
   }

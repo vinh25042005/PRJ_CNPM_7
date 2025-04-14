@@ -248,6 +248,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                         text: 'Sign In',
                                       ),
                                       Tab(
+                                        key: ValueKey('Tab_bm1x'),
                                         text: 'Sign Up',
                                       ),
                                     ],
@@ -295,6 +296,8 @@ class _RegistWidgetState extends State<RegistWidget>
                                                 child: Container(
                                                   width: double.infinity,
                                                   child: TextFormField(
+                                                    key: ValueKey(
+                                                        'emailAddress_9bos'),
                                                     controller: _model
                                                         .emailAddressTextController,
                                                     focusNode: _model
@@ -394,6 +397,8 @@ class _RegistWidgetState extends State<RegistWidget>
                                               Container(
                                                 width: double.infinity,
                                                 child: TextFormField(
+                                                  key:
+                                                      ValueKey('password_2gj6'),
                                                   controller: _model
                                                       .passwordTextController,
                                                   focusNode:
@@ -517,8 +522,10 @@ class _RegistWidgetState extends State<RegistWidget>
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          0.0, 0.0, 0.0, 16.0),
+                                                          0.0, 16.0, 0.0, 16.0),
                                                   child: FFButtonWidget(
+                                                    key:
+                                                        ValueKey('Button_c3fi'),
                                                     onPressed: () async {
                                                       GoRouter.of(context)
                                                           .prepareAuthEvent();
@@ -548,7 +555,7 @@ class _RegistWidgetState extends State<RegistWidget>
                                                               'teacher') &&
                                                           _model.isVerified!) {
                                                         context.pushNamedAuth(
-                                                            TeacherHomePageCopyWidget
+                                                            TeacherHomePageWidget
                                                                 .routeName,
                                                             context.mounted);
                                                       } else if ((_model
@@ -1023,6 +1030,8 @@ class _RegistWidgetState extends State<RegistWidget>
                                                 child: Container(
                                                   width: double.infinity,
                                                   child: TextFormField(
+                                                    key: ValueKey(
+                                                        'emailAddress_Create_1bpj'),
                                                     controller: _model
                                                         .emailAddressCreateTextController,
                                                     focusNode: _model
@@ -1126,6 +1135,8 @@ class _RegistWidgetState extends State<RegistWidget>
                                                 child: Container(
                                                   width: double.infinity,
                                                   child: TextFormField(
+                                                    key: ValueKey(
+                                                        'password_Create_kd1q'),
                                                     controller: _model
                                                         .passwordCreateTextController,
                                                     focusNode: _model
@@ -1251,6 +1262,8 @@ class _RegistWidgetState extends State<RegistWidget>
                                                 child: Container(
                                                   width: double.infinity,
                                                   child: TextFormField(
+                                                    key: ValueKey(
+                                                        'passwordConfirm_4brj'),
                                                     controller: _model
                                                         .passwordConfirmTextController,
                                                     focusNode: _model
@@ -1462,64 +1475,164 @@ class _RegistWidgetState extends State<RegistWidget>
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 16.0),
                                                   child: FFButtonWidget(
+                                                    key:
+                                                        ValueKey('Button_s25p'),
                                                     onPressed: () async {
-                                                      GoRouter.of(context)
-                                                          .prepareAuthEvent();
+                                                      _model.isValidEmail =
+                                                          await actions
+                                                              .isEmailValid(
+                                                        _model
+                                                            .emailAddressCreateTextController
+                                                            .text,
+                                                      );
+                                                      _model.isValidDigit =
+                                                          await actions
+                                                              .isDigitValid(
+                                                        _model
+                                                            .passwordCreateTextController
+                                                            .text,
+                                                      );
                                                       if (_model
-                                                              .passwordCreateTextController
-                                                              .text !=
-                                                          _model
-                                                              .passwordConfirmTextController
-                                                              .text) {
+                                                          .isValidEmail!) {
+                                                        if ((_model.passwordCreateTextController
+                                                                    .text ==
+                                                                _model
+                                                                    .passwordConfirmTextController
+                                                                    .text) &&
+                                                            _model
+                                                                .isValidDigit!) {
+                                                          if (_model
+                                                                  .selectRoleValue ==
+                                                              'Teacher') {
+                                                            context.pushNamedAuth(
+                                                                TeacherSignUpWidget
+                                                                    .routeName,
+                                                                context
+                                                                    .mounted);
+                                                          } else if (_model
+                                                                  .selectRoleValue ==
+                                                              'Student') {
+                                                            context.pushNamedAuth(
+                                                                StudentSignUpWidget
+                                                                    .routeName,
+                                                                context
+                                                                    .mounted);
+                                                          } else {
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
+                                                              SnackBar(
+                                                                content: Text(
+                                                                  'You must select role',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                  ),
+                                                                ),
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        4000),
+                                                                backgroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary,
+                                                              ),
+                                                            );
+                                                          }
+
+                                                          GoRouter.of(context)
+                                                              .prepareAuthEvent();
+                                                          if (_model
+                                                                  .passwordCreateTextController
+                                                                  .text !=
+                                                              _model
+                                                                  .passwordConfirmTextController
+                                                                  .text) {
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
+                                                              SnackBar(
+                                                                content: Text(
+                                                                  'Passwords don\'t match!',
+                                                                ),
+                                                              ),
+                                                            );
+                                                            return;
+                                                          }
+
+                                                          final user =
+                                                              await authManager
+                                                                  .createAccountWithEmail(
+                                                            context,
+                                                            _model
+                                                                .emailAddressCreateTextController
+                                                                .text,
+                                                            _model
+                                                                .passwordCreateTextController
+                                                                .text,
+                                                          );
+                                                          if (user == null) {
+                                                            return;
+                                                          }
+
+                                                          await authManager
+                                                              .sendEmailVerification();
+                                                        } else {
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(
+                                                            SnackBar(
+                                                              content: Text(
+                                                                'Email sai hoặc mật khẩu không trùn khớp (mật khẩu phải dài hơn 6 ký tự)',
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                ),
+                                                              ),
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      4000),
+                                                              backgroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary,
+                                                            ),
+                                                          );
+                                                        }
+                                                      } else if (!_model
+                                                          .isValidDigit!) {
                                                         ScaffoldMessenger.of(
                                                                 context)
                                                             .showSnackBar(
                                                           SnackBar(
                                                             content: Text(
-                                                              'Passwords don\'t match!',
+                                                              'M',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
                                                             ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    4000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary,
                                                           ),
                                                         );
-                                                        return;
-                                                      }
-
-                                                      final user = await authManager
-                                                          .createAccountWithEmail(
-                                                        context,
-                                                        _model
-                                                            .emailAddressCreateTextController
-                                                            .text,
-                                                        _model
-                                                            .passwordCreateTextController
-                                                            .text,
-                                                      );
-                                                      if (user == null) {
-                                                        return;
-                                                      }
-
-                                                      await authManager
-                                                          .sendEmailVerification();
-                                                      if (_model
-                                                              .selectRoleValue ==
-                                                          'Teacher') {
-                                                        context.pushNamedAuth(
-                                                            TeacherSignUpWidget
-                                                                .routeName,
-                                                            context.mounted);
-                                                      } else if (_model
-                                                              .selectRoleValue ==
-                                                          'Student') {
-                                                        context.pushNamedAuth(
-                                                            StudentSignUpWidget
-                                                                .routeName,
-                                                            context.mounted);
                                                       } else {
                                                         ScaffoldMessenger.of(
                                                                 context)
                                                             .showSnackBar(
                                                           SnackBar(
                                                             content: Text(
-                                                              'You must select role',
+                                                              'Bad format email',
                                                               style: TextStyle(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
@@ -1536,6 +1649,8 @@ class _RegistWidgetState extends State<RegistWidget>
                                                           ),
                                                         );
                                                       }
+
+                                                      safeSetState(() {});
                                                     },
                                                     text: 'Next',
                                                     options: FFButtonOptions(
@@ -1859,7 +1974,7 @@ class _RegistWidgetState extends State<RegistWidget>
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: CachedNetworkImageProvider(
-                          'https://images.unsplash.com/photo-1508385082359-f38ae991e8f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80',
+                          'https://images.unsplash.com/photo-1542866263-77e2cdc46889?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxNHx8Ymx1ZXxlbnwwfHx8fDE3NDQzOTA2NzV8MA&ixlib=rb-4.0.3&q=80&w=1080',
                         ),
                       ),
                       borderRadius: BorderRadius.circular(0.0),

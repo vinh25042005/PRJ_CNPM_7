@@ -1,16 +1,15 @@
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/shared_pages/side_bar/side_bar_widget.dart';
-import '/index.dart';
+import '/shared_pages/student_side_bar/student_side_bar_widget.dart';
 import 'student_home_page_widget.dart' show StudentHomePageWidget;
 import 'package:flutter/material.dart';
 
 class StudentHomePageModel extends FlutterFlowModel<StudentHomePageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // Model for SideBar component.
-  late SideBarModel sideBarModel;
+  // Model for StudentSideBar component.
+  late StudentSideBarModel studentSideBarModel;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
@@ -23,7 +22,7 @@ class StudentHomePageModel extends FlutterFlowModel<StudentHomePageWidget> {
 
   @override
   void initState(BuildContext context) {
-    sideBarModel = createModel(context, () => SideBarModel());
+    studentSideBarModel = createModel(context, () => StudentSideBarModel());
     calendarSelectedDay = DateTimeRange(
       start: DateTime.now().startOfDay,
       end: DateTime.now().endOfDay,
@@ -32,7 +31,7 @@ class StudentHomePageModel extends FlutterFlowModel<StudentHomePageWidget> {
 
   @override
   void dispose() {
-    sideBarModel.dispose();
+    studentSideBarModel.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
