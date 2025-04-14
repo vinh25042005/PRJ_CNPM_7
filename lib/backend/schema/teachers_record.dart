@@ -45,6 +45,11 @@ class TeachersRecord extends FirestoreRecord {
   String get teacherId => _teacherId ?? '';
   bool hasTeacherId() => _teacherId != null;
 
+  // "class_ids" field.
+  List<String>? _classIds;
+  List<String> get classIds => _classIds ?? const [];
+  bool hasClassIds() => _classIds != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _name = snapshotData['name'] as String?;
@@ -52,6 +57,7 @@ class TeachersRecord extends FirestoreRecord {
     _schedule = getDataList(snapshotData['schedule']);
     _subjects = snapshotData['subjects'] as String?;
     _teacherId = snapshotData['teacherId'] as String?;
+    _classIds = getDataList(snapshotData['class_ids']);
   }
 
   static CollectionReference get collection =>
@@ -119,12 +125,20 @@ class TeachersRecordDocumentEquality implements Equality<TeachersRecord> {
         e1?.role == e2?.role &&
         listEquality.equals(e1?.schedule, e2?.schedule) &&
         e1?.subjects == e2?.subjects &&
-        e1?.teacherId == e2?.teacherId;
+        e1?.teacherId == e2?.teacherId &&
+        listEquality.equals(e1?.classIds, e2?.classIds);
   }
 
   @override
-  int hash(TeachersRecord? e) => const ListEquality().hash(
-      [e?.email, e?.name, e?.role, e?.schedule, e?.subjects, e?.teacherId]);
+  int hash(TeachersRecord? e) => const ListEquality().hash([
+        e?.email,
+        e?.name,
+        e?.role,
+        e?.schedule,
+        e?.subjects,
+        e?.teacherId,
+        e?.classIds
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is TeachersRecord;

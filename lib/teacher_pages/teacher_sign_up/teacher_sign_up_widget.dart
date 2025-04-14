@@ -41,9 +41,6 @@ class _TeacherSignUpWidgetState extends State<TeacherSignUpWidget>
       length: 1,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
-    _model.teacherIDTextController ??= TextEditingController();
-    _model.teacherIDFocusNode ??= FocusNode();
-
     _model.nameTextController ??= TextEditingController();
     _model.nameFocusNode ??= FocusNode();
 
@@ -158,81 +155,6 @@ class _TeacherSignUpWidgetState extends State<TeacherSignUpWidget>
                                         fontFamily: 'Outfit',
                                         letterSpacing: 0.0,
                                       ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 16.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  child: TextFormField(
-                                    controller: _model.teacherIDTextController,
-                                    focusNode: _model.teacherIDFocusNode,
-                                    autofocus: true,
-                                    autofillHints: [AutofillHints.email],
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      labelText: 'Teacher ID',
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            letterSpacing: 0.0,
-                                          ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(40.0),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(40.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(40.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(40.0),
-                                      ),
-                                      filled: true,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      contentPadding: EdgeInsets.all(24.0),
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    keyboardType: TextInputType.emailAddress,
-                                    cursorColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    validator: _model
-                                        .teacherIDTextControllerValidator
-                                        .asValidator(context),
-                                  ),
                                 ),
                               ),
                               Padding(
@@ -356,6 +278,7 @@ class _TeacherSignUpWidgetState extends State<TeacherSignUpWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 16.0),
                                   child: FFButtonWidget(
+                                    key: ValueKey('Button_fi7w'),
                                     onPressed: () async {
                                       await TeachersRecord.collection
                                           .doc(currentUserUid)
@@ -365,8 +288,7 @@ class _TeacherSignUpWidgetState extends State<TeacherSignUpWidget>
                                           name: _model.nameTextController.text,
                                           role: 'Teacher',
                                           subjects: _model.dropDownValue,
-                                          teacherId: _model
-                                              .teacherIDTextController.text,
+                                          teacherId: currentUserUid,
                                         ),
                                         ...mapToFirestore(
                                           {

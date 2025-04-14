@@ -44,6 +44,10 @@ class RegistModel extends FlutterFlowModel<RegistWidget> {
       passwordConfirmTextControllerValidator;
   // State field(s) for selectRole widget.
   FormFieldController<String>? selectRoleValueController;
+  // Stores action output result for [Custom Action - isEmailValid] action in Button widget.
+  bool? isValidEmail;
+  // Stores action output result for [Custom Action - isDigitValid] action in Button widget.
+  bool? isValidDigit;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController2;

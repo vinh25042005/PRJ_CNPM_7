@@ -1,6 +1,8 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'settings_model.dart';
 export 'settings_model.dart';
@@ -24,6 +26,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SettingsModel());
+
+    _model.switchValue = true;
   }
 
   @override
@@ -44,46 +48,285 @@ class _SettingsWidgetState extends State<SettingsWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primary,
-          automaticallyImplyLeading: true,
-          leading: FlutterFlowIconButton(
-            borderRadius: 8.0,
-            buttonSize: 40.0,
-            fillColor: FlutterFlowTheme.of(context).primary,
-            icon: Icon(
-              Icons.arrow_back,
-              color: FlutterFlowTheme.of(context).info,
-              size: 24.0,
-            ),
-            onPressed: () {
-              print('IconButton pressed ...');
-            },
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          automaticallyImplyLeading: false,
+          title: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Settings',
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Outfit',
+                      letterSpacing: 0.0,
+                    ),
+              ),
+            ].divide(SizedBox(height: 4.0)),
           ),
-          title: Text(
-            'SETTING',
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Plus Jakarta Sans',
-                  color: FlutterFlowTheme.of(context).primaryBackground,
-                  letterSpacing: 0.0,
-                  fontWeight: FontWeight.bold,
+          actions: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
+              child: FlutterFlowIconButton(
+                borderColor: FlutterFlowTheme.of(context).alternate,
+                borderRadius: 12.0,
+                borderWidth: 1.0,
+                buttonSize: 40.0,
+                fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                icon: Icon(
+                  Icons.close_rounded,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 24.0,
                 ),
-          ),
-          actions: [],
-          centerTitle: true,
+                onPressed: () async {
+                  context.safePop();
+                },
+              ),
+            ),
+          ],
+          centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
-          child: Row(
+          child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [],
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [],
+              Expanded(
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed(ProfileWidget.routeName);
+                        },
+                        child: Container(
+                          width: 652.4,
+                          height: 100.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).secondary,
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.manage_accounts_outlined,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                size: 24.0,
+                              ),
+                              Text(
+                                'Profile',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 652.4,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).secondary,
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.notifications_sharp,
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              size: 24.0,
+                            ),
+                            Text(
+                              'Notification',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            Switch.adaptive(
+                              value: _model.switchValue!,
+                              onChanged: (newValue) async {
+                                safeSetState(
+                                    () => _model.switchValue = newValue);
+                              },
+                              activeColor: FlutterFlowTheme.of(context).success,
+                              activeTrackColor:
+                                  FlutterFlowTheme.of(context).accent4,
+                              inactiveTrackColor:
+                                  FlutterFlowTheme.of(context).alternate,
+                              inactiveThumbColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 652.4,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).secondary,
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(ChangePasswordWidget.routeName);
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.password_outlined,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                size: 24.0,
+                              ),
+                              Text(
+                                'Change Password',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 652.4,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).secondary,
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.help_outline_sharp,
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              size: 24.0,
+                            ),
+                            Text(
+                              'Help',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 652.4,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).secondary,
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            GoRouter.of(context).prepareAuthEvent();
+                            await authManager.signOut();
+                            GoRouter.of(context).clearRedirectLocation();
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Successfully Log Out',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondary,
+                              ),
+                            );
+
+                            context.pushNamedAuth(
+                                RegistWidget.routeName, context.mounted);
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.logout,
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                size: 24.0,
+                              ),
+                              Text(
+                                'Logout',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),

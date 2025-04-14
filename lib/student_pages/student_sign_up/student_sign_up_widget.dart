@@ -39,9 +39,6 @@ class _StudentSignUpWidgetState extends State<StudentSignUpWidget>
       length: 1,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
-    _model.studentIDTextController ??= TextEditingController();
-    _model.studentIDFocusNode ??= FocusNode();
-
     _model.nameTextController ??= TextEditingController();
     _model.nameFocusNode ??= FocusNode();
 
@@ -164,81 +161,6 @@ class _StudentSignUpWidgetState extends State<StudentSignUpWidget>
                                 child: Container(
                                   width: double.infinity,
                                   child: TextFormField(
-                                    controller: _model.studentIDTextController,
-                                    focusNode: _model.studentIDFocusNode,
-                                    autofocus: true,
-                                    autofillHints: [AutofillHints.email],
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      labelText: 'Student ID',
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            letterSpacing: 0.0,
-                                          ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(40.0),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(40.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(40.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(40.0),
-                                      ),
-                                      filled: true,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      contentPadding: EdgeInsets.all(24.0),
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    keyboardType: TextInputType.emailAddress,
-                                    cursorColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    validator: _model
-                                        .studentIDTextControllerValidator
-                                        .asValidator(context),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 16.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  child: TextFormField(
                                     controller: _model.nameTextController,
                                     focusNode: _model.nameFocusNode,
                                     autofocus: false,
@@ -320,8 +242,7 @@ class _StudentSignUpWidgetState extends State<StudentSignUpWidget>
                                             name:
                                                 _model.nameTextController.text,
                                             role: 'Student',
-                                            studentID: _model
-                                                .studentIDTextController.text,
+                                            studentID: currentUserUid,
                                           ));
                                       GoRouter.of(context).prepareAuthEvent();
                                       await authManager.signOut();

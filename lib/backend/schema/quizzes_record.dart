@@ -30,16 +30,58 @@ class QuizzesRecord extends FirestoreRecord {
   String get subject => _subject ?? '';
   bool hasSubject() => _subject != null;
 
-  // "questions" field.
-  List<String>? _questions;
-  List<String> get questions => _questions ?? const [];
-  bool hasQuestions() => _questions != null;
+  // "quiz_id" field.
+  String? _quizId;
+  String get quizId => _quizId ?? '';
+  bool hasQuizId() => _quizId != null;
+
+  // "description" field.
+  String? _description;
+  String get description => _description ?? '';
+  bool hasDescription() => _description != null;
+
+  // "class_id" field.
+  String? _classId;
+  String get classId => _classId ?? '';
+  bool hasClassId() => _classId != null;
+
+  // "essay_questions" field.
+  List<String>? _essayQuestions;
+  List<String> get essayQuestions => _essayQuestions ?? const [];
+  bool hasEssayQuestions() => _essayQuestions != null;
+
+  // "status" field.
+  String? _status;
+  String get status => _status ?? '';
+  bool hasStatus() => _status != null;
+
+  // "due_date" field.
+  DateTime? _dueDate;
+  DateTime? get dueDate => _dueDate;
+  bool hasDueDate() => _dueDate != null;
+
+  // "created_at" field.
+  DateTime? _createdAt;
+  DateTime? get createdAt => _createdAt;
+  bool hasCreatedAt() => _createdAt != null;
+
+  // "studentID" field.
+  List<String>? _studentID;
+  List<String> get studentID => _studentID ?? const [];
+  bool hasStudentID() => _studentID != null;
 
   void _initializeFields() {
     _title = snapshotData['Title'] as String?;
     _teacherID = snapshotData['teacherID'] as String?;
     _subject = snapshotData['subject'] as String?;
-    _questions = getDataList(snapshotData['questions']);
+    _quizId = snapshotData['quiz_id'] as String?;
+    _description = snapshotData['description'] as String?;
+    _classId = snapshotData['class_id'] as String?;
+    _essayQuestions = getDataList(snapshotData['essay_questions']);
+    _status = snapshotData['status'] as String?;
+    _dueDate = snapshotData['due_date'] as DateTime?;
+    _createdAt = snapshotData['created_at'] as DateTime?;
+    _studentID = getDataList(snapshotData['studentID']);
   }
 
   static CollectionReference get collection =>
@@ -80,12 +122,24 @@ Map<String, dynamic> createQuizzesRecordData({
   String? title,
   String? teacherID,
   String? subject,
+  String? quizId,
+  String? description,
+  String? classId,
+  String? status,
+  DateTime? dueDate,
+  DateTime? createdAt,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'Title': title,
       'teacherID': teacherID,
       'subject': subject,
+      'quiz_id': quizId,
+      'description': description,
+      'class_id': classId,
+      'status': status,
+      'due_date': dueDate,
+      'created_at': createdAt,
     }.withoutNulls,
   );
 
@@ -101,12 +155,30 @@ class QuizzesRecordDocumentEquality implements Equality<QuizzesRecord> {
     return e1?.title == e2?.title &&
         e1?.teacherID == e2?.teacherID &&
         e1?.subject == e2?.subject &&
-        listEquality.equals(e1?.questions, e2?.questions);
+        e1?.quizId == e2?.quizId &&
+        e1?.description == e2?.description &&
+        e1?.classId == e2?.classId &&
+        listEquality.equals(e1?.essayQuestions, e2?.essayQuestions) &&
+        e1?.status == e2?.status &&
+        e1?.dueDate == e2?.dueDate &&
+        e1?.createdAt == e2?.createdAt &&
+        listEquality.equals(e1?.studentID, e2?.studentID);
   }
 
   @override
-  int hash(QuizzesRecord? e) => const ListEquality()
-      .hash([e?.title, e?.teacherID, e?.subject, e?.questions]);
+  int hash(QuizzesRecord? e) => const ListEquality().hash([
+        e?.title,
+        e?.teacherID,
+        e?.subject,
+        e?.quizId,
+        e?.description,
+        e?.classId,
+        e?.essayQuestions,
+        e?.status,
+        e?.dueDate,
+        e?.createdAt,
+        e?.studentID
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is QuizzesRecord;

@@ -35,11 +35,23 @@ class StudentsRecord extends FirestoreRecord {
   String get studentID => _studentID ?? '';
   bool hasStudentID() => _studentID != null;
 
+  // "class_id" field.
+  String? _classId;
+  String get classId => _classId ?? '';
+  bool hasClassId() => _classId != null;
+
+  // "quizzes" field.
+  List<String>? _quizzes;
+  List<String> get quizzes => _quizzes ?? const [];
+  bool hasQuizzes() => _quizzes != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _name = snapshotData['name'] as String?;
     _role = snapshotData['role'] as String?;
     _studentID = snapshotData['studentID'] as String?;
+    _classId = snapshotData['class_id'] as String?;
+    _quizzes = getDataList(snapshotData['quizzes']);
   }
 
   static CollectionReference get collection =>
@@ -81,6 +93,7 @@ Map<String, dynamic> createStudentsRecordData({
   String? name,
   String? role,
   String? studentID,
+  String? classId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -88,6 +101,7 @@ Map<String, dynamic> createStudentsRecordData({
       'name': name,
       'role': role,
       'studentID': studentID,
+      'class_id': classId,
     }.withoutNulls,
   );
 
@@ -99,15 +113,18 @@ class StudentsRecordDocumentEquality implements Equality<StudentsRecord> {
 
   @override
   bool equals(StudentsRecord? e1, StudentsRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.email == e2?.email &&
         e1?.name == e2?.name &&
         e1?.role == e2?.role &&
-        e1?.studentID == e2?.studentID;
+        e1?.studentID == e2?.studentID &&
+        e1?.classId == e2?.classId &&
+        listEquality.equals(e1?.quizzes, e2?.quizzes);
   }
 
   @override
-  int hash(StudentsRecord? e) =>
-      const ListEquality().hash([e?.email, e?.name, e?.role, e?.studentID]);
+  int hash(StudentsRecord? e) => const ListEquality()
+      .hash([e?.email, e?.name, e?.role, e?.studentID, e?.classId, e?.quizzes]);
 
   @override
   bool isValidKey(Object? o) => o is StudentsRecord;
