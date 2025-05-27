@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'creating_essay_ques_model.dart';
 export 'creating_essay_ques_model.dart';
 
@@ -11,12 +12,10 @@ class CreatingEssayQuesWidget extends StatefulWidget {
     super.key,
     required this.title,
     required this.quizID,
-    required this.docRef,
   });
 
   final String? title;
   final String? quizID;
-  final DocumentReference? docRef;
 
   static String routeName = 'CreatingEssayQues';
   static String routePath = '/creatingEssayQues';
@@ -38,6 +37,8 @@ class _CreatingEssayQuesWidgetState extends State<CreatingEssayQuesWidget> {
 
     _model.questionFieldTextController ??= TextEditingController();
     _model.questionFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -61,12 +62,22 @@ class _CreatingEssayQuesWidgetState extends State<CreatingEssayQuesWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           title: Text(
+            key: ValueKey('Text_bels'),
             'Page Title',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Outfit',
+                  font: GoogleFonts.outfit(
+                    fontWeight:
+                        FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                  ),
                   color: Colors.white,
                   fontSize: 22.0,
                   letterSpacing: 0.0,
+                  fontWeight:
+                      FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                  fontStyle:
+                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
           ),
           actions: [],
@@ -101,14 +112,28 @@ class _CreatingEssayQuesWidgetState extends State<CreatingEssayQuesWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    font: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 30.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                         ),
                         Container(
                           width: 1400.0,
                           child: TextFormField(
+                            key: ValueKey('QuestionField_wq63'),
                             controller: _model.questionFieldTextController,
                             focusNode: _model.questionFieldFocusNode,
                             autofocus: false,
@@ -118,16 +143,42 @@ class _CreatingEssayQuesWidgetState extends State<CreatingEssayQuesWidget> {
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    font: GoogleFonts.outfit(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                               hintText: 'Thêm câu hỏi',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    font: GoogleFonts.outfit(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -164,9 +215,22 @@ class _CreatingEssayQuesWidgetState extends State<CreatingEssayQuesWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  font: GoogleFonts.plusJakartaSans(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 30.0,
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                             cursorColor:
                                 FlutterFlowTheme.of(context).primaryText,
@@ -181,22 +245,41 @@ class _CreatingEssayQuesWidgetState extends State<CreatingEssayQuesWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            _model.index = _model.index! + 1;
-                            safeSetState(() {});
+                            if (_model.questionFieldTextController.text ==
+                                'Empty') {
+                              _model.index = _model.index! + 1;
+                              safeSetState(() {});
 
-                            await QuestionsRecord.collection
-                                .doc()
-                                .set(createQuestionsRecordData(
-                                  quesContent:
-                                      _model.questionFieldTextController.text,
-                                  quizID: widget.quizID,
-                                  index: _model.index,
-                                ));
-                            safeSetState(() {
-                              _model.questionFieldTextController?.clear();
-                            });
+                              await QuestionsRecord.collection
+                                  .doc()
+                                  .set(createQuestionsRecordData(
+                                    quesContent:
+                                        _model.questionFieldTextController.text,
+                                    quizID: widget.quizID,
+                                    index: _model.index,
+                                  ));
+                              safeSetState(() {
+                                _model.questionFieldTextController?.clear();
+                              });
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Please enter question',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              );
+                            }
                           },
                           child: Container(
+                            key: ValueKey('Container_fof1'),
                             width: 400.0,
                             height: 55.0,
                             decoration: BoxDecoration(
@@ -210,12 +293,20 @@ class _CreatingEssayQuesWidgetState extends State<CreatingEssayQuesWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      font: GoogleFonts.plusJakartaSans(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       fontSize: 30.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                               ),
                             ),
@@ -227,23 +318,43 @@ class _CreatingEssayQuesWidgetState extends State<CreatingEssayQuesWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            _model.index = _model.index! + 1;
-                            safeSetState(() {});
+                            if (_model.questionFieldTextController.text ==
+                                'Empty') {
+                              _model.index = _model.index! + 1;
+                              safeSetState(() {});
 
-                            await QuestionsRecord.collection
-                                .doc()
-                                .set(createQuestionsRecordData(
-                                  quesContent:
-                                      _model.questionFieldTextController.text,
-                                  quizID: widget.quizID,
-                                  index: _model.index,
-                                ));
-                            _model.index = 0;
-                            safeSetState(() {});
+                              await QuestionsRecord.collection
+                                  .doc()
+                                  .set(createQuestionsRecordData(
+                                    quesContent:
+                                        _model.questionFieldTextController.text,
+                                    quizID: widget.quizID,
+                                    index: _model.index,
+                                  ));
+                              _model.index = 0;
+                              safeSetState(() {});
 
-                            context.pushNamed(TeacherHomePageWidget.routeName);
+                              context
+                                  .pushNamed(TeacherHomePageWidget.routeName);
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Please enter question',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              );
+                            }
                           },
                           child: Container(
+                            key: ValueKey('Container_7fua'),
                             width: 400.0,
                             height: 55.0,
                             decoration: BoxDecoration(
@@ -257,12 +368,20 @@ class _CreatingEssayQuesWidgetState extends State<CreatingEssayQuesWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      font: GoogleFonts.plusJakartaSans(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       fontSize: 30.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                               ),
                             ),

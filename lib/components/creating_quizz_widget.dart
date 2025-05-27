@@ -3,9 +3,11 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'creating_quizz_model.dart';
 export 'creating_quizz_model.dart';
 
@@ -37,6 +39,8 @@ class _CreatingQuizzWidgetState extends State<CreatingQuizzWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -60,8 +64,16 @@ class _CreatingQuizzWidgetState extends State<CreatingQuizzWidget> {
           Text(
             'Creating Quizz',
             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Plus Jakarta Sans',
+                  font: GoogleFonts.plusJakartaSans(
+                    fontWeight:
+                        FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  ),
                   letterSpacing: 0.0,
+                  fontWeight:
+                      FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                 ),
           ),
           Container(
@@ -89,8 +101,21 @@ class _CreatingQuizzWidgetState extends State<CreatingQuizzWidget> {
                           'Tiêu đề',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    font: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                         ),
                       ),
@@ -107,15 +132,41 @@ class _CreatingQuizzWidgetState extends State<CreatingQuizzWidget> {
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    font: GoogleFonts.outfit(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                               hintText: 'Điền tiêu đề',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    font: GoogleFonts.outfit(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -152,8 +203,21 @@ class _CreatingQuizzWidgetState extends State<CreatingQuizzWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  font: GoogleFonts.plusJakartaSans(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                             cursorColor:
                                 FlutterFlowTheme.of(context).primaryText,
@@ -193,8 +257,21 @@ class _CreatingQuizzWidgetState extends State<CreatingQuizzWidget> {
                           'Hạn nộp',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    font: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                         ),
                       ),
@@ -203,20 +280,31 @@ class _CreatingQuizzWidgetState extends State<CreatingQuizzWidget> {
                           await showModalBottomSheet<bool>(
                               context: context,
                               builder: (context) {
-                                return Container(
-                                  height:
-                                      MediaQuery.of(context).size.height / 3,
-                                  width: MediaQuery.of(context).size.width,
-                                  child: CupertinoDatePicker(
-                                    mode: CupertinoDatePickerMode.dateAndTime,
-                                    minimumDate: getCurrentTimestamp,
-                                    initialDateTime: getCurrentTimestamp,
-                                    maximumDate: DateTime(2050),
-                                    use24hFormat: false,
-                                    onDateTimeChanged: (newDateTime) =>
-                                        safeSetState(() {
-                                      _model.datePicked = newDateTime;
-                                    }),
+                                return ScrollConfiguration(
+                                  behavior:
+                                      const MaterialScrollBehavior().copyWith(
+                                    dragDevices: {
+                                      PointerDeviceKind.mouse,
+                                      PointerDeviceKind.touch,
+                                      PointerDeviceKind.stylus,
+                                      PointerDeviceKind.unknown
+                                    },
+                                  ),
+                                  child: Container(
+                                    height:
+                                        MediaQuery.of(context).size.height / 3,
+                                    width: MediaQuery.of(context).size.width,
+                                    child: CupertinoDatePicker(
+                                      mode: CupertinoDatePickerMode.dateAndTime,
+                                      minimumDate: getCurrentTimestamp,
+                                      initialDateTime: getCurrentTimestamp,
+                                      maximumDate: DateTime(2050),
+                                      use24hFormat: false,
+                                      onDateTimeChanged: (newDateTime) =>
+                                          safeSetState(() {
+                                        _model.datePicked = newDateTime;
+                                      }),
+                                    ),
                                   ),
                                 );
                               });
@@ -231,9 +319,22 @@ class _CreatingQuizzWidgetState extends State<CreatingQuizzWidget> {
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    font: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
                                     color: Colors.white,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                   ),
                           elevation: 0.0,
                           borderRadius: BorderRadius.circular(8.0),
@@ -245,8 +346,21 @@ class _CreatingQuizzWidgetState extends State<CreatingQuizzWidget> {
                           '8',
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              font: GoogleFonts.plusJakartaSans(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                             ),
                       ),
                     ],
@@ -292,10 +406,6 @@ class _CreatingQuizzWidgetState extends State<CreatingQuizzWidget> {
                       _model.quizDocID?.reference.id,
                       ParamType.String,
                     ),
-                    'docRef': serializeParam(
-                      _model.quizDocID?.reference,
-                      ParamType.DocumentReference,
-                    ),
                   }.withoutNulls,
                 );
 
@@ -318,10 +428,22 @@ class _CreatingQuizzWidgetState extends State<CreatingQuizzWidget> {
                   child: Text(
                     'Tiếp theo',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          font: GoogleFonts.plusJakartaSans(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
                           color: Color(0xFF5861B8),
                           fontSize: 30.0,
                           letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
                   ),
                 ),

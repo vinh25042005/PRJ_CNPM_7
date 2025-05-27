@@ -12,6 +12,7 @@ import '/shared_pages/teacher_side_bar/teacher_side_bar_widget.dart';
 import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'manage_class_model.dart';
 export 'manage_class_model.dart';
 
@@ -46,9 +47,11 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
 
     _model.tabBarController = TabController(
       vsync: this,
-      length: 3,
+      length: 2,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -234,10 +237,23 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                                           context)
                                                                       .labelMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Outfit',
+                                                                        font: GoogleFonts
+                                                                            .outfit(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
                                                                       ),
                                                               hintText:
                                                                   'Search tasks...',
@@ -246,24 +262,46 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                                           context)
                                                                       .labelLarge
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Outfit',
+                                                                        font: GoogleFonts
+                                                                            .outfit(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .labelLarge
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelLarge
+                                                                              .fontStyle,
+                                                                        ),
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .labelLarge
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelLarge
+                                                                            .fontStyle,
                                                                       ),
                                                               errorStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelLarge
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Outfit',
+                                                                        font: GoogleFonts
+                                                                            .outfit(
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelLarge
+                                                                              .fontStyle,
+                                                                        ),
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .error,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelLarge
+                                                                            .fontStyle,
                                                                       ),
                                                               enabledBorder:
                                                                   OutlineInputBorder(
@@ -328,10 +366,27 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Plus Jakarta Sans',
+                                                                  font: GoogleFonts
+                                                                      .plusJakartaSans(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                             cursorColor:
                                                                 FlutterFlowTheme.of(
@@ -420,13 +475,25 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                                     context)
                                                                 .labelLarge
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
+                                                                  font: GoogleFonts
+                                                                      .outfit(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelLarge
+                                                                        .fontStyle,
+                                                                  ),
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLarge
+                                                                      .fontStyle,
                                                                 ),
                                                         hintText: 'Sort',
                                                         fillColor: FlutterFlowTheme
@@ -474,17 +541,60 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                           .of(context)
                                                       .headlineSmall
                                                       .override(
-                                                        fontFamily: 'Outfit',
+                                                        font:
+                                                            GoogleFonts.outfit(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineSmall
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineSmall
+                                                                .fontStyle,
                                                       ),
                                                   unselectedLabelStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .titleMedium
                                                           .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
+                                                            font: GoogleFonts
+                                                                .plusJakartaSans(
+                                                              fontWeight:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMedium
+                                                                      .fontWeight,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMedium
+                                                                      .fontStyle,
+                                                            ),
                                                             letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMedium
+                                                                    .fontStyle,
                                                           ),
                                                   indicatorColor:
                                                       FlutterFlowTheme.of(
@@ -495,20 +605,12 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                       key: ValueKey('Tab_rfgl'),
                                                       text: 'Students',
                                                       icon: Icon(
-                                                        key: ValueKey(
-                                                            'Tab_rfgl'),
                                                         Icons.list_alt_rounded,
                                                         size: 30.0,
                                                       ),
                                                     ),
                                                     Tab(
-                                                      text: 'Ranking',
-                                                      icon: Icon(
-                                                        Icons.hourglass_top,
-                                                        size: 30.0,
-                                                      ),
-                                                    ),
-                                                    Tab(
+                                                      key: ValueKey('Tab_di05'),
                                                       text: 'Quizzes',
                                                       icon: Icon(
                                                         Icons.task,
@@ -520,7 +622,6 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                       _model.tabBarController,
                                                   onTap: (i) async {
                                                     [
-                                                      () async {},
                                                       () async {},
                                                       () async {}
                                                     ][i]();
@@ -543,81 +644,91 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                                 MainAxisSize
                                                                     .max,
                                                             children: [
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        -1.0,
-                                                                        -1.0),
-                                                                child: Builder(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            -1.0,
+                                                                            -1.0),
+                                                                    child:
+                                                                        Builder(
+                                                                      builder:
+                                                                          (context) =>
+                                                                              Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             20.0,
                                                                             20.0,
                                                                             0.0,
                                                                             10.0),
-                                                                    child:
-                                                                        FFButtonWidget(
-                                                                      onPressed:
-                                                                          () async {
-                                                                        await showDialog(
-                                                                          context:
-                                                                              context,
-                                                                          builder:
-                                                                              (dialogContext) {
-                                                                            return Dialog(
-                                                                              elevation: 0,
-                                                                              insetPadding: EdgeInsets.zero,
-                                                                              backgroundColor: Colors.transparent,
-                                                                              alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                              child: GestureDetector(
-                                                                                onTap: () {
-                                                                                  FocusScope.of(dialogContext).unfocus();
-                                                                                  FocusManager.instance.primaryFocus?.unfocus();
-                                                                                },
-                                                                                child: AddStudentsWidget(
-                                                                                  classID: widget.classID!,
-                                                                                ),
-                                                                              ),
+                                                                        child:
+                                                                            FFButtonWidget(
+                                                                          key: ValueKey(
+                                                                              'Button_3mrj'),
+                                                                          onPressed:
+                                                                              () async {
+                                                                            await showDialog(
+                                                                              context: context,
+                                                                              builder: (dialogContext) {
+                                                                                return Dialog(
+                                                                                  elevation: 0,
+                                                                                  insetPadding: EdgeInsets.zero,
+                                                                                  backgroundColor: Colors.transparent,
+                                                                                  alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                  child: GestureDetector(
+                                                                                    onTap: () {
+                                                                                      FocusScope.of(dialogContext).unfocus();
+                                                                                      FocusManager.instance.primaryFocus?.unfocus();
+                                                                                    },
+                                                                                    child: AddStudentsWidget(
+                                                                                      classID: widget.classID!,
+                                                                                    ),
+                                                                                  ),
+                                                                                );
+                                                                              },
                                                                             );
                                                                           },
-                                                                        );
-                                                                      },
-                                                                      text:
-                                                                          'Add student',
-                                                                      options:
-                                                                          FFButtonOptions(
-                                                                        height:
-                                                                            40.0,
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            16.0,
-                                                                            0.0,
-                                                                            16.0,
-                                                                            0.0),
-                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                        textStyle: FlutterFlowTheme.of(context)
-                                                                            .titleSmall
-                                                                            .override(
-                                                                              fontFamily: 'Plus Jakarta Sans',
-                                                                              color: Colors.white,
-                                                                              letterSpacing: 0.0,
-                                                                            ),
-                                                                        elevation:
-                                                                            0.0,
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8.0),
+                                                                          text:
+                                                                              'Add student',
+                                                                          options:
+                                                                              FFButtonOptions(
+                                                                            height:
+                                                                                40.0,
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                16.0,
+                                                                                0.0,
+                                                                                16.0,
+                                                                                0.0),
+                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primary,
+                                                                            textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                  font: GoogleFonts.plusJakartaSans(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                  ),
+                                                                                  color: Colors.white,
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                ),
+                                                                            elevation:
+                                                                                0.0,
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                          ),
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                ),
+                                                                ],
                                                               ),
                                                               Padding(
                                                                 padding:
@@ -720,8 +831,13 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                                                   listViewStudentsRecord.name,
                                                                                   maxLines: 2,
                                                                                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                        fontFamily: 'Outfit',
+                                                                                        font: GoogleFonts.outfit(
+                                                                                          fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                                                                                        ),
                                                                                         letterSpacing: 0.0,
+                                                                                        fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -745,16 +861,25 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                                                     Text(
                                                                                       'ID',
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FontWeight.bold,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
                                                                                             letterSpacing: 0.0,
                                                                                             fontWeight: FontWeight.bold,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
                                                                                     ),
                                                                                     Text(
                                                                                       listViewStudentsRecord.studentID,
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Plus Jakarta Sans',
+                                                                                            font: GoogleFonts.plusJakartaSans(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
                                                                                             letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
                                                                                     ),
                                                                                   ].divide(SizedBox(width: 15.0)),
@@ -773,473 +898,12 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                         ),
                                                       ],
                                                     ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  5.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Expanded(
-                                                            flex: 1,
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          2.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: ListView(
-                                                                padding:
-                                                                    EdgeInsets
-                                                                        .zero,
-                                                                shrinkWrap:
-                                                                    true,
-                                                                scrollDirection:
-                                                                    Axis.vertical,
-                                                                children: [
-                                                                  Card(
-                                                                    clipBehavior:
-                                                                        Clip.antiAliasWithSaveLayer,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryBackground,
-                                                                    elevation:
-                                                                        0.0,
-                                                                    shape:
-                                                                        RoundedRectangleBorder(
-                                                                      borderRadius:
-                                                                          BorderRadius
-                                                                              .only(
-                                                                        bottomLeft:
-                                                                            Radius.circular(25.0),
-                                                                        bottomRight:
-                                                                            Radius.circular(25.0),
-                                                                        topLeft:
-                                                                            Radius.circular(25.0),
-                                                                        topRight:
-                                                                            Radius.circular(25.0),
-                                                                      ),
-                                                                    ),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children:
-                                                                          [
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              30.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Text(
-                                                                            'Title',
-                                                                            maxLines:
-                                                                                2,
-                                                                            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                  fontFamily: 'Outfit',
-                                                                                  letterSpacing: 0.0,
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              30.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children:
-                                                                                [
-                                                                              Container(
-                                                                                width: 35.0,
-                                                                                height: 35.0,
-                                                                                clipBehavior: Clip.antiAlias,
-                                                                                decoration: BoxDecoration(
-                                                                                  shape: BoxShape.circle,
-                                                                                ),
-                                                                                child: Image.network(
-                                                                                  'https://picsum.photos/seed/880/600',
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
-                                                                              ),
-                                                                              Text(
-                                                                                'by Teacher A',
-                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                      fontFamily: 'Outfit',
-                                                                                      letterSpacing: 0.0,
-                                                                                    ),
-                                                                              ),
-                                                                            ].divide(SizedBox(width: 15.0)),
-                                                                          ),
-                                                                        ),
-                                                                      ].divide(SizedBox(
-                                                                              height: 10.0)),
-                                                                    ),
-                                                                  ),
-                                                                  Card(
-                                                                    clipBehavior:
-                                                                        Clip.antiAliasWithSaveLayer,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryBackground,
-                                                                    elevation:
-                                                                        0.0,
-                                                                    shape:
-                                                                        RoundedRectangleBorder(
-                                                                      borderRadius:
-                                                                          BorderRadius
-                                                                              .only(
-                                                                        bottomLeft:
-                                                                            Radius.circular(25.0),
-                                                                        bottomRight:
-                                                                            Radius.circular(25.0),
-                                                                        topLeft:
-                                                                            Radius.circular(25.0),
-                                                                        topRight:
-                                                                            Radius.circular(25.0),
-                                                                      ),
-                                                                    ),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children:
-                                                                          [
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              30.0,
-                                                                              10.0,
-                                                                              50.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.spaceBetween,
-                                                                            children: [
-                                                                              Text(
-                                                                                'Math Class',
-                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                      fontFamily: 'Outfit',
-                                                                                      letterSpacing: 0.0,
-                                                                                      fontWeight: FontWeight.w600,
-                                                                                    ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              30.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Text(
-                                                                            'Math class excercise 1',
-                                                                            maxLines:
-                                                                                2,
-                                                                            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                  fontFamily: 'Outfit',
-                                                                                  letterSpacing: 0.0,
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              30.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children:
-                                                                                [
-                                                                              Container(
-                                                                                width: 35.0,
-                                                                                height: 35.0,
-                                                                                clipBehavior: Clip.antiAlias,
-                                                                                decoration: BoxDecoration(
-                                                                                  shape: BoxShape.circle,
-                                                                                ),
-                                                                                child: Image.network(
-                                                                                  'https://picsum.photos/seed/880/600',
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
-                                                                              ),
-                                                                              Text(
-                                                                                'by Teacher A',
-                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                      fontFamily: 'Outfit',
-                                                                                      letterSpacing: 0.0,
-                                                                                    ),
-                                                                              ),
-                                                                            ].divide(SizedBox(width: 15.0)),
-                                                                          ),
-                                                                        ),
-                                                                      ].divide(SizedBox(
-                                                                              height: 10.0)),
-                                                                    ),
-                                                                  ),
-                                                                  Card(
-                                                                    clipBehavior:
-                                                                        Clip.antiAliasWithSaveLayer,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryBackground,
-                                                                    elevation:
-                                                                        0.0,
-                                                                    shape:
-                                                                        RoundedRectangleBorder(
-                                                                      borderRadius:
-                                                                          BorderRadius
-                                                                              .only(
-                                                                        bottomLeft:
-                                                                            Radius.circular(25.0),
-                                                                        bottomRight:
-                                                                            Radius.circular(25.0),
-                                                                        topLeft:
-                                                                            Radius.circular(25.0),
-                                                                        topRight:
-                                                                            Radius.circular(25.0),
-                                                                      ),
-                                                                    ),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children:
-                                                                          [
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              30.0,
-                                                                              10.0,
-                                                                              50.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.spaceBetween,
-                                                                            children: [
-                                                                              Text(
-                                                                                'Math Class',
-                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                      fontFamily: 'Outfit',
-                                                                                      letterSpacing: 0.0,
-                                                                                      fontWeight: FontWeight.w600,
-                                                                                    ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              30.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Text(
-                                                                            'Math class excercise 1',
-                                                                            maxLines:
-                                                                                2,
-                                                                            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                  fontFamily: 'Outfit',
-                                                                                  letterSpacing: 0.0,
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              30.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children:
-                                                                                [
-                                                                              Container(
-                                                                                width: 35.0,
-                                                                                height: 35.0,
-                                                                                clipBehavior: Clip.antiAlias,
-                                                                                decoration: BoxDecoration(
-                                                                                  shape: BoxShape.circle,
-                                                                                ),
-                                                                                child: Image.network(
-                                                                                  'https://picsum.photos/seed/880/600',
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
-                                                                              ),
-                                                                              Text(
-                                                                                'by Teacher A',
-                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                      fontFamily: 'Outfit',
-                                                                                      letterSpacing: 0.0,
-                                                                                    ),
-                                                                              ),
-                                                                            ].divide(SizedBox(width: 15.0)),
-                                                                          ),
-                                                                        ),
-                                                                      ].divide(SizedBox(
-                                                                              height: 10.0)),
-                                                                    ),
-                                                                  ),
-                                                                  Card(
-                                                                    clipBehavior:
-                                                                        Clip.antiAliasWithSaveLayer,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryBackground,
-                                                                    elevation:
-                                                                        0.0,
-                                                                    shape:
-                                                                        RoundedRectangleBorder(
-                                                                      borderRadius:
-                                                                          BorderRadius
-                                                                              .only(
-                                                                        bottomLeft:
-                                                                            Radius.circular(25.0),
-                                                                        bottomRight:
-                                                                            Radius.circular(25.0),
-                                                                        topLeft:
-                                                                            Radius.circular(25.0),
-                                                                        topRight:
-                                                                            Radius.circular(25.0),
-                                                                      ),
-                                                                    ),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children:
-                                                                          [
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              30.0,
-                                                                              10.0,
-                                                                              50.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.spaceBetween,
-                                                                            children: [
-                                                                              Text(
-                                                                                'Math Class',
-                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                      fontFamily: 'Outfit',
-                                                                                      letterSpacing: 0.0,
-                                                                                      fontWeight: FontWeight.w600,
-                                                                                    ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              30.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Text(
-                                                                            'Math class excercise 1',
-                                                                            maxLines:
-                                                                                2,
-                                                                            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                  fontFamily: 'Outfit',
-                                                                                  letterSpacing: 0.0,
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              30.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children:
-                                                                                [
-                                                                              Container(
-                                                                                width: 35.0,
-                                                                                height: 35.0,
-                                                                                clipBehavior: Clip.antiAlias,
-                                                                                decoration: BoxDecoration(
-                                                                                  shape: BoxShape.circle,
-                                                                                ),
-                                                                                child: Image.network(
-                                                                                  'https://picsum.photos/seed/880/600',
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
-                                                                              ),
-                                                                              Text(
-                                                                                'by Teacher A',
-                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                      fontFamily: 'Outfit',
-                                                                                      letterSpacing: 0.0,
-                                                                                    ),
-                                                                              ),
-                                                                            ].divide(SizedBox(width: 15.0)),
-                                                                          ),
-                                                                        ),
-                                                                      ].divide(SizedBox(
-                                                                              height: 10.0)),
-                                                                    ),
-                                                                  ),
-                                                                ].divide(SizedBox(
-                                                                    height:
-                                                                        15.0)),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
                                                     Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: [
                                                         Expanded(
                                                           flex: 1,
@@ -1377,6 +1041,8 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                                           ),
                                                                           child:
                                                                               Column(
+                                                                            key:
+                                                                                ValueKey('Column_acer'),
                                                                             mainAxisSize:
                                                                                 MainAxisSize.max,
                                                                             crossAxisAlignment:
@@ -1389,8 +1055,13 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                                                   listViewQuizzesRecord.title,
                                                                                   maxLines: 2,
                                                                                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                        fontFamily: 'Outfit',
+                                                                                        font: GoogleFonts.outfit(
+                                                                                          fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                                                                                        ),
                                                                                         letterSpacing: 0.0,
+                                                                                        fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -1414,8 +1085,13 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                                                     Text(
                                                                                       'by Teacher A',
                                                                                       style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                            fontFamily: 'Outfit',
+                                                                                            font: GoogleFonts.outfit(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                            ),
                                                                                             letterSpacing: 0.0,
+                                                                                            fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
                                                                                           ),
                                                                                     ),
                                                                                   ].divide(SizedBox(width: 15.0)),
@@ -1554,9 +1230,14 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .titleLarge
                                                                             .override(
-                                                                              fontFamily: 'Outfit',
+                                                                              font: GoogleFonts.outfit(
+                                                                                fontWeight: FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                                                                              ),
                                                                               color: FlutterFlowTheme.of(context).primaryText,
                                                                               letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -1625,15 +1306,34 @@ class _ManageClassWidgetState extends State<ManageClassWidget>
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .error,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily:
-                                                        'Plus Jakarta Sans',
-                                                    color: Colors.white,
-                                                    letterSpacing: 0.0,
-                                                  ),
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                font:
+                                                    GoogleFonts.plusJakartaSans(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
+                                                color: Colors.white,
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
                                           elevation: 0.0,
                                           borderRadius:
                                               BorderRadius.circular(8.0),

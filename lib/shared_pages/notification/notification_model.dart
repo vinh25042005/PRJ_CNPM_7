@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/shared_pages/student_side_bar/student_side_bar_widget.dart';
 import 'notification_widget.dart' show NotificationWidget;
@@ -6,6 +7,8 @@ import 'package:flutter/material.dart';
 class NotificationModel extends FlutterFlowModel<NotificationWidget> {
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Firestore Query - Query a collection] action in Notification widget.
+  StudentsRecord? studentClass;
   // Model for StudentSideBar component.
   late StudentSideBarModel studentSideBarModel;
   // State field(s) for TextField widget.
@@ -16,6 +19,8 @@ class NotificationModel extends FlutterFlowModel<NotificationWidget> {
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
+  int get tabBarPreviousIndex =>
+      tabBarController != null ? tabBarController!.previousIndex : 0;
 
   @override
   void initState(BuildContext context) {

@@ -184,12 +184,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
               'quizID',
               ParamType.String,
             ),
-            docRef: params.getParam(
-              'docRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['quizzes'],
-            ),
           ),
         ),
         FFRoute(
